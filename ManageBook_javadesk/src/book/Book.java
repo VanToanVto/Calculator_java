@@ -7,7 +7,7 @@ package book;
 
 /**
  *
- * @author hungn
+ * @author Admin
  */
 public class Book {
     String code , name , author , publisher;

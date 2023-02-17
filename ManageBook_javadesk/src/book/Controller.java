@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author hungn
+ * @author Admin
  */
 public class Controller {
 
