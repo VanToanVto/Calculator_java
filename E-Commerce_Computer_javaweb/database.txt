@@ -1,0 +1,937 @@
+USE [master]
+GO
+/****** Object:  Database [TestProject]    Script Date: 23/03/2021 17:39:41 ******/
+CREATE DATABASE [TestProject]
+GO
+USE [TestProject]
+GO
+/****** Object:  Table [dbo].[Account]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Account](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[Username] [nvarchar](50) NULL,
+	[Password] [nvarchar](50) NULL,
+	[IsAdmin] [bit] NULL,
+	[IsSeller] [bit] NULL,
+ CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cart]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Cart](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Product_ID] [int] NULL,
+	[Product_Quantity] [int] NULL,
+	[Product_Name] [nvarchar](max) NULL,
+	[Product_Price] [money] NULL,
+	[Account_ID] [int] NULL,
+	[Total_Price] [money] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DanhMucSP]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DanhMucSP](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NULL,
+	[ParentID] [bigint] NOT NULL,
+	[CreateDate] [date] NULL,
+	[Status] [bit] NULL,
+ CONSTRAINT [PK_DanhMucSP] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[GAMING_GEAR]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[GAMING_GEAR](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[TenSP] [ntext] NULL,
+	[Gia] [bigint] NULL,
+	[GiaKhuyenMai] [bigint] NULL,
+	[CauHinh] [ntext] NULL,
+	[MoTa] [ntext] NULL,
+	[SoLuong] [int] NULL,
+	[DanhMucSP] [int] NULL,
+	[HangSanXuat] [varchar](50) NULL,
+	[HinhAnh] [ntext] NULL,
+ CONSTRAINT [PK_GAMING_GEAR] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[History_Buy]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[History_Buy](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Product_ID] [int] NULL,
+	[Product_Quantity] [int] NULL,
+	[Product_Name] [nvarchar](max) NULL,
+	[Product_Price] [money] NULL,
+	[Account_ID] [int] NULL,
+	[Buy_Date] [date] NULL,
+ CONSTRAINT [PK_History_Buy] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LapTop]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LapTop](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[TenSP] [ntext] NULL,
+	[Gia] [bigint] NULL,
+	[GiaKhuyenMai] [bigint] NULL,
+	[CauHinh] [ntext] NULL,
+	[MoTa] [ntext] NULL,
+	[SoLuong] [int] NULL,
+	[DanhMucSP] [int] NULL,
+	[HangSanXuat] [varchar](50) NULL,
+	[HinhAnh] [ntext] NULL,
+ CONSTRAINT [PK_LapTop] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LINHKIEN]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LINHKIEN](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[TenSP] [ntext] NULL,
+	[Gia] [bigint] NULL,
+	[GiaKhuyenMai] [bigint] NULL,
+	[CauHinh] [ntext] NULL,
+	[MoTa] [ntext] NULL,
+	[SoLuong] [int] NOT NULL,
+	[DanhMucSP] [int] NULL,
+	[HangSanXuat] [varchar](50) NULL,
+	[HinhAnh] [ntext] NULL,
+ CONSTRAINT [PK_LINHKIEN] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ManHinh]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ManHinh](
+	[Id] [bigint] NOT NULL,
+	[TenSP] [ntext] NULL,
+	[Gia] [bigint] NULL,
+	[GiaKhuyenMai] [bigint] NULL,
+	[CauHinh] [ntext] NULL,
+	[MoTa] [ntext] NULL,
+	[SoLuong] [int] NULL,
+	[DanhMucSP] [int] NULL,
+	[HangSanXuat] [varchar](50) NULL,
+	[HinhAnh] [ntext] NULL,
+ CONSTRAINT [PK_ManHinh] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PC]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PC](
+	[Id] [bigint] NOT NULL,
+	[TenSP] [ntext] NULL,
+	[Gia] [bigint] NULL,
+	[GiaKhuyenMai] [bigint] NULL,
+	[CauHinh] [ntext] NULL,
+	[MoTa] [ntext] NULL,
+	[SoLuong] [int] NULL,
+	[DanhMucSP] [int] NULL,
+	[HangSanXuat] [varchar](50) NULL,
+	[HinhAnh] [ntext] NULL,
+ CONSTRAINT [PK_PC] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Product]    Script Date: 23/03/2021 17:39:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Product](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[TenSP] [nvarchar](max) NULL,
+	[Gia] [money] NULL,
+	[GiaKhuyenMai] [money] NULL,
+	[CauHinh] [ntext] NULL,
+	[MoTa] [nvarchar](max) NULL,
+	[SoLuong] [int] NULL,
+	[DanhMucSP] [int] NULL,
+	[HangSanXuat] [varchar](50) NULL,
+	[HinhAnh] [ntext] NULL,
+ CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Account] ON 
+GO
+INSERT [dbo].[Account] ([ID], [Name], [Username], [Password], [IsAdmin], [IsSeller]) VALUES (1, N'Đức Long', N'admin', N'123', 1, 1)
+GO
+INSERT [dbo].[Account] ([ID], [Name], [Username], [Password], [IsAdmin], [IsSeller]) VALUES (2, N'Bui Duc Long', N'block', N'123', 0, 1)
+GO
+INSERT [dbo].[Account] ([ID], [Name], [Username], [Password], [IsAdmin], [IsSeller]) VALUES (6, N'Hoang Thao', N'thaohoang', N'1234', 0, 0)
+GO
+INSERT [dbo].[Account] ([ID], [Name], [Username], [Password], [IsAdmin], [IsSeller]) VALUES (7, N'duc long', N'block1', N'123', 0, 0)
+GO
+SET IDENTITY_INSERT [dbo].[Account] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Cart] ON 
+GO
+INSERT [dbo].[Cart] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Total_Price]) VALUES (94, 47, 1, N'Màn hình LG 27MP59G
+', 2048.0000, 1, 2048.0000)
+GO
+SET IDENTITY_INSERT [dbo].[Cart] OFF
+GO
+SET IDENTITY_INSERT [dbo].[DanhMucSP] ON 
+GO
+INSERT [dbo].[DanhMucSP] ([ID], [Name], [ParentID], [CreateDate], [Status]) VALUES (1, N'LAPTOP', 1, CAST(N'2021-02-20' AS Date), 1)
+GO
+INSERT [dbo].[DanhMucSP] ([ID], [Name], [ParentID], [CreateDate], [Status]) VALUES (2, N'PC', 2, CAST(N'1905-06-23' AS Date), 1)
+GO
+INSERT [dbo].[DanhMucSP] ([ID], [Name], [ParentID], [CreateDate], [Status]) VALUES (3, N'MÀN HÌNH', 3, CAST(N'2021-02-02' AS Date), 1)
+GO
+INSERT [dbo].[DanhMucSP] ([ID], [Name], [ParentID], [CreateDate], [Status]) VALUES (4, N'LINH KIỆN', 4, CAST(N'2021-02-20' AS Date), 1)
+GO
+INSERT [dbo].[DanhMucSP] ([ID], [Name], [ParentID], [CreateDate], [Status]) VALUES (5, N'GAMING GEAR', 5, CAST(N'2021-02-20' AS Date), 1)
+GO
+SET IDENTITY_INSERT [dbo].[DanhMucSP] OFF
+GO
+SET IDENTITY_INSERT [dbo].[GAMING_GEAR] ON 
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (1, N'Chuột Logitech G502 Hero RGB
+', 1790000, 990000, N'Loại chuột: Chuột văn phòng| Chuẩn kết nối: Không dây| Giao thức kết nối: Bluetooth| Thiết kế: Đối xứng| Mắt cảm biến: Quang học| Độ phân giải tối đa: 1000dpi| Đèn Led: Không có| Trọng lượng: 82g| Số nút bấm: 4| Kích cỡ: Cao x Rộng x Dài:100,5 mm x 61,1 mm x 33,0 mm', N'Mắt cảm biến Hero mới nhất Siêu chuột dành cho game FPS Tính năng con lăn Vô cực DPI 16.000 Đi kèm tạ cân chỉnh trọng lượng chuột', 10, 5, N'mouse', N'image\mouse (2).jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (4, N'Chuột Gaming Rapoo Vpro V16 Optical
+', 390000, 250000, N'Loại chuột: Chuột văn phòng| Chuẩn kết nối: Không dây| Giao thức kết nối: Bluetooth| Thiết kế: Đối xứng| Mắt cảm biến: Quang học| Độ phân giải tối đa: 1000dpi| Đèn Led: Không có| Trọng lượng: 82g| Số nút bấm: 4| Kích cỡ: Cao x Rộng x Dài:100,5 mm x 61,1 mm x 33,0 mm', N'Mắt đọc quang học gaming cao cấp 2000 DPI. Form đối xứng phù hợp. Đèn LED cam cực đẹp. Nút chuyển đổi DPI nhanh trên chuột.', 10, 5, N'mouse', N'image\mouse (1).jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (6, N'Chuột Logitech G300S
+', 399000, 260000, N'Loại chuột: Chuột văn phòng| Chuẩn kết nối: Không dây| Giao thức kết nối: Bluetooth| Thiết kế: Đối xứng| Mắt cảm biến: Quang học| Độ phân giải tối đa: 1000dpi| Đèn Led: Không có| Trọng lượng: 82g| Số nút bấm: 4| Kích cỡ: Cao x Rộng x Dài:100,5 mm x 61,1 mm x 33,0 mm', N'Mắt đọc quang học gaming cao cấp 2000 DPI. Form đối xứng phù hợp. Đèn LED cam cực đẹp. Nút chuyển đổi DPI nhanh trên chuột.', 10, 5, N'mouse', N'image\mouse (3).jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (7, N'CHUỘT HYPERX PULSEFIRE CORE RGB
+', 690000, 490000, N'Loại chuột: Chuột văn phòng| Chuẩn kết nối: Không dây| Giao thức kết nối: Bluetooth| Thiết kế: Đối xứng| Mắt cảm biến: Quang học| Độ phân giải tối đa: 1000dpi| Đèn Led: Không có| Trọng lượng: 82g| Số nút bấm: 4| Kích cỡ: Cao x Rộng x Dài:100,5 mm x 61,1 mm x 33,0 mm', N'Mắt đọc quang học gaming cao cấp 2000 DPI. Form đối xứng phù hợp. Đèn LED cam cực đẹp. Nút chuyển đổi DPI nhanh trên chuột.', 10, 5, N'mouse', N'image\mouse (4).jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (8, N'CHUỘT RAZER DEATHADDER ESSENTIAL
+', 1290000, 690000, N'Loại chuột: Chuột văn phòng| Chuẩn kết nối: Không dây| Giao thức kết nối: Bluetooth| Thiết kế: Đối xứng| Mắt cảm biến: Quang học| Độ phân giải tối đa: 1000dpi| Đèn Led: Không có| Trọng lượng: 82g| Số nút bấm: 4| Kích cỡ: Cao x Rộng x Dài:100,5 mm x 61,1 mm x 33,0 mm', N'Mắt đọc quang học gaming cao cấp 2000 DPI. Form đối xứng phù hợp. Đèn LED cam cực đẹp. Nút chuyển đổi DPI nhanh trên chuột.', 10, 5, N'mouse', N'image\mouse (5).jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (9, N'Chuột logitech M337 Bluetooth
+', 499000, 499000, N'Loại chuột: Chuột văn phòng| Chuẩn kết nối: Không dây| Giao thức kết nối: Bluetooth| Thiết kế: Đối xứng| Mắt cảm biến: Quang học| Độ phân giải tối đa: 1000dpi| Đèn Led: Không có| Trọng lượng: 82g| Số nút bấm: 4| Kích cỡ: Cao x Rộng x Dài:100,5 mm x 61,1 mm x 33,0 mm', N'Cho dù bạn là người dùng máy tính Mac lâu năm, chỉ sử dụng Windows® hoặc Chrome OS™, thích máy tính bảng Windows hoặc Android™ hay chuyển đổi giữa chúng, M337 luôn phù hợp với bạn.
+
+', 10, 5, N'mouse', N'image\n3000-01.jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (10, N'Chuột Microsoft Surface Arc Mouse
+', 1890000, 1890000, N'Loại chuột: Chuột văn phòng| Chuẩn kết nối: Không dây| Giao thức kết nối: Bluetooth| Thiết kế: Đối xứng| Mắt cảm biến: Quang học| Độ phân giải tối đa: 1000dpi| Đèn Led: Không có| Trọng lượng: 82g| Số nút bấm: 4| Kích cỡ: Cao x Rộng x Dài:100,5 mm x 61,1 mm x 33,0 mm', N'Chuột Surface Arc Mouse Đỏ đun
+
+', 10, 5, N'mouse', N'image\SFarcmred01.jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (11, N'Chuột Logitech G903 LIGHTSPEED Wireless Gaming
+', 3000000, 3000000, N'Loại chuột: Chuột chơi game| Chuẩn kết nối: Không dây| Giao thức kết nối: 2.4Ghz LIGHTSPEED| Thiết kế: Đối xứng| Mắt cảm biến: Logitech Gaming HERO| Độ phân giải tối đa: 16000dpi| Đèn Led: RGB 16.8 triệu màu LIGHTSYNC| Trọng lượng: 95g| Số nút bấm: 6 nút có thể lập trình qua Logitech G-Hub| Kích cỡ: Dài: 130 mm (5.1 in) Rộng: 67 mm (2.6 in) Cao: 40 mm (1.6 in)', N'Logitech G903 hiện tại đang là một trong 2 sản phẩm chuột chơi game cao cấp nhất của Logitech, chú chuột còn lại của vị trí đầu bảng này chính là Logitech G-Pro Wireless mà ThinkPro cũng đã về hàng cùng thời điểm bài viết này được lên sóng. Vậy Logitech G903 có những đặc tính gì khiến nó trở thành sản phẩm cao cấp nhất, đắt tiền nhất của thương hiệu này? ThinkPro sẽ giới thiệu với các bạn ngay sau đây.
+
+', 10, 5, N'mouse', N'image\g903-01.jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (12, N'Chuột Lenovo Legion M200
+', 749000, 749000, N'Loại chuột: Chuột chơi game| Chuẩn kết nối: Không dây| Giao thức kết nối: 2.4Ghz LIGHTSPEED| Thiết kế: Đối xứng| Mắt cảm biến: Logitech Gaming HERO| Độ phân giải tối đa: 16000dpi| Đèn Led: RGB 16.8 triệu màu LIGHTSYNC| Trọng lượng: 95g| Số nút bấm: 6 nút có thể lập trình qua Logitech G-Hub| Kích cỡ: Dài: 130 mm (5.1 in) Rộng: 67 mm (2.6 in) Cao: 40 mm (1.6 in)', N'Chuột Lenovo Legion M200
+
+', 10, 5, N'mouse', N'image\m200-01.jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (13, N'Chuột Gaming Newmen N3000 RGB
+', 309000, 309000, N'Loại chuột: Chuột chơi game| Chuẩn kết nối: Không dây| Giao thức kết nối: 2.4Ghz LIGHTSPEED| Thiết kế: Đối xứng| Mắt cảm biến: Logitech Gaming HERO| Độ phân giải tối đa: 16000dpi| Đèn Led: RGB 16.8 triệu màu LIGHTSYNC| Trọng lượng: 95g| Số nút bấm: 6 nút có thể lập trình qua Logitech G-Hub| Kích cỡ: Dài: 130 mm (5.1 in) Rộng: 67 mm (2.6 in) Cao: 40 mm (1.6 in)', N'Mắt đọc quang học gaming cao cấp 2000 DPI. Form đối xứng phù hợp. Đèn LED cam cực đẹp. Nút chuyển đổi DPI nhanh trên chuột.', 10, 5, N'mouse', N'image\n3000-01.jpg')
+GO
+INSERT [dbo].[GAMING_GEAR] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (14, N'Chuột Gaming Newmen GX1 Plus RGB
+', 349000, 349000, N'Loại chuột: Chuột chơi game| Chuẩn kết nối: Không dây| Giao thức kết nối: 2.4Ghz LIGHTSPEED| Thiết kế: Đối xứng| Mắt cảm biến: Logitech Gaming HERO| Độ phân giải tối đa: 16000dpi| Đèn Led: RGB 16.8 triệu màu LIGHTSYNC| Trọng lượng: 95g| Số nút bấm: 6 nút có thể lập trình qua Logitech G-Hub| Kích cỡ: Dài: 130 mm (5.1 in) Rộng: 67 mm (2.6 in) Cao: 40 mm (1.6 in)', N'Mắt đọc quang học gaming cao cấp 2000 DPI. Form đối xứng phù hợp. Đèn LED cam cực đẹp. Nút chuyển đổi DPI nhanh trên chuột.', 10, 5, N'mouse', N'image\gx1p-01.jpg')
+GO
+SET IDENTITY_INSERT [dbo].[GAMING_GEAR] OFF
+GO
+SET IDENTITY_INSERT [dbo].[History_Buy] ON 
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (8, 17, 2, N'Laptop GF63 Thin 9SCXR 075VN', 2017.0000, 1, CAST(N'2021-03-17' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (9, 17, 1, N'Laptop GF63 Thin 9SCXR 075VN', 2017.0000, 2, CAST(N'2021-03-17' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (10, 17, 3, N'Laptop GF63 Thin 9SCXR 075VN', 2017.0000, 1, CAST(N'2021-03-17' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (11, 49, 1, N'Màn hình Asus VG248QE', 2047.0000, 1, CAST(N'2021-03-17' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (12, 47, 1, N'Màn hình LG 27MP59G
+', 2048.0000, 1, CAST(N'2021-03-17' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (13, 47, 1, N'Màn hình LG 27MP59G
+', 2048.0000, 1, CAST(N'2021-03-17' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (14, 17, 3, N'Laptop GF63 Thin 9SCXR 075VN', 2017.0000, 1, CAST(N'2021-03-18' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (15, 48, 2, N'Màn hình LG 24GL600F-B', 2047.0000, 1, CAST(N'2021-03-18' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (16, 17, 5, N'Laptop GF63 Thin 9SCXR 075VN', 2017.0000, 1, CAST(N'2021-03-21' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (17, 17, 2, N'Laptop GF63 Thin 9SCXR 075VN', 2017.0000, 1, CAST(N'2021-03-21' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (18, 48, 2, N'Màn hình LG 24GL600F-B', 2047.0000, 1, CAST(N'2021-03-23' AS Date))
+GO
+INSERT [dbo].[History_Buy] ([ID], [Product_ID], [Product_Quantity], [Product_Name], [Product_Price], [Account_ID], [Buy_Date]) VALUES (19, 47, 1, N'Màn hình LG 27MP59G
+', 2048.0000, 2, CAST(N'2021-03-23' AS Date))
+GO
+SET IDENTITY_INSERT [dbo].[History_Buy] OFF
+GO
+SET IDENTITY_INSERT [dbo].[LapTop] ON 
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (1, N'Laptop GF61 Thin 9SCXR 075VN', 20990000, 18990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\msi.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (2, N'Laptop GF62 Thin 9SCXR 075VN', 24990000, 23990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\msi2.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (3, N'Laptop GF63 Thin 9SCXR 075VN', 25990000, 24990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\msi1.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (4, N'Laptop GF64 Thin 9SCXR 075VN', 20990000, 18990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'acer', N'image\msi.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (5, N'Laptop GF63 Thin 9SCXR 075VN', 20990000, 18990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\msi1.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (6, N'LAPTOP GAMING MSI BRAVO 15', 19490000, 17990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\Bravo-2.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (7, N'LAPTOP GAMING MSI BRAVO 17', 24990000, 22090000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\BRAVO-17-A4DDR-200VN.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (8, N'Laptop GF66 Thin 9SCXR 075VN', 20990000, 18990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\GF63-THIN-9SCXR-075VN-1.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (9, N'LAPTOP GAMING MSI GL65 LEOPARD', 24499000, 22490000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\GL65-LEOPARD-10SCXK-093VN.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (10, N'LAPTOP GAMING MSI GL63 LEOPARD', 33490000, 29590000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\GL65-LEOPARD-10SDK-242VN.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (11, N'Laptop GF63 Thin 9SCXR 075VN', 20990000, 18990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\GL65-LEOPARD-10SDK-242VN.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (12, N'LAPTOP ASUS ROG STRIX G15 G512', 24490000, 22490000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Strix G15 G512-IAL013T là hiện thân của phong cách thiết kế tối giản, mang đến trải nghiệm cốt lõi mãnh liệt nhất. Dư sức để chiến những tựa game nặng kí và xử lý đa nhiệm cùng Windows 10. Hệ thống tản nhiệt thông minh giúp giải phóng sức mạnh của i5 10300H và GTX 1650Ti. Tần số quét màn hình 144Hz nhanh nhất thế giới nâng tầm đẳng cấp của bạn. Với RangeBoost Wi-Fi mạnh mẽ bạn thoải mái tham gia vào các trận đấu hàng vạn người. Bất cứ khi nào bạn chơi game, viền máy lại được trang hoàng bằng dải led Aura Sync cá tính.
+
+', 10, 1, N'asus', N'image\STRIX-G15-G512-IAL013T-2.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (13, N'LAPTOP ASUS ROG STRIX G15 G512-IAL011T', 28990000, 25890000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Strix G15 G512-IAL011T là hiện thân của phong cách thiết kế tối giản, mang đến trải nghiệm cốt lõi mãnh liệt nhất. Dư sức để chiến những tựa game nặng kí và xử lý đa nhiệm cùng Windows 10. Hệ thống tản nhiệt thông minh giúp giải phóng sức mạnh của i7 10750H và GTX 1650Ti. Tần số quét màn hình 144Hz nhanh nhất thế giới nâng tầm đẳng cấp của bạn. Với RangeBoost Wi-Fi mạnh mẽ bạn thoải mái tham gia vào các trận đấu hàng vạn người. Bất cứ khi nào bạn chơi game, viền máy lại được trang hoàng bằng dải led Aura Sync cá tính.
+
+', 10, 1, N'asus', N'image\STRIX-G15-G512-IAL001T-1.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (14, N'LAPTOP ASUS ROG STRIX G17 G713QR-HG072T', 49990000, 48990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Strix G15 G512-IAL011T là hiện thân của phong cách thiết kế tối giản, mang đến trải nghiệm cốt lõi mãnh liệt nhất. Dư sức để chiến những tựa game nặng kí và xử lý đa nhiệm cùng Windows 10. Hệ thống tản nhiệt thông minh giúp giải phóng sức mạnh của i7 10750H và GTX 1650Ti. Tần số quét màn hình 144Hz nhanh nhất thế giới nâng tầm đẳng cấp của bạn. Với RangeBoost Wi-Fi mạnh mẽ bạn thoải mái tham gia vào các trận đấu hàng vạn người. Bất cứ khi nào bạn chơi game, viền máy lại được trang hoàng bằng dải led Aura Sync cá tính.
+
+', 10, 1, N'asus', N'image\STRIX-G17-G713QR-HG072T.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (15, N'LAPTOP ASUS ROG STRIX SCAR 15 G533QR-HQ081T ', 56990000, 55990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Strix G15 G512-IAL011T là hiện thân của phong cách thiết kế tối giản, mang đến trải nghiệm cốt lõi mãnh liệt nhất. Dư sức để chiến những tựa game nặng kí và xử lý đa nhiệm cùng Windows 10. Hệ thống tản nhiệt thông minh giúp giải phóng sức mạnh của i7 10750H và GTX 1650Ti. Tần số quét màn hình 144Hz nhanh nhất thế giới nâng tầm đẳng cấp của bạn. Với RangeBoost Wi-Fi mạnh mẽ bạn thoải mái tham gia vào các trận đấu hàng vạn người. Bất cứ khi nào bạn chơi game, viền máy lại được trang hoàng bằng dải led Aura Sync cá tính.
+
+', 10, 1, N'asus', N'image\STRIX-SCAR-15-G533QR-HQ081T.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (16, N'LAPTOP LENOVO IDEAPAD GAMING 3 15ARH05', 19490000, 14590000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop Lenovo Ideapad L340 là dòng laptop chơi game phổ thông và nó hướng đến đối tượng những người đi làm. Khi bạn muốn một chiếc máy nhìn bình thường nhất nhưng khi cần vẫn có thể giải trí, chơi game. Ideapad Gaming 3 15ARH05 (82EY00LBVN) sở hữu thiết kế tối giản, vẻ ngoài không quá hầm hố nhưng vẫn sở hữu hiệu năng cao.
+
+', 10, 1, N'lenovo', N'image\IDEAPAD-GAMING-3-15ARH05-82EY00LBVN.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (17, N'LAPTOP LENOVO IDEAPAD GAMING 3 15IMH05', 20990000, 19990000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop Lenovo Ideapad L340 là dòng laptop chơi game phổ thông và nó hướng đến đối tượng những người đi làm. Khi bạn muốn một chiếc máy nhìn bình thường nhất nhưng khi cần vẫn có thể giải trí, chơi game. Ideapad Gaming 3 15IMH05 (81Y4006SVN) sở hữu thiết kế tối giản, vẻ ngoài không quá hầm hố nhưng vẫn sở hữu hiệu năng cao.
+
+', 10, 1, N'lenovo', N'image\IDEAPAD-GAMING-3-15ARH05-82EY00LBVN.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (18, N'LAPTOP DELL GAMING G3 15 3500 (70223130)', 22490000, 21490000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop gaming Dell Gaming G3 15 3500 (70223130) được với chip xử lí đồ họa rời NVIDIA và bộ vi xử lí thế hệ thứ 10 mới nhất cùng thiết kế mỏng nhưng vẫn mang đến trải nghiệm chơi game tuyệt vời.', 10, 1, N'dell', N'image\DELL-GAMING-G3-15-3500-70223130.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (19, N'LAPTOP DELL GAMING G3 15 3500 (G3500A)', 27990000, 25390000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop gaming Dell Gaming G3 15 3500 (G3500A) được với chip xử lí đồ họa rời NVIDIA và bộ vi xử lí thế hệ thứ 10 mới nhất cùng thiết kế mỏng nhưng vẫn mang đến trải nghiệm chơi game tuyệt vời.', 10, 1, N'dell', N'image\DELL-GAMING-G3-15-3500-G3500A.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (20, N'LAPTOP ACER NITRO 5 2020 AN515-55-55E3', 31990000, 27490000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Nitro 5 2020 AN515-55-55E3 tích hợp những “vũ khí” mới nhất. Bao gồm CPU Intel® Core™ i5 10300H, VGA NVIDIA® GeForce RTX 2060 cho hiệu năng xử lý mạnh mẽ.
+
+', 10, 1, N'acer', N'image\NITRO-5-2020-AN515-55-55E3-4.jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (21, N'Dell Latitude E7470
+', 11490000, 10490000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Dell Latitude E7470 thuộc dòng laptop dành cho doanh nhân nên nó sở hữu những đặc trưng của dòng máy này, đó là sự mỏng nhẹ, thiết kế tinh tế và pin khỏe. Cùng với đó, chiếc laptop này mang có những tính năng bảo mật hàng đầu của Dell để bảo vệ dữ liệu, mã hóa toàn diện, xác thực tiên tiến và chống phần mềm độc hại.', 10, 1, N'dell', N'image\dell (1).jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (22, N'Dell Vostro 14 3400
+', 12290000, 11290000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Tuy là dòng laptop phổ thông cơ bản, Vostro 3400 vẫn được thiết kế theo lối tinh giản. Cân nặng 1.6kg cùng độ dày 2cm khiến đây là chiếc máy vô cùng phù hợp khi đem theo đi làm, đi học. Màu xám thẫm khiến chiếc laptop này trông có phần trẻ trung hơn, không quá đơn điệu như những thế hệ trước.
+
+', 10, 1, N'dell', N'image\dell (2).jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (23, N'Dell Inspiron 7570
+', 17490000, 16490000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop Dell Inspiron 7570 được trang bị cấu hình mạnh mẽ với chip Intel Core i7 Kabylake Refresh cùng card đồ họa rời NVIDIA cho hiệu năng mượt mà, xử lý các phần mềm đồ họa, kĩ thuật nhanh chóng. Máy có thiết kế khá mỏng và nhẹ giúp người dùng có thể mang theo bên mình bất cứ lúc nào.
+
+', 10, 1, N'dell', N'image\dell (3).jpg')
+GO
+INSERT [dbo].[LapTop] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (24, N'Dell Vostro 14 5402 (Chính hãng)
+', 18290000, 18190000, N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''', N'Vostro 5402 sử dụng kiểu thiết kế mỏng nhẹ, với bản lề dạng nâng gáy, tăng khả năng tản nhiệt. Độ dày 1.8 cm cùng cân nặng 1.4kg cũng vô cùng lý tưởng cho những ai cần phải di chuyển. Tuy nhiên, màu xanh xám thẫm hơi có phần đơn điệu, nam tính, thiếu sự trẻ trung
+
+', 10, 1, N'dell', N'image\dell (2).jpg')
+GO
+SET IDENTITY_INSERT [dbo].[LapTop] OFF
+GO
+SET IDENTITY_INSERT [dbo].[LINHKIEN] ON 
+GO
+INSERT [dbo].[LINHKIEN] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (1, N'Card Màn Hình Gigabyte GTX 1660 OC 6GB
+', 5600000, 5400000, N'VGA GPU GTX 1660 | VGA CUDA cores 1408 | VGA Video Memory 6GB GDDR5 | VGA Memory Bus 192-bit | VGA Engine Clock Base 1582 MHz | VGA Engine Clock Boost 1797 Mhz | VGA Memory Clock 12000 Mhz', N'Giải pháp tản nhiệt WINDFORCE 2X tích hợp 2 x 100mm quạt với thiết kế cánh quạt độc quyền, với chế độ fan giữa quay ngược chiều độc đáo, 4 ống đồng dẫn nhiệt , mặt tiếp xúc của heatsink bằng đồng lớn, fan quay thông minh, tất cả tạo nên giải pháp tản nhiệt cực kì hiệu quả.
+
+', 10, 4, N'vga', N'image\vga (1).jpg')
+GO
+INSERT [dbo].[LINHKIEN] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (2, N'CARD MÀN HÌNH GIGABYTE GEFORCE RTX 3060 VISION OC 12G
+', 16000000, 15990000, N'VGA GPU GTX 1660 | VGA CUDA cores 1408 | VGA Video Memory 6GB GDDR5 | VGA Memory Bus 192-bit | VGA Engine Clock Base 1582 MHz | VGA Engine Clock Boost 1797 Mhz | VGA Memory Clock 12000 Mhz', N'Nhân đồ họa NVIDIA Ampere mới nhất Nhân RT Cores thế hệ 2 Nhân Tensor Cores thế hệ 3 Chip đồ họa GeForce RTX™ 3060 Tích hợp bộ nhớ 12GB GDDR6 với băng thông 192-bit Giải pháp tản nhiệt WINDFORCE 3X với hệ thống fan đảo chiều độc đáo RGB Fusion 2.0 Back plate kim loại', 10, 4, N'vga', N'image\vga (2).jpg')
+GO
+INSERT [dbo].[LINHKIEN] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (3, N'CARD MÀN HÌNH GIGABYTE GEFORCE RTX 3060TI GAMING OC 8G
+', 20590000, 20190000, N'VGA GPU GTX 1660 | VGA CUDA cores 1408 | VGA Video Memory 6GB GDDR5 | VGA Memory Bus 192-bit | VGA Engine Clock Base 1582 MHz | VGA Engine Clock Boost 1797 Mhz | VGA Memory Clock 12000 Mhz', N'Giải pháp tản nhiệt WINDFORCE 2X tích hợp 2 x 100mm quạt với thiết kế cánh quạt độc quyền, với chế độ fan giữa quay ngược chiều độc đáo, 4 ống đồng dẫn nhiệt , mặt tiếp xúc của heatsink bằng đồng lớn, fan quay thông minh, tất cả tạo nên giải pháp tản nhiệt cực kì hiệu quả.
+
+', 10, 4, N'vga', N'image\vga (3).jpg')
+GO
+INSERT [dbo].[LINHKIEN] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (4, N'CARD MÀN HÌNH GIGABYTE GEFORCE RTX 3060 VISION OC 12G
+', 15650000, 14650000, N'VGA GPU GTX 1660 | VGA CUDA cores 1408 | VGA Video Memory 6GB GDDR5 | VGA Memory Bus 192-bit | VGA Engine Clock Base 1582 MHz | VGA Engine Clock Boost 1797 Mhz | VGA Memory Clock 12000 Mhz', N'Giải pháp tản nhiệt WINDFORCE 2X tích hợp 2 x 100mm quạt với thiết kế cánh quạt độc quyền, với chế độ fan giữa quay ngược chiều độc đáo, 4 ống đồng dẫn nhiệt , mặt tiếp xúc của heatsink bằng đồng lớn, fan quay thông minh, tất cả tạo nên giải pháp tản nhiệt cực kì hiệu quả.
+
+', 10, 4, N'vga', N'image\vga (4).jpg')
+GO
+INSERT [dbo].[LINHKIEN] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (5, N'CPU INTEL CORE I5-8500 PROCESSOR (9M CACHE, 3.0 GHZ UP TO 4.10 GHZ)
+', 5990000, 5990000, N'Xung nhịp mặc định 2.8 GHz, xung Boost tối đa 4.0 GHz. Bộ vi xử lý 6 nhân, 6 luồng. Cache 9 MB. Tích hợp đồ họa Intel UHD Graphics 630. Hỗ trợ bộ nhớ DDR4, tối đa 64 GB. Socket LGA 1151 (Bo mạch chủ 300 Series). TDP 65W.', N'Tương thích với các dòng bo mạch chủ sử dụng Intel 300 Series Chipset. Dòng vi xử lý đem lại trải nghiệm VR tuyệt vời hơn.', 10, 4, N'cpu', N'image\cpu (1).jpg')
+GO
+INSERT [dbo].[LINHKIEN] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (6, N'CPU INTEL CORE I7-9700F PROCESSOR (12M CACHE, UP TO 4.70 GHZ)
+', 10690000, 7690000, N'Xung nhịp mặc định 2.8 GHz, xung Boost tối đa 4.0 GHz. Bộ vi xử lý 6 nhân, 6 luồng. Cache 9 MB. Tích hợp đồ họa Intel UHD Graphics 630. Hỗ trợ bộ nhớ DDR4, tối đa 64 GB. Socket LGA 1151 (Bo mạch chủ 300 Series). TDP 65W.', N'Tương thích với các dòng bo mạch chủ sử dụng Intel 300 Series Chipset. Dòng vi xử lý đem lại trải nghiệm VR tuyệt vời hơn.', 10, 4, N'cpu', N'image\cpu (2).jpg')
+GO
+INSERT [dbo].[LINHKIEN] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (7, N'CPU INTEL CORE I9-9900 PROCESSOR (16M CACHE, UP TO 5.00 GHZ)
+', 11890000, 9390000, N'Xung nhịp mặc định 3.1 GHz, xung boost tối đa 5.0 GHz. Bộ vi xử lý 8 nhân, 16 luồng. Cache 16 MB. Tích hợp đồ họa Intel UHD Graphics 630. Hỗ trợ bộ nhớ DDR4, tối đa 128 GB. Socket LGA 1151 (Bo mạch chủ 300 Series). TDP 65W.', N'Tương thích với các dòng bo mạch chủ sử dụng Intel 300 Series Chipset
+', 10, 4, N'cpu', N'image\cpu (3).jpg')
+GO
+INSERT [dbo].[LINHKIEN] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (8, N'CPU INTEL CORE I9-10850KA PROCESSOR (20M CACHE, 3.6 GHZ UP TO 5.20 GHZ)
+', 12390000, 12090000, N'Xung nhịp mặc định 3.1 GHz, xung boost tối đa 5.0 GHz. Bộ vi xử lý 8 nhân, 16 luồng. Cache 16 MB. Tích hợp đồ họa Intel UHD Graphics 630. Hỗ trợ bộ nhớ DDR4, tối đa 128 GB. Socket LGA 1151 (Bo mạch chủ 300 Series). TDP 65W.', N'Tương thích với các dòng bo mạch chủ sử dụng Intel 300 Series Chipset
+', 10, 4, N'cpu', N'image\cpu (4).jpg')
+GO
+SET IDENTITY_INSERT [dbo].[LINHKIEN] OFF
+GO
+INSERT [dbo].[ManHinh] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (1, N'MÀN HÌNH CONG LC24RG50FQEXXV 24″ FHD 144HZ FREESYNC
+', 5590000, 4590000, N'Monitor Type curved monitor|Monitor Panel VA |Monitor Size 24'''' |Monitor Resolution 1920×1080 |Monitor Refresh rate 144Hz', N'Đắm chìm trong những màn game kịch tính với màn hình cong 1800R tối ưu từ Samsung. Độ cong hoàn hảo tập trung hoàn toàn sự chú ý của bạn vào trong hình ảnh hiển thị, giảm mọi mắt và tạo cảm giác dễ chịu trong thời gian dài. Dẫn đầu mọi cuộc chơi với những chiến thắng vang dội nhất.
+
+', 10, 3, N'samsung', N'image\manhinhsamsung1.jpg')
+GO
+INSERT [dbo].[ManHinh] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (5, N'MÀN HÌNH CONG ASUS TUF GAMING VG24VQ 24″ FULLHD 144HZ VA 1MS
+', 5990000, 4490000, N'Monitor Type curved monitor|Monitor Panel VA |Monitor Size 24'''' |Monitor Resolution 1920×1080 |Monitor Refresh rate 144Hz', N'Màn hình 24″ Full HD (1920 x 1080) TUF Gaming VG24VQ mang đến hình ảnh tuyệt đẹp từ mọi góc độ với độ cong 1500R đảm bảo độ cong tương đương với mắt người.
+
+Tốc độ làm mới 144Hz siêu nhanh, đảm bảo rằng các trò chơi có nhịp độ nhanh được chơi ở cài đặt hình ảnh cao nhất trông vẫn mượt mà và hoàn toàn không bị lag.
+
+Công nghệ Extreme Low Motion Blur độc quyền mới nhất của ASUS, giúp đạt được 1ms MPRT để loại bỏ vết nhòe và chuyển động mờ.
+
+Tương thích Adaptive-Sync của NDIVIA và FreeSync của AMD Radeon chống xé hình khi chơi game ở khung hình cao.', 10, 3, N'asus', N'image\manhinhasus1.jpg')
+GO
+INSERT [dbo].[ManHinh] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (6, N'MÀN HÌNH CONG COOLER MASTER GM27-CF 27″ VA 165HZ FULLHD
+', 5650000, 5490000, N'Monitor Type curved monitor|Monitor Panel VA |Monitor Size 24'''' |Monitor Resolution 1920×1080 |Monitor Refresh rate 144Hz', N'Nổi bật : FreeSync™ , GameFast Input, có loa 2W x 2 Stereo RMS , Vesa 75x75mm , Shadow Boost
+
+', 10, 3, N'coolermaster', N'image\manhinhcoolermaster.jpg')
+GO
+INSERT [dbo].[PC] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (1, N'PC XGEAR STRIKE GTX 1060TI I3-9100F 8GB 120GB SSD', 26990000, 26990000, N'Core i5-10400F|B460M Aorus Pro|8GB DDR4 2666MHz | RTX 3070 8GB | 240GB SSD | 650W 80Plus Bronze', N'KHUYẾN MÃI KHI MUA PC X-GIGA:
+
+– Chuột Gaming Rapoo V16 trị giá 390.000đ
+– Bàn phím cơ Gaming Rapoo V500SE Rainbow LED trị giá 1.290.000đ
+– Lót chuột Gaming size XL trị giá 200.000đ
+– Tai nghe Gaming Rapoo VH310 7.1 RGB trị giá 1.290.000đ
+KHÔNG LẤY KHUYẾN MÃI GIÁ CHỈ CÒN 30.990.000', 10, 2, NULL, N'image\X-Giga-3070_compressed.jpg')
+GO
+INSERT [dbo].[PC] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (2, N'PC X-AORUS I5-10400F 16GB RTX 3070 256GB AORUS SSD
+', 33490000, 33490000, N'Core i5-10400F|B460M Aorus Pro|8GB DDR4 2666MHz | RTX 3070 8GB | 240GB SSD | 650W 80Plus Bronze', N'KHUYẾN MÃI KHI MUA PC X-GIGA:
+
+– Chuột Gaming Rapoo V16 trị giá 390.000đ
+– Bàn phím cơ Gaming Rapoo V500SE Rainbow LED trị giá 1.290.000đ
+– Lót chuột Gaming size XL trị giá 200.000đ
+– Tai nghe Gaming Rapoo VH310 7.1 RGB trị giá 1.290.000đ
+KHÔNG LẤY KHUYẾN MÃI GIÁ CHỈ CÒN 30.990.000', 10, 2, NULL, N'image\X-aorus-3070_compressed-1.jpg')
+GO
+INSERT [dbo].[PC] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (3, N'PC XGEAR STRIKE GTX 1050TI I3-9100F 8GB 120GB SSD
+', 8990000, 8990000, N'Core i5-10400F|B460M Aorus Pro|8GB DDR4 2666MHz | RTX 3070 8GB | 240GB SSD | 650W 80Plus Bronze', N'KHUYẾN MÃI KHI MUA PC X-GIGA:
+
+– Chuột Gaming Rapoo V16 trị giá 390.000đ
+– Bàn phím cơ Gaming Rapoo V500SE Rainbow LED trị giá 1.290.000đ
+– Lót chuột Gaming size XL trị giá 200.000đ
+– Tai nghe Gaming Rapoo VH310 7.1 RGB trị giá 1.290.000đ
+KHÔNG LẤY KHUYẾN MÃI GIÁ CHỈ CÒN 30.990.000', 10, 2, NULL, N'image\strike_1050ti_compressed.jpg')
+GO
+SET IDENTITY_INSERT [dbo].[Product] ON 
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (1, N'PC GAMING FALCON 054', 600.0000, 580.0000, N'R5 3600;B450;16GB RAM;256GB SSD;GTX 1660 SUPER;550W;RGB', N'Bạn đang băn khoăn tìm kiếm một cấu hình máy có thể chiến game ngon nghẻ kết hợp với làm việc đồ họa? Với mức giá trong tầm 20 triệu, PC GAMING FALCON 054 là một lựa chọn khá hợp lý tại thời điểm hiện tại. Hơn nữa, với cấu hình này bạn hoàn toàn có thể sử dụng tiếp trong vài năm tới mà không cần phải nâng cấp, cũng như lắp thêm phụ kiện !
+
+', 9, 2, NULL, N'image\46231_pcgm301.jpg;image\46231_54828_jonsbo_cr_1000_white_0006_1__1_.jpg;image\46231_49675_mainboard_msi_b450_tomahawk_max_11.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (2, N'PC GAMING MINI 001', 1500.0000, 1400.0000, N'I5 10600K;B460;16GB RAM;500GB SSD;RTX 2060;650W', N'Hệ thống PC Gaming Falcon 044 với những thiết bị phần cứng như CPU i5 10600, VGA RTX 2070. Vô địch về hiệu năng trong tầm giá 23 triệu đồng kèm với đó là những lợi ích độc nhất vô nhị mà bạn chỉ có thể tìm thấy ở những sản phẩm của HANOICOMPUTER.
+
+', 10, 2, NULL, N'image\55319_pcgm242.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (3, N'PC GAMING MINI 002', 1600.0000, 1500.0000, N'I5 10500;B460;16GB RAM;250GB SSD;GTX 1660 SUPER;550W', N'Bạn đang băn khoăn tìm kiếm một cấu hình máy có thể chiến game ngon nghẻ kết hợp với làm việc đồ họa? Với mức giá trong tầm 20 triệu, PC GAMING FALCON 054 là một lựa chọn khá hợp lý tại thời điểm hiện tại. Hơn nữa, với cấu hình này bạn hoàn toàn có thể sử dụng tiếp trong vài năm tới mà không cần phải nâng cấp, cũng như lắp thêm phụ kiện !
+
+', 10, 2, NULL, N'image\55320_pcgm243.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (4, N'Chuột Mouse Logitech G502 Hero RGB', 2613.0000, 2027.0000, N'Phiên bản mới của Logitech G502;
+Mắt cảm biến Logitech HERO;
+Độ chính xác cao hơn cùng DPI tối đa 16000;
+Chất lượng được cải thiện rõ rệt;
+Hệ thống Led RGB LIGHTSYNC;
+Nút cuộn công nghệ Hyper Scroll;
+Nút bấm chính 50 triệu lượt nhấn', N'Logitech G502 Hero sử dụng cảm biến HERO - đây là cảm biến chơi game chính xác nhất từ trước tới nay mà Logitech sử dụng với độ chính xác hoàn hảo và cấu trúc toàn diện. Với khả năng xử lý tốc độ khung hình nhanh nhất, Logitech G502 Hero có tốc độ quét lên đến hơn 400IPS, giúp cho game thủ có thể thực hiện những pha flick chuột cực nhanh mà vẫn đảm bảo độ chính xác. Logitech G502 Hero có chỉ số chính xác ở mức hoàn hảo cho các nhu cầu chơi game hàng ngày hay trong môi trường thi đấu chuyên nghiệp cô cùng khắc nghiệt. Đây cũng là chuột chơi game sở hữu độ nhạy ổn định nhất từ trước tới nay.', 20, 5, N'logitech', N'image\44370_mouse_logitech_g502_hero_gaming_usb_black_0003_1.jpg;image\44370_mouse_logitech_g502_hero_gaming_usb_black_0001_3.jpg;image\44370_mouse_logitech_g502_hero_gaming_usb_black_0000_2.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (6, N'Chuột chơi game Razer Viper Mini Gaming Mouse (RZ01-03250100-R3M1)
+', 2612.0000, 2027.0000, N'Chuột Razer Viper Mini;
+Trọng lượng siêu nhẹ chỉ 61g;
+Mắt cảm biến Optical sensor với độ phân giải 8500 DPI;
+Switch bấm quang học của Razer cho độ bền lên đến 50 triệu lần nhấn;
+Dây cáp Speedflex giảm thiểu độ ma sát của dây chuột khi di chuột;
+Thiết kế đối xứng, kích thước phù hợp với người sử dụng tay nhỏ', N'Trọng lượng đã giảm đáng kể, do đó bạn có thể thực hiện các thao tác nhanh hơn, nhưng vẫn bền bỉ, chắc chắn hơn bao giờ hết. Kích thước của Razer Viper Mini được khuyến nghị dành cho các game thủ tay vừa và nhỏ, phù hợp cho kiểu cầm chuột Claw Grip và Fingertip Grip
+
+', 10, 5, N'razer', N'image\52474_chuot_razer_viper_mini_rgb_chroma_black_rz01_03250100_r3m1_0006_1.jpg;image\52474_chuot_razer_viper_mini_rgb_chroma_black_rz01_03250100_r3m1_0003_2.jpg;image\52474_chuot_razer_viper_mini_rgb_chroma_black_rz01_03250100_r3m1_0000_3.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (7, N'Chuột chơi game Razer Basilisk FPS Gaming (RZ01-02330100-R3A1)
+', 2616.0000, 2021.0000, N'Chuột chơi game mới nhất của Razer hướng đến game thủ FPS;
+Thiết kế Công Thái Học thuận tay phải, cho cảm giác cầm nắm thoải mái;
+Hệ thống Led RGB Chroma tùy chỉnh qua phần mềm Razer Synapse;
+Mắt cảm biến Pixart 3389 tương tự Deathadder Elite;
+Trang bị 3 công tắc nút đặc biệt, thay đổi vị trí phù hợp với từng game thủ;
+Phù hợp với các game thủ FPS có kích cỡ tay Trung bình - Lớn
+', N'Razer Basilisk đi kèm với một mặt số cho phép bạn điều chỉnh lực cản của con lăn. Với độ nhạy được cá nhân hóa của bạn, bạn sẽ có thể thực hiện chính xác hơn các bước nhảy bunny hop, chọn vũ khí,  và các hành động trên bánh xe cuộn khác.
+
+', 10, 5, N'razer', N'image\38438_chuot_razer_basilisk_fps_gaming_rz01_02330100_r3a1_0001_1.jpg;image\38438_chuot_razer_basilisk_fps_gaming_rz01_02330100_r3a1_0002_2.jpg;image\38438_chuot_razer_basilisk_fps_gaming_rz01_02330100_r3a1_0000_3.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (8, N'Chuột chơi game Logitech G403 Hero (USB/RGB/Đen)
+', 2616.0000, 2021.0000, N'Chuột Logitech G403 Hero;
+Phiên bản nâng cấp của chú chuột Logitech G403 nổi tiếng;
+Mắt cảm biến Hero 16k cao cấp cho hiệu năng vượt trội;
+Độ phân giải : 16000 DPI;
+Tính năng Lightsync RGB cho phép đồng bộ led với các thiết bị Logitech khác;
+Tuỳ chỉnh qua phần mêm G-hub tiện lợi', N'Logitech G403 có thiết kế thoải mái kèm theo trọng lượng nhẹ, với tay cầm cao su giúp tăng thêm khả năng di chuột của bạn. Ngoài ra bạn có thể tùy chỉnh được trọng lượng của chuột với tùy chọn 10g giúp bạn linh động hơn trong việc sử dụng.
+
+', 10, 5, N'logitech', N'image\48075_mouse_logitech_g403_hero_gaming_001.jpg;image\48075_mouse_logitech_g403_hero_gaming_0003_4.jpg;image\48075_mouse_logitech_g403_hero_gaming_0004_5.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (9, N'Chuột chơi game AKKO LW325 RGB Black
+', 2614.0000, 2021.0000, N'Chuột chơi game AKKO LW325 RGB Black;
+Thiết kế công thái học cho người thuận tay phải;
+Mắt đọc PWM3325;
+Giao tiếp USB, dây cáp dài 1,5m;
+Vỏ nhựa ABS;
+Switch Omron (50 triệu lần nhấn);
+Số nút: 7;
+Hỗ trợ macro, tùy chỉnh được thông qua phần mềm driver riêng;
+Kích thước: 123x68x39 mm;
+DPI: 200/800/1000/1500/2000/2500 và có thể lên được tối đa 5,000 (mức DPI 10,000 cũng có thể đạt được thông qua phần mềm DRIVER tuy nhiên nhà sản xuất khuyến cáo người dùng chỉ nên để mức tối đa 5,000 DPI);
+Polling Rate: 125/250/500/1000 Hz;
+Trọng lượng: 113g (tính dây) và 78g (không tính dây);
+Đèn LED RGB có thể điều chỉnh được thông qua phần mềm DRIVER : https://bit.ly/2FAxaEN
+', N'Chuột gaming Akko LW325 có một thiết kế hiện đại, cao cấp và hầm hố như những chiếc chuột gaming cao cấp. Bề mặt của chuột được làm tổ ong giúp tạo điểm nhấn dành cho chuột. Chuột có thiết kế công thái học dành cho người thuận tay phải
+
+', 10, 5, N'akko', N'image\52327_chuot_choi_game_akko_lw325_rgb_black_0003_1.jpg;image\52327_chuot_choi_game_akko_lw325_rgb_black_0002_4.jpg;image\52327_chuot_choi_game_akko_lw325_rgb_black_0001_3.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (10, N'Chuột chơi game Razer Basilisk X Ultimate Wireless Black (RZ01-03170100-R3A1)
+', 2618.0000, 2020.0000, N'Kết nối cả không dây và có dây;
+Đầu USB Wireless 2.4GHz;
+Sử dụng pin sạc kèm Dock sạc;
+Công nghệ Razer HyperSpeed;
+Mắt đọc Razer Forcus+ Optical 20.000 DPI;
+11 nút bấm có thể lập trình;
+14 vùng LED RGB Chroma có thể tinh chỉnh;
+2 nút chính tuổi thọ 70 triệu lượt nhấn', N'CÔNG NGHỆ KHÔNG DÂY RAZER HYPERSPEED
+Nhanh hơn 25% so với các công nghệ không dây khác trong hiện tại, bạn sẽ thậm chí không nhận ra rằng mình đang chơi game với một chú chuột không dây bởi sự trơn tru mượt mà, độ trễ cực thấp và độ liền mạch trong môi trường mà các kết nối không dây chồng chéo dày đặc xung quanh như bây giờ.', 10, 5, N'razer', N'image\51141_chuot_razer_basilisk_x_ultimate_wireless_black_rz01_03170100_r3a1_0005_1.jpg;image\51141_razer_basilisk_x_ultimate_wireless_black__rz01_03170100_r3a1__5.jpg;image\51141_chuot_razer_basilisk_x_ultimate_wireless_black_rz01_03170100_r3a1_0003_5.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (11, N'Chuột chơi game Zowie BenQ EC2 Optical Professional Gaming
+', 2617.0000, 2019.0000, N'Chuột Zowie BenQ EC2 Optical Professional Gaming;
+Dòng EC được cải tiến với cảm biến PMW3360 cho độ chính xác cao và ổn định;
+Phiên bản dành cho người chơi thuận tay phải.;
+Tạo không gian rộng cho các chuyển động cổ tay một cách thoải mái nhất khi chơi game.;
+Đầu chuột bên phải được vát tròn, giúp người dùng khi giữ/cầm chuột có thể di chuyển dễ dàng hơn. Đế chuột được thiết kế dạng lớn.;
+Thiết kế Plug and Play không cần driver', N'Thiết kế mới nhất của Zowie Gear
+Chuột chơi game Zowie BenQ EC2  có thiết kế Ergonomic rất quen thuộc từ các phiên bản EC trước, phù hợp với các game thủ thuận tay phải
+
+', 10, 5, N'zowie', N'image\49956_chuot_zowie_benq_ec2_optical_professional_gaming_0000_1.jpg;image\49956_chuot_zowie_benq_ec2_optical_professional_gaming_0003_4.jpg;image\49956_chuot_zowie_benq_ec2_optical_professional_gaming_0002_3.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (12, N'Chuột chơi game Corsair M65 RGB Elite White
+', 2617.0000, 2024.0000, N'Phiên bản cao cấp nhất của Corsair M65;
+Thiết kế đặc biệt với phần đáy nhôm nguyên khối;
+Hệ thống Led RGB 16,8 triệu màu;
+Nút bấm Omron với 50 triệu lượt nhấn;
+Mắt cảm biến Pixart 3391 độc quyền của Corsair;
+Một trong những mắt cảm biến độ chính xác cao nhất thế giới;
+Phù hợp với nhiều thể loại game khác nhau', N'Độ chính xác cao, hiệu năng vượt trội DPI lên đến 18000, giúp cho việc tùy chỉnh độ nhạy và tracking cực kỳ chính xác, biến M65 RGB Elite thành chú chuột lý tưởng cho FPS Cứng cáp và bền bỉ ! Khung nhôm Anodized cao cấp, bền bỉ, được chế tạo cho việc sử dụng lâu dài. Switch bấm Omron hiệu suất cao với tuổi thọ 50 triệu lần nhấn', 10, 5, N'corsair', N'image\45205_mouse_corsair_m65_rgb_elite_white_0002_1.jpg;image\45205_mouse_corsair_m65_rgb_elite_white_0006_4.jpg;image\45205_mouse_corsair_m65_rgb_elite_white_0005_5.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (13, N'Chuột chơi game Corsair Dark Core Wireless RGB SE
+', 2621.0000, 2024.0000, N'Chuột chơi game Corsair Dark Core Wireless RGB SE;
+Mắt cảm biến PixArt 3360;
+DPI : 16000DPI;
+3 Khả năng kết nối : Có dây / Wireless / Bluetooth;
+9 nút có thể lập trình;
+Thời lượng pin cao lên đến 24 giờ;
+Tùy chỉnh mọi thứ qua phần mềm Corsair Ultility Engine', N'Với mắt đọc cực nhạy và tốt, cùng với tốc độ mắt đọc lên tới 16.000 DPI. Game thủ có thể tùy chỉnh tùy ý tốc độ mà mình mong muốn, hơn nữa bạn có thể sử dụng với mọi loại bàn di chuột mà không bị ảnh hưởng tới mắt đọc của chuột.
+
+', 10, 5, N'corsair', N'image\41108_mouse_corsair_dark_core_wireless_rgb_se_0005_1.jpg;image\41108_mouse_corsair_dark_core_wireless_rgb_se_0006_2.jpg;image\41108_mouse_corsair_dark_core_wireless_rgb_se_0003_6.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (14, N'Chuột chơi game Corsair Glaive RGB Black', 2619.0000, 2023.0000, N'Chuột chơi game Corsair Glaive RGB Aluminum;
+Thiết kế công thái học phù hợp cho người sử dụng cỡ tay trung + lớn;
+Hệ thống led RGB 16.8 triệu màu;
+Mắt cảm biến Pixart 3367;
+DPI : 16000DPI;
+Tinh chỉnh Macro dễ dàng qua phần mềm Corsair Ultilities Engine', N'Được trang bị mắt cảm biến cao cấp Corsair Glaive RGB tạo nên sự chính xác trong từng hành động di chuyển, DPI có thể điều chỉnh theo bước nhảy 1 DPI và phù hợp với hầu hết các loại bàn di chuột phổ biến
+
+', 10, 5, N'corsair', N'image\36379_mouse_corsair_glaive_rgb_black_ch_9302011_ap_0003_1.jpg;image\36379_mouse_corsair_glaive_rgb_black_ch_9302011_ap_0002_4.jpg;image\36379_mouse_corsair_glaive_rgb_black_ch_9302011_ap_0001_3.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (15, N'Laptop GF61 Thin 9SCXR 075VN', 2619.0000, 2022.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 0, 1, N'msi', N'image\47466_workstation_msi_ws65__6_.png;image\47466_workstation_msi_ws65__5_.png;image\47466_workstation_msi_ws65__4_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (16, N'Laptop GF62 Thin 9SCXR 075VN', 2623.0000, 2022.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 0, 1, N'msi', N'image\53818_msi_gaming_ge75_raider__5_.png;image\53818_msi_gaming_ge75_raider__4_.png;image\53818_msi_gaming_ge75_raider__3_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (17, N'Laptop GF63 Thin 9SCXR 075VN', 2622.0000, 2017.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 0, 1, N'msi', N'image\56138_stealth15__7_.png;image\56138_stealth15__6_.png;image\56138_stealth15__5_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (18, N'Laptop Acer Gaming Predator Helios 300 PH315-53-770L', 2622.0000, 2017.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'acer', N'image\55480_helios300.jpg;image\55480_acer_gaming_predator_helios_300_ph315_52_78hh__7_.png;image\55480_acer_gaming_predator_helios_300_ph315_52_78hh__5_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (19, N'Laptop GF63 Thin 9SCXR 075VN', 2626.0000, 2016.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\56297_morden14__7_.png;image\56297_morden14__6_.png;image\56297_morden14__5_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (20, N'LAPTOP GAMING MSI BRAVO 15', 2625.0000, 2015.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\57670_ge76__7_.jpg;image\57670_ge76__6_.jpg;image\57670_ge76__5_.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (21, N'LAPTOP GAMING MSI BRAVO 17', 2625.0000, 2015.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\49980_laptop_msi_modern_14_a10m__693vn__i7_xam.jpg;image\49980_laptop_msi_modern_14_a10m__693vn__i7_xam_04.jpg;image\49980_laptop_msi_modern_14_a10m__693vn__i7_xam_03.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (22, N'Laptop GF66 Thin 9SCXR 075VN', 2629.0000, 2015.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\47466_workstation_msi_ws65__6_.png;image\47466_workstation_msi_ws65__5_.png;image\47466_workstation_msi_ws65__4_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (23, N'LAPTOP GAMING MSI GL65 LEOPARD', 2627.0000, 2019.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\53818_msi_gaming_ge75_raider__5_.png;image\53818_msi_gaming_ge75_raider__4_.png;image\53818_msi_gaming_ge75_raider__3_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (24, N'LAPTOP GAMING MSI GL63 LEOPARD', 2627.0000, 2019.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\56138_stealth15__7_.png;image\56138_stealth15__6_.png;image\56138_stealth15__5_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (25, N'Laptop GF63 Thin 9SCXR 075VN', 2631.0000, 2018.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\49980_laptop_msi_modern_14_a10m__693vn__i7_xam.jpg;image\49980_laptop_msi_modern_14_a10m__693vn__i7_xam_04.jpg;image\49980_laptop_msi_modern_14_a10m__693vn__i7_xam_03.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (26, N'LAPTOP ASUS ROG STRIX G15 G512', 2630.0000, 2018.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Strix G15 G512-IAL013T là hiện thân của phong cách thiết kế tối giản, mang đến trải nghiệm cốt lõi mãnh liệt nhất. Dư sức để chiến những tựa game nặng kí và xử lý đa nhiệm cùng Windows 10. Hệ thống tản nhiệt thông minh giúp giải phóng sức mạnh của i5 10300H và GTX 1650Ti. Tần số quét màn hình 144Hz nhanh nhất thế giới nâng tầm đẳng cấp của bạn. Với RangeBoost Wi-Fi mạnh mẽ bạn thoải mái tham gia vào các trận đấu hàng vạn người. Bất cứ khi nào bạn chơi game, viền máy lại được trang hoàng bằng dải led Aura Sync cá tính.
+
+', 10, 1, N'asus', N'image\53308_zephyrus_ga401ii_he019t__8_.jpg;image\53308_zephyrus_ga401ii_he019t__7_.jpg;image\53308_zephyrus_ga401ii_he019t__6_.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (27, N'LAPTOP ASUS ROG STRIX G15 G512-IAL011T', 2634.0000, 2017.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Strix G15 G512-IAL011T là hiện thân của phong cách thiết kế tối giản, mang đến trải nghiệm cốt lõi mãnh liệt nhất. Dư sức để chiến những tựa game nặng kí và xử lý đa nhiệm cùng Windows 10. Hệ thống tản nhiệt thông minh giúp giải phóng sức mạnh của i7 10750H và GTX 1650Ti. Tần số quét màn hình 144Hz nhanh nhất thế giới nâng tầm đẳng cấp của bạn. Với RangeBoost Wi-Fi mạnh mẽ bạn thoải mái tham gia vào các trận đấu hàng vạn người. Bất cứ khi nào bạn chơi game, viền máy lại được trang hoàng bằng dải led Aura Sync cá tính.
+
+', 10, 1, N'asus', N'image\57714_rogstrixscar17g733q__4_.jpg;image\57714_rogstrixscar17g733q__3_.jpg;image\57714_rogstrixscar17g733q__2_.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (28, N'LAPTOP ASUS ROG STRIX G17 G713QR-HG072T', 2634.0000, 2017.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Strix G15 G512-IAL011T là hiện thân của phong cách thiết kế tối giản, mang đến trải nghiệm cốt lõi mãnh liệt nhất. Dư sức để chiến những tựa game nặng kí và xử lý đa nhiệm cùng Windows 10. Hệ thống tản nhiệt thông minh giúp giải phóng sức mạnh của i7 10750H và GTX 1650Ti. Tần số quét màn hình 144Hz nhanh nhất thế giới nâng tầm đẳng cấp của bạn. Với RangeBoost Wi-Fi mạnh mẽ bạn thoải mái tham gia vào các trận đấu hàng vạn người. Bất cứ khi nào bạn chơi game, viền máy lại được trang hoàng bằng dải led Aura Sync cá tính.
+
+', 10, 1, N'asus', N'image\52292_laptop_asus_rog_zephyrus_g15_ga502iu_al007t_r7_den.jpg;image\52292_laptop_asus_rog_zephyrus_g15_ga502iu_al007t_r7_den_05.jpg;image\52292_laptop_asus_rog_zephyrus_g15_ga502iu_al007t_r7_den_04.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (29, N'LAPTOP ASUS ROG STRIX SCAR 15 G533QR-HQ081T ', 2633.0000, 2012.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Strix G15 G512-IAL011T là hiện thân của phong cách thiết kế tối giản, mang đến trải nghiệm cốt lõi mãnh liệt nhất. Dư sức để chiến những tựa game nặng kí và xử lý đa nhiệm cùng Windows 10. Hệ thống tản nhiệt thông minh giúp giải phóng sức mạnh của i7 10750H và GTX 1650Ti. Tần số quét màn hình 144Hz nhanh nhất thế giới nâng tầm đẳng cấp của bạn. Với RangeBoost Wi-Fi mạnh mẽ bạn thoải mái tham gia vào các trận đấu hàng vạn người. Bất cứ khi nào bạn chơi game, viền máy lại được trang hoàng bằng dải led Aura Sync cá tính.
+
+', 10, 1, N'asus', N'image\52384_asus_gaming_tuf_fa706iu_h7133t__8_.jpg;image\52384_asus_gaming_tuf_fa706iu_h7133t__7_.jpg;image\52384_asus_gaming_tuf_fa706iu_h7133t__6_.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (30, N'LAPTOP LENOVO IDEAPAD GAMING 3 15ARH05', 1114.0000, 2011.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop Lenovo Ideapad L340 là dòng laptop chơi game phổ thông và nó hướng đến đối tượng những người đi làm. Khi bạn muốn một chiếc máy nhìn bình thường nhất nhưng khi cần vẫn có thể giải trí, chơi game. Ideapad Gaming 3 15ARH05 (82EY00LBVN) sở hữu thiết kế tối giản, vẻ ngoài không quá hầm hố nhưng vẫn sở hữu hiệu năng cao.
+
+', 10, 1, N'lenovo', N'image\53893_thinkpad_l13__4_.png;image\53893_thinkpad_l13__3_.png;image\53893_thinkpad_l13__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (31, N'LAPTOP LENOVO IDEAPAD GAMING 3 15IMH05', 1114.0000, 2011.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop Lenovo Ideapad L340 là dòng laptop chơi game phổ thông và nó hướng đến đối tượng những người đi làm. Khi bạn muốn một chiếc máy nhìn bình thường nhất nhưng khi cần vẫn có thể giải trí, chơi game. Ideapad Gaming 3 15IMH05 (81Y4006SVN) sở hữu thiết kế tối giản, vẻ ngoài không quá hầm hố nhưng vẫn sở hữu hiệu năng cao.
+
+', 10, 1, N'lenovo', N'image\54899_lenovo_legion_5__6_.png;image\54899_1.jpg;image\54899_lenovo_legion_5__5_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (32, N'LAPTOP DELL GAMING G3 15 3500 (70223130)', 1121.0000, 2011.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop gaming Dell Gaming G3 15 3500 (70223130) được với chip xử lí đồ họa rời NVIDIA và bộ vi xử lí thế hệ thứ 10 mới nhất cùng thiết kế mỏng nhưng vẫn mang đến trải nghiệm chơi game tuyệt vời.', 10, 1, N'dell', N'image\55229_g3__4_.png;image\55229_g3__3_.png;image\55229_g3__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (33, N'LAPTOP DELL GAMING G3 15 3500 (G3500A)', 1122.0000, 2010.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop gaming Dell Gaming G3 15 3500 (G3500A) được với chip xử lí đồ họa rời NVIDIA và bộ vi xử lí thế hệ thứ 10 mới nhất cùng thiết kế mỏng nhưng vẫn mang đến trải nghiệm chơi game tuyệt vời.', 10, 1, N'dell', N'image\55230_g5__4_.png;image\55230_g5__3_.png;image\55230_g5__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (34, N'LAPTOP ACER NITRO 5 2020 AN515-55-55E3', 1122.0000, 2014.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Nitro 5 2020 AN515-55-55E3 tích hợp những “vũ khí” mới nhất. Bao gồm CPU Intel® Core™ i5 10300H, VGA NVIDIA® GeForce RTX 2060 cho hiệu năng xử lý mạnh mẽ.
+
+', 10, 1, N'acer', N'image\56294_a515_56__5_.png;image\56294_a515_56__3_.png;image\56294_a515_56__1_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (35, N'Dell Latitude E7470
+', 1123.0000, 2014.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Dell Latitude E7470 thuộc dòng laptop dành cho doanh nhân nên nó sở hữu những đặc trưng của dòng máy này, đó là sự mỏng nhẹ, thiết kế tinh tế và pin khỏe. Cùng với đó, chiếc laptop này mang có những tính năng bảo mật hàng đầu của Dell để bảo vệ dữ liệu, mã hóa toàn diện, xác thực tiên tiến và chống phần mềm độc hại.', 10, 1, N'dell', N'image\56720_xps9310__4_.png;image\56720_xps9310__3_.png;image\56720_xps9310__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (36, N'Dell Vostro 14 3400
+', 1123.0000, 2014.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Tuy là dòng laptop phổ thông cơ bản, Vostro 3400 vẫn được thiết kế theo lối tinh giản. Cân nặng 1.6kg cùng độ dày 2cm khiến đây là chiếc máy vô cùng phù hợp khi đem theo đi làm, đi học. Màu xám thẫm khiến chiếc laptop này trông có phần trẻ trung hơn, không quá đơn điệu như những thế hệ trước.
+
+', 10, 1, N'dell', N'image\56720_xps9310__4_.png;image\56720_xps9310__3_.png;image\56720_xps9310__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (37, N'Dell Inspiron 7570
+', 1119.0000, 2013.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop Dell Inspiron 7570 được trang bị cấu hình mạnh mẽ với chip Intel Core i7 Kabylake Refresh cùng card đồ họa rời NVIDIA cho hiệu năng mượt mà, xử lý các phần mềm đồ họa, kĩ thuật nhanh chóng. Máy có thiết kế khá mỏng và nhẹ giúp người dùng có thể mang theo bên mình bất cứ lúc nào.
+
+', 10, 1, N'dell', N'image\55230_g5__4_.png;image\55230_g5__3_.png;image\55230_g5__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (38, N'Dell Vostro 14 5402 (Chính hãng)
+', 1121.0000, 2013.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Vostro 5402 sử dụng kiểu thiết kế mỏng nhẹ, với bản lề dạng nâng gáy, tăng khả năng tản nhiệt. Độ dày 1.8 cm cùng cân nặng 1.4kg cũng vô cùng lý tưởng cho những ai cần phải di chuyển. Tuy nhiên, màu xanh xám thẫm hơi có phần đơn điệu, nam tính, thiếu sự trẻ trung
+
+', 10, 1, N'dell', N'image\55229_g3__4_.png;image\55229_g3__3_.png;image\55229_g3__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (39, N'Card màn hình GIGABYTE GTX 1660 OC-6G (6GB GDDR6, 192-bit, HDMI+DP, 1x8-pin) 
+', 1121.0000, 2013.0000, N'Gigabyte GeForce GTX 1660 OC 6GB (GV-N1660OC-6GD);
+Dung lượng bộ nhớ: 6GB GDDR5;
+Core clock: 1830 MHz;
+Băng thông: 192-bit;
+Kết nối: DisplayPort 1.4 *3, HDMI 2.0b *1;
+Nguồn yêu cầu: 450W', N'GTX 1660 6GB  OC là chiếc card đồ họa tầm trung mới nhất đến từ GIGABYTE, sử dụng bộ xử lý đồ họa GTX 1660 mạnh mẽ, với hiệu năng vượt trội hơn thế hệ đàn anh GTX 1060 và là đối thủ cạnh tranh trực tiếp với bộ RX 590.
+
+', 10, 4, N'vga', N'image\45827_gigabyte_gtx_1660_oc___6gd_01.jpg;image\45827_gigabyte_gtx_1660_oc___6gd_02.jpg;image\45827_gigabyte_gtx_1660_oc___6gd_03.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (40, N'Card màn hình ASUS TUF GTX 1650 Super-4G GAMING (4GB GDDR6, 128-bit, DVI+HDMI+DP, 1x6-pin)
+', 1127.0000, 2045.0000, N'Dung lượng bộ nhớ: 4GB GDDR6;
+OC Mode - Base/Boost Clock : 1755 MHz (Boost Clock);
+Gaming Mode (Default) - Base/Boost Clock : 1530 MHz/1725 MHz;
+Băng thông: 128-bit', N'Card đồ họa Asus TUF GTX 1650 Super O4G Gaming với kết cấu đơn giản và các tính năng được tinh giản nhưng vẫn không ảnh hưởng đến hiệu năng, hai quạt tản nhiệt chống bụi mạnh mẽ cùng với các linh kiện PCB được lắp ráp bằng quá trình sản xuất tự động hóa. Do đó chiếc card đồ họa này được lựa chọn để trở thành thế hệ mới nhất của cạc đồ họa hiệu năng, với mục đích tạo ra một cỗ máy có hiệu suất bền bỉ.
+', 10, 4, N'vga', N'image\50109_card_man_hinh_asus_tuf_gtx_1650_super_4g_gaming_0001.jpg;image\50109_asus_tuf_gtx_1650_super_o4g_03.jpg;image\50109_asus_tuf_gtx_1650_super_o4g_02.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (41, N'Card màn hình Inno3D RTX 3060 ICHILL X3 RED 12GB (12GB GDDR6, 192-bit, HDMI +DP, 1x8-pin)
+', 1127.0000, 2045.0000, N'Nhân đồ họa Nvidia RTX 3060;
+Số nhân Cuda:;
+Xung nhịp GPU tối đa:;
+Bộ nhớ Vram: 12GB GDDR6;', N'Kiến trúc Nvidia Ampere Bao gồm nhân RT thế hệ 2, nhân Tensor thế hệ 3 giúp hiệu năng tăng vượt trội so với người tiền nhiệm. Ray Tracing Công nghệ mô phỏng các tia sáng đem lại hình ảnh chân thật và sống động của Nvidia sẽ giúp trải nghiệm game lên 1 tầm cao mới.', 10, 4, N'vga', N'image\57945_card_man_hinh_inno3d_rtx_3060_ichill_x3_red_12gb.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (42, N'Card màn hình ASUS ROG STRIX RTX 3090-O24G-WHITE (24GB GDDR6X, 384-bit, HDMI +DP, 3x8-pin)
+', 1129.0000, 2045.0000, N'Nhân GPU: Nvidia RTX 3090;
+Xung GPU Tối đa: 1890 Mhz;
+Số nhân Cuda: 10496;
+Dung lượng VRAM: 24Gb GDDR6X', N'Card màn hình ASUS ROG STRIX RTX 3090-O24G-WHITE là một trong những sản phẩm cao cấp nhất của Asus phục vụ cho nhu cầu gaming ở độ phân giải 8K. Đây là card đồ họa sử dụng kiến trúc Ampare hoàn toàn mới cùng nhân RT thế hệ 2, nhân Tensor thế hệ 3, Nvidia RTX IO, VRAM GDDR6X và sản xuất trên tiến trình 8nm được Samsung làm riêng. 
+
+', 10, 4, N'vga', N'image\56982_card_man_hinh_asus_rog_strix_rtx_3090_o24g_white_1.jpg;image\56982_card_man_hinh_asus_rog_strix_rtx_3090_o24g_white_2.jpg;image\56982_card_man_hinh_asus_rog_strix_rtx_3090_o24g_white_3.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (43, N'CPU Intel Xeon Silver 4110 (2.1GHz turbo up to 3.0GHz, 8 nhân, 16 luồng, 11MB Cache, 85W) - Socket Intel LGA 3647
+', 1125.0000, 2045.0000, N'Dòng sản phẩm chuyên biệt dành cho server/máy trạm;
+8 nhân & 16 luồng;
+Xung nhịp: 2.1GHz (Cơ bản) / 3.0GHz (Boost);
+Socket: LGA 3647;
+Hỗ trợ RAM ECC;
+Không kèm quạt tản nhiệt từ hãng;
+Không tích hợp sẵn iGPU', N'Trải nghiệm hiệu năng cao hơn, tiết kiệm chi phí và thời gian hơn nhờ những ứng dụng mạng của hệ thống dựa trên dòng bộ xử lý Intel® Xeon® Silver với khả năng ảo hóa được cải thiện nhờ phần cứng, đưa các Chức Năng Mạng Ảo Hóa lên một tầm cao hoàn toàn mới.
+
+', 10, 4, N'cpu', N'image\40825_hnc_intel_xeon_silver_right_facing_850x850.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (44, N'CPU Intel Core i9-10940X (3.3GHz turbo up to 4.6GHz, 14 nhân, 28 luồng, 19.25 MB Cache, 165W) - Socket Intel LGA 2066)
+', 1125.0000, 2044.0000, N'CPU Core i thế hệ thứ 10 của Intel;
+14 nhân & 28 luồng;
+Xung cơ bản: 3.3 GHz;
+Xung tối đa (boost): 4.6 GHz;
+Chạy tốt trên các mainboard socket 2066;
+Phù hợp cho những nhà sáng tạo nội dung', N'Dù bạn xử lý một bộ phim truyện mới nhất hay phần tiếp theo của một chuỗi video trên YouTube, dòng bộ xử lý chuỗi Intel® Core™ X không khóa được thiết kế nhằm đáp ứng các quy trình sáng tạo đòi hỏi cao nhất của bạn: Với đến 18 lõi AVX-512 được bật và công nghệ Intel® Turbo Boost Max Technology 3.0 tiên tiến hướng các khối lượng công việc quan trọng nhất của bạn vào bốn lõi nhanh nhất của bộ xử lý. Trải nghiệm hiệu năng cực đỉnh, hình ảnh 4K chân thực, bộ nhớ và bộ lưu trữ tốc độ cao cùng các cải tiến công nghệ mới nhất - tất cả đều được thiết kế nhằm giúp bạn rút ngắn thời gian từ khâu lập kế hoạch cho đến sản phẩm cuối cùng nhanh hơn bao giờ hết.
+
+', 10, 4, N'cpu', N'image\49437_hnc_intel_i9_10900x_right_facing_850x850.jpg;image\49437_intel_core_i9_10940x.jpg;image\49437_intel_core_i9_10940x_2.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (45, N'CPU Intel Core i7-10700K Avengers Edition (3.8GHz turbo up to 5.1GHz, 8 nhân 16 luồng, 16MB Cache, 125W) - Socket Intel LGA 1200
+', 1126.0000, 2044.0000, N'Phiên bản đặc biệt với vỏ hộp Avengers từ Marvel;
+8 nhân & 16 luồng;
+Xung nhịp: 3.8GHz (Cơ bản) / 5.1GHz (Boost);
+Socket: LGA1200;
+Đã tích hợp sẵn iGPU;
+Đã mở khóa hệ số nhân;
+Không đi kèm tản nhiệt', N'Sức ảnh hưởng của các Avengers đang ngày càng lan tỏa khi không chỉ đơn thuần là những anh hùng trong truyện tranh, họ đã lấn sân sang mảng điện ảnh và giờ đây là cả game. Với giá trị thương hiệu lên đến nhiều tỷ USD như hiện tại cùng số lượng fan đông đảo thì Người khổng lồ xanh trong ngành sản xuất bán dẫn là Intel cũng không thể bỏ qua cơ hội được đứng chung sân với các siêu anh hùng của Marvel được nữa.
+
+', 10, 4, N'cpu', N'image\54634_i7_10700k_avengers_850x850_2.jpg;image\54634_cpu_intel_core_i7_10700k_avengers_edition__1.png;image\54634_cpu_intel_core_i7_10700k_avengers_edition__2.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (46, N'CPU Intel Core i9-9900K (3.6GHz turbo up to 5.0GHz, 8 nhân 16 luồng, 16MB Cache, 95W) - Socket Intel LGA 1151-v2
+', 1126.0000, 2044.0000, N'Bộ vi xử lý Intel Core i9 9900K, 8 nhân 16 luồng, 16MB cache;
+Là sản phẩm dựa trên kiến trúc Coffee Lake Refresh thế hệ mới nhất;
+Bộ vi xử lý này có tần số cơ bản là 3.6 GHz turbo lên tới 5.0 GHz. Mức TDP 95W;
+Hỗ trợ RAM DDR4 2666 / Dual Channel', N'Intel đã tung ra những CPU mới nhất của thế hệ Coffee lake Refesh cho phân khúc mainstream của họ. Ba chiếc CPU trải dần từ phân khúc đầu bảng đến tầm cận cao cấp là Intel Core i9-9900K, Intel Core i7-9700K, Intel Core i5-9600K. Tất cả các mẫu CPU Intel này đều dùng chung với socket LGA 1151v2 như các CPU thế hệ thứ 8.
+
+', 10, 4, N'cpu', N'image\44016_hnc_intel_i9_9900k_right_facing_850x850.jpg;image\44016_intel_core_i9_9900k.jpg;image\44016_intel_core_i9_9900k_2.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (47, N'Màn hình LG 27MP59G
+', 1047.0000, 2048.0000, N'Chủng loại 27MP59G-P;
+Kích Thước Màn Hình 27 INCH;
+Độ Sáng Màn Hình;
+250 cd/m²;
+Tỉ Lệ Tương Phản Động MEGA Mega;
+Độ Phân Giải Màn Hình 1920 x 1080;
+Thời Gian Đáp Ứng 1ms', N'Công nghệ giảm thiểu độ mờ chuyển động 1ms
+Các game thủ sẽ không còn phải chờ đợi lâu để có được hiệu ứng đồ họa siêu việt thông qua sự kết hợp tuyệt vời của tấm nền IPS và công nghệ giảm thiểu đọ mờ chuyển động 1ms.
+
+', 7, 3, N'lg', N'image\41887_lg_27mp59__4_.png;image\41887_lg_27mp59__3_.png;image\41887_lg_27mp59__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (48, N'Màn hình LG 24GL600F-B', 1048.0000, 2047.0000, N'Model 24GL600F 1ms, 144Hz;
+Kiểu màn hình Màn hình gaming;
+Kích thước màn hình 23.6Inch TN;
+Độ sáng 300cd/m2;
+Tỷ lệ tương phản 1000:1;
+Độ phân giải Full HD (1920x1080);
+Thời gian đáp ứng 1ms;
+Góc nhìn 178°/178°;
+Tần số quét 144HZ;
+Cổng giao tiếp 2 x HDMI (1.4) / 1 x Display Port (1.2) / 1 x Audio Out (3,5mm)', N'Các đối tượng được hiển thị rõ ràng hơn để chơi mượt mà hơn và tính trôi chảy gần như siêu thực. Khả năng nhìn thấy ngay cả những đối tượng động và di chuyển nhanh nhất trong tất cả các hành động có thể mang lại lợi thế cạnh tranh cho người chơi game.
+', 4, 3, N'lg', N'image\45734_lg_24gl600f__4_.png;image\45734_lg_24gl600f__3_.png;image\45734_lg_24gl600f__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (49, N'Màn hình Asus VG248QE', 1048.0000, 2047.0000, N'Các cảnh hành động siêu mượt với tốc độ làm mới nhanh 144Hz và thời gian hồi đáp 1ms (GTG);
+Full HD 1920x1080, ASUS Tỷ lệ Tương phản Thông minh 80.000.000:1 và độ sáng 350cd/m² cho hiệu ứng thị giác như ngoài đời;
+Trải nghiệm xem thoải mái với khả năng điều chỉnh góc nghiêng, khớp xoay, trục đứng và chiều cao chú trọng đến người sử dụng;
+Trải nghiệm xem thoải mái với khả năng điều chỉnh góc nghiêng, khớp xoay, trục đứng và chiều cao chú trọng đến người sử dụng;
+Loa stereo 2W lắp trong cho trải nghiệm giải trí tại nhà đắm chìm', N'Khi nhắc đến thiết kế, ASUS luôn nghĩ đến các khách hàng trước tiên - ASUS VG248QE sử dụng phím nóng GamePlus độc quyền của ASUS với các chức năng tâm ngắm và hẹn giờ. Các game thủ có thể chọn bốn kiểu tâm ngắm khác nhau để phù hợp với môi trường chơi game; còn chức năng thứ hai giúp người chơi biết được lượng thời gian đã trôi qua trong các game chiến thuật thời gian thực. Những công cụ này cho phép các game thủ có thể rèn luyện và cải thiện trình độ chơi game của mình.
+', 9, 3, N'asus', N'image\30472_moas080.png;image\30472_asus_vg248qe_man_hinh_choi_game_24_inch_3d_fullhd_144hz_1ms_bao_ve_mat_10.jpg;image\30472_asus_vg248qe_man_hinh_choi_game_24_inch_3d_fullhd_144hz_1ms_bao_ve_mat_9.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (50, N'PC GAMING AORUS 006', 1700.0000, 1600.0000, N'i5 10400F;B460;8GB RAM;GTX 1660 SUPER;650W;TẢN CR1000;RGB', N'Hệ thống PC Gaming Aorus 006 với những thiết bị phần cứng mới nhất của năm 2021 sẽ làm hài lòng những game thủ đang có nhu cầu tìm mua một chiếc PC tầm trung về giải trí và làm việc.
+
+', 10, 2, NULL, N'image\52092_pcgm305ud.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (51, N'PC ENTHUSIAST GAMING PLATINUM 003', 1800.0000, 1700.0000, N'i9 10900K;Z490;32GB RAM;500GB SSD;RTX 2080 SUPER;850W;WATERCOOLING EK;RGB', N'Những người coi việc sở hữu những chiếc PC gaming độc đáo, mạnh mẽ là đam mê, đồng thời có ý tưởng đồng điệu với đội ngũ phát triển sản phẩm của HANOICOMPUTER khi cho rằng mọi thứ trên đời không có gì gọi là khô khan, miễn là ta chú tâm và biết cách thổi hồn vào cho chúng.
+
+', 10, 2, NULL, N'image\53835_pcgm220_2021.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (52, N'PC ENTHUSIAST GAMING LIMITED 005', 1900.0000, 1850.0000, N'9 10900K;Z490;64GB RAM;500GB SSD;RTX2080TI;850W;WATERCOOLING EK;RGB', N'Hệ thống PC Enthusiast Gaming Limited 005 là một trong những bộ máy cao cấp nhất mà HNC đã xây dựng. Mang trong mình cấu hình phần cứng với CPU i9-10900K, card đồ hoạ RTX 2080Ti và 64GB RAM, chiếc máy này thừa khả năng xử lý mọi thứ bạn yêu cầu ở đẳng cấp cao nhất.
+
+', 10, 2, NULL, N'image\55208_pcgm244__9.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (53, N'PC GAMING SHARK 025', 2000.0000, 1950.0000, N'R5 3400G;B450;8GB RAM;120GB SSD;GTX 1650 Super;450W;RGB', N'Khi nhắc đến thiết kế, ASUS luôn nghĩ đến các khách hàng trước tiên - ASUS VG248QE sử dụng phím nóng GamePlus độc quyền của ASUS với các chức năng tâm ngắm và hẹn giờ. Các game thủ có thể chọn bốn kiểu tâm ngắm khác nhau để phù hợp với môi trường chơi game; còn chức năng thứ hai giúp người chơi biết được lượng thời gian đã trôi qua trong các game chiến thuật thời gian thực. Những công cụ này cho phép các game thủ có thể rèn luyện và cải thiện trình độ chơi game của mình.
+', 10, 2, NULL, N'image\54396_pcgm231_.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (54, N'PC ENTHUSIAST GAMING PLATINUM 01', 2300.0000, 2200.0000, N'i7 10700K;Z490;32GB RAM;500GB SSD;RTX 2080 SUPER;850W;WATERCOOLING EK;RGB', N'Hệ thống PC Gaming PC ENTHUSIAST GAMING PLATINUM 01 với những thiết bị phần cứng mới nhất như CPU Intel Core i7-10700K, VGA RTX 2080 Super và hệ thống tản nhiệt tiên tiến. Đưa bạn đến những trải nghiệm cao cấp nhất.
+
+', 10, 2, NULL, N'image\53564_pcgm205__1_2.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (55, N'PC ENTHUSIAST GAMING LIMITED 004', 2400.0000, 2300.0000, N'3960X;TRX40;64GB RAM;2TB SSD;RTX 2080Ti;1600W;Tản AIO ASUS RYUJIN 360;Win 10 PRO;RGB', N'Hệ thống PC ENTHUSIAST GAMING LIMITED 004 là một trong những bộ máy cao cấp nhất mà HNC đã xây dựng. Mang trong mình cấu hình phần cứng với CPU Ryzen 9 3960X, card đồ hoạ RTX 2080Ti và 64GB RAM, chiếc máy này thừa khả năng xử lý mọi thứ bạn yêu cầu ở đẳng cấp cao nhất.
+
+', 10, 2, NULL, N'image\54394_pcgm229.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (56, N'Màn hình LG 34WK95C-W', 1053.0000, 2040.0000, N'Màn hình siêu rộng, cong 34 inch;
+Độ phân giải 3440 x 1440;
+Màn hình Nano IPS;
+Gam màu DCI-P3 98%;
+VESA DisplayHDR ™ 400;
+MAXXAUDIO®', N'Khám phá một bức ảnh giống như thật hơn với dải tương phản động cao, cung cấp độ tương phản lớn hơn giữa các vùng sáng nhất và tối nhất của màn hình. Màn hình HDR400 đã mang lại độ sáng cực đại ấn tượng 400 nits.
+
+', 10, 3, N'lg', N'image\52755_34wk95c_new.png;image\52755_lg_34wk95c__7_.jpg;image\52755_lg_34wk95c__6_.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (57, N'Màn hình Samsung LS27R350FHEXXV', 1049.0000, 2040.0000, N'Thiết kế tinh giản, mở rộng không gian giải trí;
+Công nghệ AMD Radeon FreeSync™ làm mượt hình ảnh;
+Giải trí vượt trội với Chế Độ Game', N'Nét đẹp đến từ sự tinh giản. Từng chi tiết được kiến tạo một cách tinh tế, màn hình phẳng Samsung mang đến phong cách thật sự khác biệt đầy tinh tế. Thiết kế tối giản với ba cạnh không viền kết hợp cùng chân đế chữ Y cho trải nghiệm hình ảnh liền mạch không gián đoạn ngay cả khi sử dụng 2 màn hình cùng lúc.
+
+', 10, 3, N'samsung', N'image\51286_samsung_ls27r350fhexxv__4_.png;image\51286_samsung_ls27r350fhexxv__3_.png;image\51286_samsung_ls27r350fhexxv__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (58, N'Màn hình Asus ProArt PA279CV', 1049.0000, 2040.0000, N'Màn hình 27 inch 4K UHD (3840 x 2160) đèn nền LED với tấm nền IPS góc nhìn rộng 178°;
+Tiêu chuẩn màu quốc tế đạt 100% phổ màu sRGB và 100% phổ màu Rec.709;
+Màn hình đạt chứng nhận Calman Verified nhờ được hiệu chuẩn trước khi xuất xưởng để mang lại độ chính xác màu tuyệt vời Delta E < 2;
+Kết nối mở rộng bao gồm DP qua USB-C™ với 65W Power Delivery, DisplayPort, HDMI, USB 3.0 hub;
+Công nghệ Adaptive-Sync (40 ~ 60Hz) cho nội dung chuyển động với hành động nhanh và loại bỏ hiện tượng xé hình;
+Các tính năng ProArt Preset và ProArt Palette độc quyền của ASUS cung cấp nhiều loại thông số màu sắc có thể điều chỉnh;
+Thiết kế tiện dụng với độ nghiêng + 35° ~ -5°, xoay ± 45°, trục xoay ± 90° và điều chỉnh chiều cao 150mm cho trải nghiệm xem thoải mái', N'ProArt Display PA279CV là màn hình 27 inch được thiết kế để đáp ứng nhu cầu của các chuyên gia sáng tạo nội dung, từ chỉnh sửa ảnh và video đến thiết kế đồ họa. ProArt Display PA279CV được cân màu tại nhà máy với chứng nhận Calman Verified để mang lại độ chính xác màu tuyệt vời (∆E <2). Cung cấp 100% sRGB / 100% Rec theo tiêu chuẩn công nghiệp. Độ bao phủ không gian màu 709. Cổng USB-C tích hợp hỗ trợ truyền dữ liệu, DisplayPort và cũng hỗ trợ cung cấp điện 65W qua một dây cáp mang đến giải pháp tiện lợi và giúp cho khu vực bàn làm việc của bạn gọn gàng hơn. PA279CV giúp bạn dễ dàng chân chỉnh màu sắc chính xác mà bạn mong muốn một cách nhanh chóng, dễ dàng và chính xác.
+
+', 10, 3, N'asus', N'image\57437_pa279cv__12_.png;image\57437_pa279cv__6_.png;image\57437_pa279cv__5_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (59, N'Màn hình Asus Pro Art PB258Q', 1051.0000, 2039.0000, N'Hình ảnh sống động như thật hoàn hảo với 25” tỉ lệ16: 9 2560 x 1440 với 100% sRGB và góc nhìn rộng 178 ° trong một thiết kế tràn viền.;
+Thiết kế các cổng kết nối DisplayPort1.2, HDMI/MHL2.0 và Dual-link DVI hỗ trợ nội dung WQHD nguyên bản.;
+Thiết kế không viền với chân đế tiện dụng có thể tháo dễ dàng điều chỉnh độ nghiêng, trục, xoay và chiều cao cùng với giá đỡ treo tường VESA.;
+Công nghệ Bảo vệ mắt: Chống nhấp nháy và Ánh sáng xanh thấp giúp xem màn hình thoải mái', N'Hình dung lớn hơn với độ phân giải WQHD 2560 x 1440,mật độ điểm ảnh tăng gấp bốn lần 720p! Màn hình LED cao cấp mới PB258Q định dạng rộng 16: 9 với tấm nền IPS mang lại góc nhìn rộng 178 ° cho hiệu năng tốt hơn, có thêm không gian để thực hiện đa tác nhiệm nhiều cửa sổ và dự án hơn trên màn hình. Công nghệ video thông minh SplendidPlus độc quyền của ASUS, Thang đo ảo QuickFit, và độ trung thực sRGB 100% đảm bảo độ chính xác của hình ảnh và màu sắc xác thực, mang đến cho bạn sức mạnh hiệu năng “những gì bạn tưởng tượng là những gì bạn tạo ra”. HDMI / MHL2.0, DisplayPort và Dual-link DVI hỗ trợ WQHD nguyên bản, với điểm nhấn là hệ thống loa kép 2,5 Watt mang đến âm thanh bùng nổ trong phòng. Thiết kế công thái học bao gồm điều chỉnh độ nghiêng, xoay, trục và chiều cao, cùng với hệ thống cáp được sắp xếp hợp lý tránh tình trạng dây đi lộn xộn, giúp bạn luôn thoải mái tập trung. Thiết kế không viền cạnh của PB258Q lý tưởng cho việc thiết lập môi trường dùng nhiều màn hình liền mạch.
+
+', 10, 3, N'asus', N'image\57138_pb258q__7_.png;image\57138_pb258q__6_.png;image\57138_pb258q__5_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (60, N'Màn hình Dell Ultrasharp U2421HE', 1057.0000, 2043.0000, N'Kích thước: 23.8 inch;
+Tấm nền: IPS;
+Độ phân giải: FHD (1920 x 1080);
+Tốc độ làm mới: 60Hz;
+Thời gian đáp ứng: 5ms;
+Cổng kết nối: 1 x Displayport 1.4, 1 x HDMI1.4 , USB Type-C', N'Màn hình Dell U2421HE có thiết kế bắt mắt, với tông đen bạc tạo điểm nhấn cho bàn làm việc của bạn trở nên hiện đại, sang trọng hơn. Với góc nhìn rộng 178° để giảm thiểu hiện tượng biến màu, cho chất lượng hình ảnh và màu sắc tốt nhất.
+
+', 10, 3, N'dell', N'image\56487_u2421he__6_.png;image\56487_u2421he__5_.png;image\56487_u2421he__4_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (61, N'Màn hình Dell UltraSharp U3419W', 1057.0000, 2043.0000, N'Kích thước màn hình 34 inch;
+Phủ bề mặt chống lóa / phủ cứng 3H;
+Độ phân giải 3440 x 1440;
+Tần số quét 60 Hz;
+Góc nhìn 178° (H) / 178° (V);
+Màu màn hình 1.07 tỉ;
+Thời gian phản ứng 5 ms (GTG);
+Tấm nền AH-IPS (sRGB 99%)', N'Không theo đuổi xu hướng một cách nhanh chóng, thay vào đó, màn hình Dell luôn luôn cải tiến một cách chậm rãi dựa vào phân tích hành vi và nhu cầu người dùng, đồng thời tập trung vào sự thuận tiện, hữu dụng, chắc chắn và chất lượng. Độ cong màn hình tăng giúp cải thiện trường nhìn của bạn, giảm phản xạ và tạo ra sự tập trung thị giác gần như thống nhất.
+
+', 10, 3, N'dell', N'image\49922_u3419w__1_.jpg;image\49922_u3419w__2_.jpg;image\49922_u3419w__3_.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (62, N'RAM Desktop KINGSTON HyperX Predator RGB', 1059.0000, 2043.0000, N'Dòng RAM RGB cao cấp của Kingston;
+Dung lượng: 2 x 8GB;
+Thế hệ: DDR4;
+Bus: 3200MHz', N'Giải pháp hoàn hảo cho hệ thống AMD Thiết kế và tối ưu hóa để tương thích hoàn toàn với bộ xử lý AMD Ryzen 3000 mới nhất trên bo mạch chủ chipset AMD X570 mang đến hiệu năng tuyệt vời và ánh sáng RGB cực kỳ sống động', 10, 4, N'ram', N'image\43929_kingston_predator_ddr4_2933_rgb_kit2.jpg;image\43929_kingston_predator_ddr4_rgb_kit2__3_.jpg;image\43929_hyperx_fury_16gb_front.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (63, N'PC Dell OptiPlex 3070 SFF', 3500.0000, 3400.0000, N'i3-9100;4GB RAM;1TB HDD;DVDRW;K+M;Fedora', N'Dell OptiPlex 3070 có hơn 25 năm kinh nghiệm mang đến sự đổi mới do khách hàng hướng dẫn cho máy tính để bàn bằng cách liên tục tạo ra trải nghiệm nhanh hơn và thông minh hơn. Với các yếu tố hình thức linh hoạt, tiết kiệm không gian với các tùy chọn cấu hình Bộ xử lý Intel® Core ™ thế hệ thứ 9.
+
+', 10, 2, NULL, N'image\49711_dell_optiplex_3070_sff.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (64, N'PC Live Stream S003', 2900.0000, 2800.0000, N'i7-10700;Z490;16GB RAM;GTX 1660 Super;02x FHD Capture Card;500GB SSD;550w', N'Với chi phí chỉ trên 40 triệu đồng một chút, chúng ta có thể xây dựng một cấu hình máy tính live stream như thế nào? Dưới đây, mẫu PC Live Stream S003 của Hanoicomputer là gợi ý hoàn hảo nhất dành cho bạn.
+
+', 10, 2, NULL, N'image\53658_pc_live_stream_s003.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (65, N'Màn hình AOC G2790VX/74 ', 1055.0000, 2041.0000, N'Kích thước: 27 inch;
+Tấm nền: VA;
+Độ phân giải: FHD (1920x1080);
+Tốc độ làm mới: 144Hz;
+Thời gian đáp ứng: 1ms (MPRT);
+Cổng kết nối: HDMI 1.4 × 1, DisplayPort 1.2 × 1', N'Xé hình và rách hình sẽ làm ảnh hưởng đến hình ảnh, trải nghiệm gaming. Công nghệ AMD FreeSync  sẽ đồng bộ hóa tần số quét của màn hình với máy tính của bạn. Công nghệ này hỗ trợ tần số quét ít nhất 120Hz, bù trừ cho tốc độ khung hình thấp (trong chế độ SDR và HDR), đem lại những trải nghiệm gaming ấn tượng.
+
+', 10, 3, N'aoc', N'image\57140_g2790vx__4_.png;image\57140_g2790vx__3_.png;image\57140_g2790vx__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (66, N'Màn hình AOC C24G1', 1056.0000, 2041.0000, N'Kích thước 23.6 inch;
+Độ phân giải 1920 x 1080;
+Tấm nền VA;
+Bề mặt hiển thị Chống lóa 3H;
+Tốc độ làm tươi 144hz;
+Thời gian đáp ứng 1 ms (GTG);
+Độ sáng (nits) 250 cd / m2;
+Góc nhìn 178°/178°;
+Tỷ lệ khung hình 16:9', N'Bạn đang tìm kiếm một màn hình để phục nhu cầu chơi game? Màn hình AOC C24G1 với thiết kế màn hình cong cùng công nghệ FreeSync giúp các game thủ chơi game mượt mà, tránh tình trạng rách màn hình, đem đến cho bạn nhiều trải nghiệm thú vị.
+
+', 10, 3, N'aoc', N'image\47460_aoc_c24g1__4_.png;image\47460_aoc_c24g1__3_.png;image\47460_aoc_c24g1__2_.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (67, N'Card màn hình MSI RX 6800 XT GAMING X TRIO', 1063.0000, 2041.0000, N'Dung lượng bộ nhớ: 16Gb GDDR6;
+Core Clock: 2285 Mhz;
+Kết nối: DisplayPort 1.4a, HDMI 2.1;
+Nguồn yêu cầu: 750W', N'Card màn hình MSI RX 6800 XT GAMING X TRIO là card đồ họa cao cấp của MSI dựa trên nhân GPU AMD RX 6800 XT. Đây là phiên bản được  trang bị tản nhiệt TRIO trứ danh của hãng cho hiệu quả làm mát vượt trội. 
+
+', 10, 4, N'vga', N'image\57704_card_man_hinh_msi_6800_xt_gaming_x_trio_1.jpg;image\57704_card_man_hinh_msi_6800_xt_gaming_x_trio_2.jpg;image\57704_card_man_hinh_msi_6800_xt_gaming_x_trio_3.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (68, N'Card màn hình Gigabyte RX 6800 GAMING OC', 1063.0000, 2041.0000, N'Nhân đồ họa AMD RX 6800;
+Dung lượng bộ nhớ 16GB GDDR6;
+Boost Clock : 2155 MHz;
+Số nhân Stream: 3840', N'Card màn hình Gigabyte RX 6800 GAMING OC là card đồ họa sử dụng GPU RX 6800 mới nhất của AMD, được xây dựng trên kiến trúc RDNA2 cho hiệu năng vô cùng mạnh mẽ. 
+
+', 10, 4, N'vga', N'image\56706_card_man_hinh_gigabyte_rx_6800_gaming_oc.jpg;image\56706_card_man_hinh_gigabyte_rx_6800_gaming_oc_2.png;image\56706_card_man_hinh_gigabyte_rx_6800_gaming_oc_7.png')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (81, N'LAPTOP GAMING MSI GL63 LEOPARD', 1064.0000, 2035.0000, N'CPU Intel Core i5 10300H ; GPU Geforce GTX 1650 MaxQ ; Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel ; Hệ điều hành Windows 10 64Bit Home ; RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB ; Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 ; Ổ cứng HDD 1 slot HDD 2.5''', N'Laptop MSI GF63 Thin 9SCXR 075VN với mặt trên vỏ kim loại xước và thiết kế bàn phím liền kề, măt dưới với khe thông gió hình chữ X ẩn vô cùng độc đáo.', 10, 1, N'msi', N'image\57670_ge76__7_.jpg;image\57670_ge76__6_.jpg;image\57670_ge76__5_.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (82, N'Laptop MSI Gaming GL65 Leopard 10SCXK', 2400.0000, 2240.0000, N'i7-10750H;8GBRAM;512GB SSD;GTX 1650 DDR6;15.6 inch FHD 144Hz;Win 10;Đen', N'Laptop MSI Gaming GL65 Leopard 10SCXK (093VN) được trang bị bộ xử lý Intel® Core ™ i7 thế hệ thứ 10 mới nhất tăng sức mạnh với hiệu suất lên tới 15% so với thế hệ trước. Tần số lõi đơn cao hơn sẽ tốt hơn cho trải nghiệm chơi game.', 10, 1, N'msi', N'image\58018_msi_nb_gl65__8_.jpg;
+image\58018_msi_nb_gl65__7_.jpg;
+image\58018_msi_nb_gl65__6_.jpg')
+GO
+INSERT [dbo].[Product] ([Id], [TenSP], [Gia], [GiaKhuyenMai], [CauHinh], [MoTa], [SoLuong], [DanhMucSP], [HangSanXuat], [HinhAnh]) VALUES (83, N'Laptop MSI Prestige 14 EVO A11M 089VN', 2430.0000, 2230.0000, N'i7-10750H;8GBRAM;512GB SSD;GTX 1650 DDR6;15.6 inch FHD 144Hz;Win 10;Đen', N'Laptop MSI Prestige 14 được trang bị bộ vi xử lý Intel® thế hệ mới nhất, bộ nhớ RAM DDR4 và ổ lưu trữ SSD tốc độ cao đem đến khả năng xử lý đa nhiệm một cách nhanh chóng, thời gian khởi động và truy xuất dữ liệu dường như ngay tức thì.', 10, 1, N'msi', N'image\58018_msi_nb_gl65__8_.jpg;
+image\58018_msi_nb_gl65__7_.jpg;
+image\58018_msi_nb_gl65__6_.jpg')
+GO
+SET IDENTITY_INSERT [dbo].[Product] OFF
+GO
+ALTER TABLE [dbo].[DanhMucSP] ADD  CONSTRAINT [DF_DanhMucSP_CreateDate]  DEFAULT (getdate()) FOR [CreateDate]
+GO
+ALTER TABLE [dbo].[DanhMucSP] ADD  CONSTRAINT [DF_DanhMucSP_Status]  DEFAULT ((1)) FOR [Status]
+GO
+ALTER TABLE [dbo].[GAMING_GEAR] ADD  CONSTRAINT [DF_GAMING_GEAR_SoLuong]  DEFAULT ((10)) FOR [SoLuong]
+GO
+ALTER TABLE [dbo].[GAMING_GEAR] ADD  CONSTRAINT [DF_GAMING_GEAR_DanhMucSP]  DEFAULT ((5)) FOR [DanhMucSP]
+GO
+ALTER TABLE [dbo].[GAMING_GEAR] ADD  CONSTRAINT [DF_GAMING_GEAR_HinhAnh]  DEFAULT (N'image\') FOR [HinhAnh]
+GO
+ALTER TABLE [dbo].[LapTop] ADD  CONSTRAINT [DF_Table_1_cauhinh]  DEFAULT (N'CPU Intel Core i5 10300H | GPU Geforce GTX 1650 MaxQ | Màn hình 15.6" FullHD (1920 x 1080). 144Hz, IPS Panel | Hệ điều hành Windows 10 64Bit Home | RAM DDR4 8GB (1 x 8GB) 2666MHz; 2 slots, up to 32GB | Ổ cứng SSD 512GB SSD NVMe M.2 PCIe Gen 3 x 4 | Ổ cứng HDD 1 slot HDD 2.5''') FOR [CauHinh]
+GO
+ALTER TABLE [dbo].[LapTop] ADD  CONSTRAINT [DF_LapTop_SoLuong]  DEFAULT ((10)) FOR [SoLuong]
+GO
+ALTER TABLE [dbo].[LapTop] ADD  CONSTRAINT [DF_LapTop_DanhMucSP]  DEFAULT ((1)) FOR [DanhMucSP]
+GO
+ALTER TABLE [dbo].[LapTop] ADD  CONSTRAINT [DF_LapTop_HinhAnh]  DEFAULT (N'image\') FOR [HinhAnh]
+GO
+ALTER TABLE [dbo].[Product] ADD  CONSTRAINT [DF_Product_SoLuong]  DEFAULT ((10)) FOR [SoLuong]
+GO
+ALTER TABLE [dbo].[Product] ADD  CONSTRAINT [DF_Product_HinhAnh]  DEFAULT (N'image\') FOR [HinhAnh]
+GO
+ALTER TABLE [dbo].[Cart]  WITH CHECK ADD  CONSTRAINT [CK__Cart__Product_Qu__5F7E2DAC] CHECK  (([Product_Quantity]>=(1)))
+GO
+ALTER TABLE [dbo].[Cart] CHECK CONSTRAINT [CK__Cart__Product_Qu__5F7E2DAC]
+GO
+ALTER TABLE [dbo].[Product]  WITH CHECK ADD CHECK  (([SoLuong]>=(0)))
+GO
+USE [master]
+GO
+ALTER DATABASE [TestProject] SET  READ_WRITE 
+GO
