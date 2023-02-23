@@ -1,0 +1,351 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 21, 2021, 5:02:09 PM
+    Author     : Admin
+*/
+
+
+/*----------all-----------*/
+body{
+/*    font-family: Arial;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background: url(../images/bg.jpg);*/
+    font-family: Arial;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: url(../images/bg.jpg);
+}
+
+.container{
+    width: 700px;
+    height: auto;  
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2vh;
+}
+
+/*---------LOGIN/REGISTER -------*/
+.content{
+    width: inherit;
+    background-color: white;
+}
+
+.content h3{
+    margin: 0;
+    padding-top: 5%;
+    padding-left: 6%;
+    padding-bottom: 5%;
+    color: #4348aa;
+}
+
+.content form{
+/*    padding-left: 6%;
+    font-size: 18px;*/
+    padding-left: 7%;
+    font-size: 18px;
+   
+}
+
+.loginLabels{
+    width: 100px;
+    color: #055a5a;
+}
+
+.btnLogin{
+    font-size: 1em;
+}
+
+.registerLink{
+    text-decoration: none;
+    color: #055a5a;
+}
+
+.registerProblemMessage{
+/*    padding: 1% 0% 15% 5%;
+    color: red;
+    font-size: 1em;*/
+
+    padding: 1% 0% 20% 20%;
+    color: red;
+    font-size: 1em;
+    margin-top: 50px;
+}
+
+.loginProblemMessage{
+/*    padding: 1% 0% 15% 6%;
+    color: red;
+    font-size: 1em;*/
+
+    padding: 1% 0% 20% 20%;
+    color: red;
+    font-size: 1em;
+    margin-top: 50px;
+}
+
+/*--------Start QUIZ-----------*/
+.titleLabel{
+/*    padding: 6% 0% 0% 6%;
+    color: #055a5a; */
+
+    padding: 7% 0% 0% 7%;
+    color: #055a5a;
+    font-size: 20px;
+}
+
+.username{
+    color: blue;
+}
+
+.takeQuizForm{
+    padding-top: 0.5%;
+    padding-bottom: 15%;
+}
+
+.inputNumberOfQuestion{
+    width: 150px;
+}
+
+.btnStart{
+    margin-top: 0.5%;
+    margin-left: 35%;
+}
+
+.validNumMessage{
+    display: none;
+    color: red;
+    padding-left: 1%;
+}
+
+.messageTakeQuiz{
+    padding-left: 3%;
+    color: red;
+}
+
+/*----------take QUIZ---------*/
+.timeRemaining{
+    color: #055a5a;
+    float: right;
+    padding-right: 20%;
+    padding-bottom: 3%;
+}
+
+.questionName{
+    clear: right;
+}
+
+.time{
+    color: red;
+}
+
+.perQuestion input[type=checkbox]{
+    margin: 0;
+}
+
+.perQuestion td{
+    color: #055a5a;
+}
+
+.questionIndex{
+    padding: 5% 0% 0% 6%;
+    cursor: pointer;
+}
+
+.innerIndex{
+    background-color: #cdcdcd;
+    padding: 0.5%;
+    border-radius: 5px;
+    border: 0.5px solid black;
+    font-size: 0.8em;
+    color: black;
+    cursor: pointer;
+}
+
+.finishQuiz{
+    float: right;
+    padding: 2% 20% 15% 0%;
+}
+
+.endPage{
+    clear: right;
+}
+
+.totalQuestionStartQuiz, .totalAnswerEachQuestion, .currentTag{
+    display: none;
+}
+
+.totalQuestion, .questionName, .dateCreated {
+    color: #055a5a;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+/*----------MAKE/UPDATE QUIZ----------*/
+.makeQuizForm{
+    padding-top: 5%;
+}
+
+.makeQuizLabels{
+    vertical-align: text-top;
+    padding-top: 1%;
+}
+
+.makeQuizLabels,.cbOption{
+    color: #055a5a;
+}
+
+.inputOption, .inputQuestion{
+    width: 120%;
+    font-size: 20px;
+}
+
+.makeQuizMessage{
+    padding: 1% 0% 15% 6%;
+    color: blue;
+}
+
+.makeQuizOption{
+    pointer-events: none;
+}
+
+.deleteButton{
+    background-color: #b33527;
+    color: white;
+}
+
+.questionId{
+    display: none;
+}
+
+
+/*-------MANAGE QUIZ--------*/
+.manageQuizContent{
+       padding-top: 7%;
+    padding-left: 7%;
+    padding-bottom: 20%;
+}
+
+.listQuiz{
+    padding-top: 5%;
+}
+
+.listQuiz table{
+    width: 100%;
+    table-layout: fixed;
+}
+
+.listQuiz th{
+    text-align: left;
+    padding-bottom: 5%;
+}
+
+.listQuiz td{
+    padding-top: 1%;
+}
+
+.dateCreated, .titleDateCreated{
+    width: 30%;
+    margin: 0;
+}
+
+.titleQuestion, .questionName{
+    margin: 0;
+    width: 70%;
+}
+
+.totalQuestion, .questionName ,.dateCreated{
+    color: #055a5a;
+}
+
+.numOfQuest, .titleQuestion, .titleDateCreated{
+    color: blue;
+}
+
+.dateCreated{
+    vertical-align: text-top;
+}
+
+.questionName a{
+    text-decoration: none;
+    color: #055a5a;
+}
+
+.questionName a:hover{
+    color: #F09A67;
+}
+
+.messageUpdate{
+    padding-top: 1%;
+}
+
+.indexOfPage{
+    width: inherit;
+    padding-top: 3%;
+    padding-left: 40%; 
+}
+
+
+.indexOfPage a{
+    text-decoration: none;
+}
+
+/*---------SHOW RESULT------------*/
+.endPageResult{
+    padding-bottom: 30%;
+}
+
+.failScore{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+.passScore{
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+}
+.titleLabel .title a{
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+    font-size: 20px;
+    padding:2px;
+    border:1px solid black;
+    background-color: gainsboro;   
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+    .questionName{
+        width: 90%;
+    }
+    .timeRemaining{
+        padding-right: 10%;
+    }
+    .container{
+        padding-top: 10px;
+    }   
+}
+
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+    .inputQuestion, .inputOption{
+        width: 250px;
+    }
+    .manageQuizContent{
+        padding-left: 3%;
+    }
+}
+@media only screen and (min-width: 425px) and (max-width: 768px) {
+    .inputQuestion, .inputOption{
+        width: 320px;
+    }
+}

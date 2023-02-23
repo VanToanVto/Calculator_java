@@ -1,0 +1,81 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 21, 2021, 5:02:09 PM
+    Author     : Admin
+*/
+
+
+/*-----HEADER -------*/
+.header{
+    width: 700px;
+    height: 19px;
+    background: url('../images/top_box.gif');
+    background-repeat: no-repeat;
+}
+
+/*------MENU --------*/
+.menu{
+    width: 700px;
+    height: 51px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(../images/menu_bg.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: white;
+}
+
+.menuItems{
+    padding-top: 0;
+    text-align: center;
+    overflow: hidden;
+    padding-left: 5%;
+
+}
+
+.menuItems a{
+    text-decoration: none;
+    color: #8c8276;
+    padding-right: 3%;
+    padding-left: 3%;
+    font-weight: bold;
+}
+.titleLabel .title a{
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+    font-size: 20px;
+    padding:2px;
+    border:1px solid black;
+    background-color: gainsboro;   
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .header, .menu {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 375px) and (max-width: 425px) {
+    .header{
+        background-image: url(../images/top_box_425.gif);
+        height: 1px;
+    }
+    .menu{
+        background-image: url(../images/menu_bg_425.gif);
+    }
+}
+
+@media only screen and (min-width: 696px) and (max-width: 768px) {
+    .header{
+        background-image: url(../images/top_box_768.gif);
+        height: 20px;
+    }
+    .menu{
+        background-image: url(../images/menu_bg_768.gif);
+    }
+}
