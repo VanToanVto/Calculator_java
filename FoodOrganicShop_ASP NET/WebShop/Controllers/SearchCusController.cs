@@ -20,8 +20,6 @@ namespace WebShop.Controllers
 			_context = context;
 		}
 
-
-
 		[HttpPost]
 		[Route("/SearchCus/FindCusProduct/",Name ="ss")]		
 		

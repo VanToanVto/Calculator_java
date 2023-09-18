@@ -32,8 +32,8 @@
                         <td>@item.ProductId</td>
                         <td>@item.Product.ProductName</td>
                         <td>@item.Amount</td>
-                        <td>@item.Product.Price</td>
-                        <td>@tt</td>
+                    <td>@item.Product.Price.Value.ToString("#,##0")</td>
+                    <td>@tt.ToString("#,##0")</td>
                     </tr>
                 }
         </tbody>

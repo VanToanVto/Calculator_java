@@ -28,7 +28,7 @@ namespace WebShop.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminAccounts
-        
+
         public async Task<IActionResult> Index()
         {
             ViewData["QuyenTruyCap"] = new SelectList(_context.Roles, "RoleId", "Description");
@@ -42,7 +42,7 @@ namespace WebShop.Areas.Admin.Controllers
             var dbMarketsContext = _context.Accounts.Include(a => a.Role);
             return View(await dbMarketsContext.ToListAsync());
         }
-        
+
         // GET: Admin/AdminAccounts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -78,7 +78,7 @@ namespace WebShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 _context.Add(account);
                 await _context.SaveChangesAsync();
                 _notyfService.Success("Tạo mới tài khoản thành công");
@@ -206,5 +206,5 @@ namespace WebShop.Areas.Admin.Controllers
         }
 
     }
-    
+
 }

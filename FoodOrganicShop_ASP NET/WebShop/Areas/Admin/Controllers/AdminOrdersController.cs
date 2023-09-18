@@ -35,7 +35,7 @@ namespace WebShop.Areas.Admin.Controllers
             var pageSize = 20;
             var Orders = _context.Orders.Include(o => o.Customer).Include(o => o.TransactStatus)
                 .AsNoTracking()
-                .OrderBy(x => x.OrderDate);
+                .OrderByDescending(x => x.OrderDate);
             PagedList<Order> models = new PagedList<Order>(Orders, pageNumber, pageSize);
 
             ViewBag.CurrentPage = pageNumber;
