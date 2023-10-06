@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Mua hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
 }
 @section Styles{
     <style type="text/css">
@@ -13,17 +12,12 @@
             max-height: 200px;
             overflow-y: scroll;
         }
-
         .nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
             color: red;
             background: none;
         }
     </style>
 }
-
-
-
-
 <main class="main-content">
     <div class="breadcrumb-area breadcrumb-height" data-bg-image="/assets/images/banner/2-1-1920x523.jpg">
         <div class="container h-100">
@@ -45,10 +39,8 @@
     <div class="checkout-area section-space-y-axis-100">
         <div class="container">
             <form>
-                
                 <div class="row">
                     <div class="col-lg-6 col-12">
-
                         <div class="checkbox-form">
                             <h3>Đặt hàng thành công</h3>
                             <p>Mã đơn hàng: #@Model.DonHangID</p>
@@ -68,7 +60,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </main>

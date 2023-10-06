@@ -1,5 +1,4 @@
 ﻿@model WebShop.Models.Page
-
 @{
     ViewData["Title"] = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -35,22 +34,12 @@
                             <div class="blog-meta text-dim-gray pb-3">
                                 <ul>
                                     <li class="date"><i class="fa fa-calendar-o me-2"></i>@Model.CreatedDate</li>
-                                    <li>
-                                        <span class="comments me-3">
-                                            <a href="javascript:void(0)">2 Comments</a>
-                                        </span>
-                                        <span class="link-share">
-                                            <a href="javascript:void(0)">Share</a>
-                                        </span>
-                                    </li>
                                 </ul>
                             </div>
                             <h5 class="title mb-4">
                                 <a href="@url">@Model.PageName</a>
                             </h5>
                             @Html.Raw(Model.Contents)
-
-
                         </div>
                     </div>
                 </div>

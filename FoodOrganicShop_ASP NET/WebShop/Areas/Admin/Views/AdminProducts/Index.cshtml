@@ -1,6 +1,5 @@
 @using PagedList.Core.Mvc
 @model PagedList.Core.IPagedList<WebShop.Models.Product>
-
 @{
 	int CurrentPage = ViewBag.CurrentPage;
 	ViewData["Title"] = "Danh sách sản phẩm";
@@ -37,7 +36,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="col-lg-4 text-right">
 				<a class="btn btn-primary" asp-area="Admin" asp-controller="AdminProducts" asp-action="Create"><i class="anticon anticon-plus-circle m-r-5"></i><span>Thêm sản phẩm</span></a>
 			</div>
@@ -61,7 +59,6 @@
 						foreach (var item in Model)
 						{
 							<tr>
-
 								<td>
 									@item.ProductId
 								</td>
@@ -89,18 +86,14 @@
 											<div>Hết hàng</div>
 										</div>
 									}
-
 								<td>
 									<a class="btn btn-info btn-tone m-r-5" asp-area="Admin" asp-controller="AdminProducts" asp-action="Details" asp-route-id="@item.ProductId"><i class="anticon anticon-info-circle m-r-5"></i><span>Chi tiết</span></a>
 									<a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminProducts" asp-action="Edit" asp-route-id="@item.ProductId"><i class="anticon anticon-edit m-r-5"></i><span>Chỉnh sửa</span></a>
 									<a class="btn btn-danger btn-tone m-r-5" asp-area="Admin" asp-controller="AdminProducts" asp-action="Delete" asp-route-id="@item.ProductId"><i class="anticon anticon-delete m-r-5"></i><span>Xóa</span></a>
-
 								</td>
 							</tr>
 						}
 					}
-
-
 				</tbody>
 			</table>
 			<div aria-label="Page navigation example">
@@ -111,7 +104,6 @@
 		</div>
 	</div>
 </div>
-
 @section Scripts{
 	<script>
 		$(document).ready(function () {
@@ -139,7 +131,6 @@
 					}
 				});
 			});
-
 			$("#keyword").keyup(function () {
 				var strkeyword = $('#keyword').val();
 				console.log(strkeyword);
@@ -160,6 +151,4 @@
 			});
 		});
 	</script>
-
 }
-

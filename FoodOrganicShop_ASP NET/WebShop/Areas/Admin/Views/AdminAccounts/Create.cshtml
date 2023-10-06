@@ -1,11 +1,8 @@
 @model WebShop.Models.Account
-
 @{
     ViewData["Title"] = "Tạo mới tài khoản quản trị";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
-
 <div class="card-body">
     <h4>Tạo mới tài khoản quản trị</h4>
     <div class="m-t-25" style="max-width: 700px">
@@ -38,7 +35,6 @@
                     </select>
                 </div>
             </div>
-            
             <div class="form-group">
                 <div class="checkbox">
                     <input asp-for="Active" type="checkbox">
@@ -48,5 +44,4 @@
             <button type="submit" class="btn btn-primary">Tạo mới</button>
         </form>
     </div>
-    
 </div>

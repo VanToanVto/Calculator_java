@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
+﻿using System.ComponentModel.DataAnnotations;
 namespace WebShop.Areas.Admin.Models
 {
     public class LoginViewModel
@@ -11,7 +9,6 @@ namespace WebShop.Areas.Admin.Models
         [Display(Name = "Địa chỉ Email")]
         [EmailAddress(ErrorMessage = "Sai định dạng Email")]
         public string UserName { get; set; }
-
         [Display(Name = "Mật khẩu")]
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         [MinLength(5, ErrorMessage = "Bạn cần đặt mật khẩu tối thiểu 5 ký tự")]

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
+﻿using System.Text.RegularExpressions;
 namespace WebShop.Extension
 {
     public static class Extension
@@ -43,7 +38,6 @@ namespace WebShop.Extension
             result = Regex.Replace(result, "[^a-z0-9-]", "");
             result = Regex.Replace(result, "(-)+", "-");
             return result;
-
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿@model WebShop.Models.Customer
-
 @{
 	ViewData["Title"] = "Edit";
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
 <div class="page-header">
 	<div class="header-sub-title">
 		<nav class="breadcrumb breadcrumb-dash">
@@ -14,7 +12,6 @@
 		</nav>
 	</div>
 </div>
-
 <div class="card">
 	<div class="card-body">
 		<h1>Chỉnh sửa khách hàng</h1>
@@ -29,8 +26,6 @@
 						<input asp-for="FullName" class="form-control card-title" required />
 						<span asp-validation-for="FullName" class="text-danger"></span>
 					</div>
-					
-					
 					<div class="form-group">
 						<label asp-for="Address" class="control-label card-title">Địa chỉ</label>
 						<input asp-for="Address" class="form-control"  />
@@ -46,15 +41,11 @@
 						<input asp-for="Phone" class="form-control" required />
 						<span asp-validation-for="Phone" class="text-danger"></span>
 					</div>
-					
-					
 					<div class="form-group">
 						<label asp-for="CreateDate" class="control-label card-title">Ngày tạo</label>
 						<input asp-for="CreateDate" class="form-control" required />
 						<span asp-validation-for="CreateDate" class="text-danger"></span>
 					</div>
-					
-					
 					<div class="form-group form-check">
 						<label class="form-check-label">
 							<input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
@@ -69,7 +60,5 @@
 				</form>
 			</div>
 		</div>
-
-		
 	</div>
 </div>
