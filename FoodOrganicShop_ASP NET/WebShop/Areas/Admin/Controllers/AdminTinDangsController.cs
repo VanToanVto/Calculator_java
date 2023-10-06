@@ -1,17 +1,14 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
 using WebShop.Helpper;
 using WebShop.Models;
-
 namespace WebShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -25,7 +22,6 @@ namespace WebShop.Areas.Admin.Controllers
             _context = context;
             _notyfService = notyfService;
         }
-
         // GET: Admin/AdminTinDangs
         public IActionResult Index(int? page)
         {
@@ -38,19 +34,15 @@ namespace WebShop.Areas.Admin.Controllers
                     _context.SaveChanges();
                 }
             }
-            
-           
             var pageNumber = page == null || page <= 0 ? 1 : page.Value;
             var pageSize = 4;
             var lsTinDangs = _context.TinDangs
                 .AsNoTracking()
                 .OrderBy(x => x.PostId);
             PagedList<TinDang> models = new PagedList<TinDang>(lsTinDangs, pageNumber, pageSize);
-
             ViewBag.CurrentPage = pageNumber;
             return View(models);
         }
-
         // GET: Admin/AdminTinDangs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -58,23 +50,19 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var tinDang = await _context.TinDangs
                 .FirstOrDefaultAsync(m => m.PostId == id);
             if (tinDang == null)
             {
                 return NotFound();
             }
-
             return View(tinDang);
         }
-
         // GET: Admin/AdminTinDangs/Create
         public IActionResult Create()
         {
             return View();
         }
-
         // POST: Admin/AdminTinDangs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -94,8 +82,6 @@ namespace WebShop.Areas.Admin.Controllers
                 if (string.IsNullOrEmpty(tinDang.Thumb)) tinDang.Thumb = "default.jpg";
                 tinDang.Alias = Utilities.SEOUrl(tinDang.Title);
                 tinDang.CreatedDate = DateTime.Now;
-
-
                 _context.Add(tinDang);
                 await _context.SaveChangesAsync();
                 _notyfService.Success("Thêm mới thành công");
@@ -103,7 +89,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(tinDang);
         }
-
         // GET: Admin/AdminTinDangs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -111,7 +96,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var tinDang = await _context.TinDangs.FindAsync(id);
             if (tinDang == null)
             {
@@ -119,7 +103,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(tinDang);
         }
-
         // POST: Admin/AdminTinDangs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -131,7 +114,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
@@ -145,7 +127,6 @@ namespace WebShop.Areas.Admin.Controllers
                     }
                     if (string.IsNullOrEmpty(tinDang.Thumb)) tinDang.Thumb = "default.jpg";
                     tinDang.Alias = Utilities.SEOUrl(tinDang.Title);
-
                     _context.Update(tinDang);
                     await _context.SaveChangesAsync();
                     _notyfService.Success("Chỉnh sửa thành công");
@@ -165,7 +146,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(tinDang);
         }
-
         // GET: Admin/AdminTinDangs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -173,17 +153,14 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var tinDang = await _context.TinDangs
                 .FirstOrDefaultAsync(m => m.PostId == id);
             if (tinDang == null)
             {
                 return NotFound();
             }
-
             return View(tinDang);
         }
-
         // POST: Admin/AdminTinDangs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -195,7 +172,6 @@ namespace WebShop.Areas.Admin.Controllers
             _notyfService.Success("Xóa thành công");
             return RedirectToAction(nameof(Index));
         }
-
         private bool TinDangExists(int id)
         {
             return _context.TinDangs.Any(e => e.PostId == id);

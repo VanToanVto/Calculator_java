@@ -1,12 +1,10 @@
 @model WebShop.Models.TinDang
-
 @{ ViewData["Title"] = "Chỉnh sửa tin tức";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml"; }
 @section Styles{
     <link href="~/Adminassets/summernote/summernote-bs4.css" rel="stylesheet" />
     <link href="~/Adminassets/summernote/summernote.css" rel="stylesheet" />
 }
-
 <div class="page-header">
     <div class="header-sub-title">
         <nav class="breadcrumb breadcrumb-dash">
@@ -26,7 +24,6 @@
     <input type="hidden" asp-for="Thumb" />
     <input type="hidden" asp-for="CreatedDate" />
     <div class="page-header no-gutters has-tab">
-        
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#product-edit-basic">Thông tin tin tức</a>
@@ -47,8 +44,6 @@
                         <label class="font-weight-semibold card-title" for="productName">Tiêu đề</label>
                                 <input type="text" class="form-control" asp-for="Title" required>
                     </div>
-
-
                     <div class="form-group">
                                 <label class="font-weight-semibold card-title" for="productBrand">Ảnh</label>
                         <input name="fThumb" type="file" class="form-control-file" asp-for="Thumb" />
@@ -109,22 +104,18 @@
                             <span>Lưu</span>
                         </button>
                         <a class="btn btn-primary m-r-10" asp-action="Index"><i class="anticon anticon-rollback m-r-5"></i><span>Trở về</span></a>
-
                     </div>
                 </div>
     </div>
 </form>
 </div>
 </div>
-
 @section Scripts{
     <script src="~/Adminassets/vendors/select2/select2.min.js"></script>
     <script src="~/Adminassets/js/pages/e-commerce-product-edit.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
     <script src="~/Adminassets/summernote/summernote-bs4.js"></script>
-
     <script>
-
         jQuery(document).ready(function () {
             $('.summernote').summernote({
                 fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],

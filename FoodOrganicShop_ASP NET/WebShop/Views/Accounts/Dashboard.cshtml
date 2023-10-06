@@ -1,5 +1,4 @@
 @model WebShop.Models.Customer
-
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,7 +6,6 @@
     var total = DanhSachDonHang.Sum(x => x.TotalMoney).ToString("#,##0");
     WebShop.ModelViews.ChangePasswordViewModel changePassword = new WebShop.ModelViews.ChangePasswordViewModel();
 }
-
 <main class="main-content">
     <div class="breadcrumb-area breadcrumb-height" data-bg-image="/assets/images/banner/2-1-1920x523.jpg">
         <div class="container h-100">
@@ -36,7 +34,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="account-orders-tab" data-bs-toggle="tab" href="#account-orders" role="tab" aria-controls="account-orders" aria-selected="false">Danh sách đơn hàng</a>
-                            
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="account-details-tab" data-bs-toggle="tab" href="#account-details" role="tab" aria-controls="account-details" aria-selected="false">Thay đổi mật khẩu</a>
@@ -86,8 +83,6 @@
                                                         </td>
                                                     </tr>
                                                 }
-
-
                                             </tbody>
                                         </table>
                                         <br />
@@ -96,7 +91,6 @@
                                         <br />
                                         <hr />
                                         <div id="tablevto">
-
                                         </div>
                                     </div>
                                 }
@@ -156,7 +150,5 @@
         });
     });
 </script>
-
     <script src="~/js/search.js"></script>
-
 }

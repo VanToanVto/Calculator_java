@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
 using WebShop.Helpper;
 using WebShop.Models;
-
 namespace WebShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -25,13 +24,11 @@ namespace WebShop.Areas.Admin.Controllers
             _context = context;
             _notyfService = notyfService;
         }
-
         // GET: Admin/AdminProducts
         public IActionResult Index(int page = 1, int CatID = 0)
         {
             var pageNumber = page;
             var pageSize = 10;
-
             List<Product> lsProducts = new List<Product>();
             if (CatID != 0)
             {
@@ -48,16 +45,10 @@ namespace WebShop.Areas.Admin.Controllers
                 .Include(x => x.Cat)
                 .OrderBy(x => x.ProductId).ToList();
             }
-
-
-            
             PagedList<Product> models = new PagedList<Product>(lsProducts.AsQueryable(), pageNumber, pageSize);
             ViewBag.CurrentCateID = CatID;
-
             ViewBag.CurrentPage = pageNumber;
-
             ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName");
-
             return View(models);
         }
         public IActionResult Filtter(int CatID = 0)
@@ -69,7 +60,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return Json(new { status = "success", redirectUrl = url });
         }
-
         // GET: Admin/AdminProducts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -77,7 +67,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var product = await _context.Products
                 .Include(p => p.Cat)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
@@ -85,17 +74,14 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             return View(product);
         }
-
         // GET: Admin/AdminProducts/Create
         public IActionResult Create()
         {
             ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName");
             return View();
         }
-
         // POST: Admin/AdminProducts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -116,7 +102,6 @@ namespace WebShop.Areas.Admin.Controllers
                 product.Alias = Utilities.SEOUrl(product.ProductName);
                 product.DateModified = DateTime.Now;
                 product.DateCreated = DateTime.Now;
-
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 _notyfService.Success("Thêm mới thành công");
@@ -125,7 +110,6 @@ namespace WebShop.Areas.Admin.Controllers
             ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName", product.CatId);
             return View(product);
         }
-
         // GET: Admin/AdminProducts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -133,7 +117,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
@@ -142,7 +125,6 @@ namespace WebShop.Areas.Admin.Controllers
             ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName", product.CatId);
             return View(product);
         }
-
         // POST: Admin/AdminProducts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -154,7 +136,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
@@ -169,7 +150,6 @@ namespace WebShop.Areas.Admin.Controllers
                     if (string.IsNullOrEmpty(product.Thumb)) product.Thumb = "default.jpg";
                     product.Alias = Utilities.SEOUrl(product.ProductName);
                     product.DateModified = DateTime.Now;
-                    
                     _context.Update(product);
                     _notyfService.Success("Cập nhật thành công");
                     await _context.SaveChangesAsync();
@@ -190,7 +170,6 @@ namespace WebShop.Areas.Admin.Controllers
             ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName", product.CatId);
             return View(product);
         }
-
         // GET: Admin/AdminProducts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -198,7 +177,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var product = await _context.Products
                 .Include(p => p.Cat)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
@@ -206,10 +184,8 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             return View(product);
         }
-
         // POST: Admin/AdminProducts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -221,7 +197,6 @@ namespace WebShop.Areas.Admin.Controllers
             _notyfService.Success("Xóa thành công");
             return RedirectToAction(nameof(Index));
         }
-
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.ProductId == id);

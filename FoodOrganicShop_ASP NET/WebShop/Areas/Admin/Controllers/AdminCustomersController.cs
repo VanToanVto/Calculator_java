@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
 using WebShop.Models;
-
 namespace WebShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -16,12 +12,10 @@ namespace WebShop.Areas.Admin.Controllers
     public class AdminCustomersController : Controller
     {
         private readonly dbMarketsContext _context;
-
         public AdminCustomersController(dbMarketsContext context)
         {
             _context = context;
         }
-
         // GET: Admin/AdminCustomers
         public IActionResult Index(int? page)
         {
@@ -32,11 +26,9 @@ namespace WebShop.Areas.Admin.Controllers
                 .Include(x=>x.Location)
                 .OrderByDescending(x => x.CreateDate);
             PagedList<Customer> models = new PagedList<Customer>(lsCustomers, pageNumber, pageSize);
-
             ViewBag.CurrentPage = pageNumber;
             return View(models);
         }
-
         // GET: Admin/AdminCustomers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -44,23 +36,19 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (customer == null)
             {
                 return NotFound();
             }
-
             return View(customer);
         }
-
         // GET: Admin/AdminCustomers/Create
         public IActionResult Create()
         {
             return View();
         }
-
         // POST: Admin/AdminCustomers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -76,7 +64,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(customer);
         }
-
         // GET: Admin/AdminCustomers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -84,7 +71,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var customer = await _context.Customers.FindAsync(id);
             if (customer == null)
             {
@@ -92,7 +78,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(customer);
         }
-
         // POST: Admin/AdminCustomers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -104,7 +89,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
@@ -127,7 +111,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(customer);
         }
-
         // GET: Admin/AdminCustomers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -135,17 +118,14 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (customer == null)
             {
                 return NotFound();
             }
-
             return View(customer);
         }
-
         // POST: Admin/AdminCustomers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -156,7 +136,6 @@ namespace WebShop.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool CustomerExists(int id)
         {
             return _context.Customers.Any(e => e.CustomerId == id);

@@ -1,13 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
 using WebShop.Models;
-
 namespace WebShop.Controllers
 {
     public class ProductController : Controller
@@ -24,7 +21,6 @@ namespace WebShop.Controllers
             {
                 var pageNumber = page == null || page <= 0 ? 1 : page.Value;
                 var pageSize = 10;
-                
                 List<Product> lsProducts = new List<Product>();
                 if (CatID != 0)
                 {
@@ -42,7 +38,6 @@ namespace WebShop.Controllers
                     .OrderBy(x => x.ProductId).ToList();
                 }
                 PagedList<Product> models = new PagedList<Product>(lsProducts.AsQueryable(), pageNumber, pageSize);
-
                 ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName");
                 ViewBag.CurrentCateID = CatID;
                 ViewBag.CurrentPage = pageNumber;
@@ -52,8 +47,6 @@ namespace WebShop.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            
-
         }
         [Route("Home/Product/Filtter", Name = ("ShopProuct"))]
         public IActionResult Filtter(int CatID = 0)
@@ -65,7 +58,6 @@ namespace WebShop.Controllers
             }
             return Json(new { status = "success", redirectUrl = url });
         }
-
         [Route("/DanhMuc/{Alias}", Name = ("ListProduct"))]
         public IActionResult List(string Alias, int page = 1)
         {
@@ -73,7 +65,6 @@ namespace WebShop.Controllers
             {
                 var pageSize = 10;
                 var danhmuc = _context.Categories.AsNoTracking().SingleOrDefault(x => x.Alias == Alias);
-
                 var lsTinDangs = _context.Products
                     .AsNoTracking()
                     .Where(x => x.CatId == danhmuc.CatId)
@@ -88,10 +79,7 @@ namespace WebShop.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
-
         }
-
         [Route("/Products/{Alias}-{id}", Name = ("ProductDetails"))]
         public IActionResult Details(int id)
         {
@@ -115,9 +103,6 @@ namespace WebShop.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
-
         }
-
     }
 }

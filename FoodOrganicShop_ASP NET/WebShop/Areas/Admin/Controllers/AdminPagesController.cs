@@ -1,17 +1,14 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
 using WebShop.Helpper;
 using WebShop.Models;
-
 namespace WebShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -25,7 +22,6 @@ namespace WebShop.Areas.Admin.Controllers
             _context = context;
             _notyfService = notyfService;
         }
-
         // GET: Admin/AdminPages
         public IActionResult Index(int? page)
         {
@@ -45,11 +41,9 @@ namespace WebShop.Areas.Admin.Controllers
                 .AsNoTracking()
                 .OrderBy(x => x.PageId);
             PagedList<Page> models = new PagedList<Page>(lsPages, pageNumber, pageSize);
-
             ViewBag.CurrentPage = pageNumber;
             return View(models);
         }
-
         // GET: Admin/AdminPages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -57,23 +51,19 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var page = await _context.Pages
                 .FirstOrDefaultAsync(m => m.PageId == id);
             if (page == null)
             {
                 return NotFound();
             }
-
             return View(page);
         }
-
         // GET: Admin/AdminPages/Create
         public IActionResult Create()
         {
             return View();
         }
-
         // POST: Admin/AdminPages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -83,7 +73,6 @@ namespace WebShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 if (fThumb != null)
                 {
                     string extension = Path.GetExtension(fThumb.FileName);
@@ -100,7 +89,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(page);
         }
-
         // GET: Admin/AdminPages/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -108,7 +96,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var page = await _context.Pages.FindAsync(id);
             if (page == null)
             {
@@ -116,7 +103,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(page);
         }
-
         // POST: Admin/AdminPages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -128,7 +114,6 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
@@ -160,7 +145,6 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(page);
         }
-
         // GET: Admin/AdminPages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -168,17 +152,14 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
             var page = await _context.Pages
                 .FirstOrDefaultAsync(m => m.PageId == id);
             if (page == null)
             {
                 return NotFound();
             }
-
             return View(page);
         }
-
         // POST: Admin/AdminPages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -190,7 +171,6 @@ namespace WebShop.Areas.Admin.Controllers
             _notyfService.Success("Xóa thành công");
             return RedirectToAction(nameof(Index));
         }
-
         private bool PageExists(int id)
         {
             return _context.Pages.Any(e => e.PageId == id);

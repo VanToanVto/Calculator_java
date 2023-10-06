@@ -1,10 +1,7 @@
 @model WebShop.Models.Order
-
 @{ ViewData["Title"] = "Thông tin đơn hàng #" + Model.OrderId;
                 Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
                 List<OrderDetail> orderDetails = ViewBag.ChiTiet; }
-
-
 <div class="page-header">
     <h2 class="header-title"></h2>
     <div class="header-sub-title">
@@ -79,8 +76,6 @@
                     </tr>i++;
                                     }
                                 }
-
-
                             </tbody>
                         </table>
                     </div>
@@ -96,10 +91,7 @@
         </div>
     </div>
 </div>
-
-
     <form asp-action="Delete" asp-for-id="@Model.OrderId">
         <input type="hidden" asp-for="OrderId" />
         <input type="submit" value="Xác nhận xóa đơn hàng" class="btn btn-danger" />
     </form>
-

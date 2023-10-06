@@ -1,10 +1,8 @@
 ﻿@model WebShop.Models.Account
-
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
 <div class="page-header">
 	<div class="header-sub-title">
 		<nav class="breadcrumb breadcrumb-dash">
@@ -14,7 +12,6 @@
 		</nav>
 	</div>
 </div>
-
 <div class="card">
 	<div class="card-body">
 		<h1>Thông tin tài khoản</h1>
@@ -28,15 +25,15 @@
 					</tr>
 					<tr>
 						<td class="card-title">Họ và tên</td>
-						<td>@Model.FullName/td>
+						<td>@Model.FullName</td>
 					</tr>
 					<tr>
 						<td class="card-title">Số điện thoại</td>
-						<td>@Model.Phone</td>
+						<td><a href="tel:@Model.Phone">@Model.Phone</a></td>
 					</tr>
 					<tr>
 						<td class="card-title">Email</td>
-						<td>@Model.Email</td>
+						<td><a href="mailto:@Model.Email">@Model.Email</a></td>
 					</tr>
 					<tr>
 						<td class="card-title">Ngày tạo</td>
@@ -61,7 +58,6 @@
 							}
 						</td>
 					</tr>
-
 					<tr>
 						<td class="card-title">Mật khẩu</td>
 						<td>@Model.Password</td>
