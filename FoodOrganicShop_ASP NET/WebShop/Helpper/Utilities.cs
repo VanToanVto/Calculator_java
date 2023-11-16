@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+
 namespace WebShop.Helpper
 {
     public static class Utilities
@@ -39,6 +41,7 @@ namespace WebShop.Helpper
                 return false;
             }
         }
+
         public static int PAGE_SIZE = 20;
         public static void CreateIfMissing(string path)
         {
@@ -67,6 +70,7 @@ namespace WebShop.Helpper
         public static bool IsInteger(string str)
         {
             Regex regex = new Regex(@"^[0-9]+$");
+
             try
             {
                 if (String.IsNullOrWhiteSpace(str))
@@ -77,12 +81,16 @@ namespace WebShop.Helpper
                 {
                     return false;
                 }
+
                 return true;
+
             }
             catch
             {
+
             }
             return false;
+
         }
         public static string GetRandomKey(int length = 5)
         {
@@ -90,10 +98,12 @@ namespace WebShop.Helpper
             string pattern = @"0123456789zxcvbnmasdfghjklqwertyuiop[]{}:~!@#$%^&*()+";
             Random rd = new Random();
             StringBuilder sb = new StringBuilder();
+
             for (int i = 0; i < length; i++)
             {
                 sb.Append(pattern[rd.Next(0, pattern.Length)]);
             }
+
             return sb.ToString();
         }
         public static string SEOUrl(string url)
@@ -106,6 +116,7 @@ namespace WebShop.Helpper
             url = Regex.Replace(url, @"[ýỳỵỉỹ]", "y");
             url = Regex.Replace(url, @"[úùụủũưứừựửữ]", "u");
             url = Regex.Replace(url, @"[đ]", "d");
+
             //2. Chỉ cho phép nhận:[0-9a-z-\s]
             url = Regex.Replace(url.Trim(), @"[^0-9a-z-\s]", "").Trim();
             //xử lý nhiều hơn 1 khoảng trắng --> 1 kt

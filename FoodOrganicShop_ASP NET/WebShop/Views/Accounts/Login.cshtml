@@ -1,8 +1,10 @@
 @model WebShop.ModelViews.LoginViewModel
+
 @{
 	ViewData["Title"] = "Đăng nhập tài khoản";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <main class="main-content" >
 	<div class="login-register-area section-space-y-axis-100">
 		<div class="container">
@@ -23,6 +25,7 @@
 									<input type="password" asp-for="Password" placeholder="Mật khẩu">
 									<span asp-validation-for="Password" class="text-danger"></span>
 								</div>
+
 								<div class="col-12">
 									<button class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Đăng nhập</button>
 								</div>

@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+
 #nullable disable
+
 namespace WebShop.Models
 {
     public partial class Attribute
@@ -8,8 +11,10 @@ namespace WebShop.Models
         {
             AttributesPrices = new HashSet<AttributesPrice>();
         }
+
         public int AttributeId { get; set; }
         public string Name { get; set; }
+
         public virtual ICollection<AttributesPrice> AttributesPrices { get; set; }
     }
 }

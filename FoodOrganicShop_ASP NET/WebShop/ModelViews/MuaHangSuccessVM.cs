@@ -1,4 +1,5 @@
-﻿namespace WebShop.ModelViews
+﻿using System;
+namespace WebShop.ModelViews
 {
     public class MuaHangSuccessVM
     {
@@ -9,5 +10,6 @@
         public string PhuongXa { get; set; }
         public string QuanHuyen { get; set; }
         public string TinhThanh { get; set; }
+
     }
 }

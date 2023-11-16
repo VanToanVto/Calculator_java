@@ -2,6 +2,7 @@
 @{
     //var total = Model.ChiTietDonHang.Sum(x => x.TotalMoney).Value.ToString("#,##0");
     var total = Model.DonHang.TotalMoney.ToString("#,##0");
+   
 }
 <h3>Thông tin đơn hàng: #@Model.DonHang.OrderId</h3>
 <br />
@@ -9,6 +10,7 @@
 <p>Trạng thái đơn hàng: @Model.DonHang.TransactStatus.Status</p>
 <p>Tổng giá trị đơn hàng: <strong> @total VNĐ</strong></p>
 <p>Ngày ship hàng: @Model.DonHang.ShipDate</p>
+
 <div class="table-responsive">
     <table class="table table-bordered table-hover">
         <tbody>
@@ -19,11 +21,13 @@
                 <th>Đơn giá</th>
                 <th>Thành tiền</th>
             </tr>
+
                 @foreach (var item in Model.ChiTietDonHang)
                 {
                 var am = @item.Amount.Value;
                 var mn = @item.Product.Price.Value;
                 var tt = am * mn;
+
                     <tr>
                         <td>@item.ProductId</td>
                         <td>@item.Product.ProductName</td>
@@ -35,3 +39,5 @@
         </tbody>
     </table>
    </div>
+
+

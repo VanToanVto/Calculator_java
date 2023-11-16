@@ -1,8 +1,10 @@
 ﻿@model WebShop.Models.TinDang
+
 @{
 	ViewData["Title"] = "Delete";
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+
 <div class="page-header">
 	<div class="header-sub-title">
 		<nav class="breadcrumb breadcrumb-dash">
@@ -12,6 +14,7 @@
 		</nav>
 	</div>
 </div>
+
 <div>
 	<div class="card">
 		<div class="card-body">
@@ -28,6 +31,7 @@
 							<p class="text-muted m-b-0">ID: #@Model.PostId</p>
 						</div>
 					</div>
+
 				</div>
 			</div>
 			<div class="table-responsive">
@@ -47,6 +51,7 @@
 								<img width="200" height="200" src="~/images/news/@Model.Thumb" alt="@Model.Title" />
 							</td>
 						</tr>
+
 						<tr>
 							<td class="card-title">Trạng thái:</td>
 							<td>
@@ -118,15 +123,22 @@
 								<form asp-action="Delete">
 									<input type="hidden" asp-for="PostId" />
 									<input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+
 								</form>
 							</td>
 						</tr>
+
+
 					</tbody>
 				</table>
 				<div class="m-b-15">
 					<a class="btn btn-primary m-r-10" asp-action="Index"><i class="anticon anticon-rollback m-r-5"></i><span>Trở về</span></a>
+
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 </div>
+

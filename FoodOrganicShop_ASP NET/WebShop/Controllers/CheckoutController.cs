@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebShop.Extension;
+using WebShop.Helpper;
 using WebShop.Models;
 using WebShop.ModelViews;
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace WebShop.Controllers
 {
     public class CheckoutController : Controller
@@ -52,6 +57,7 @@ namespace WebShop.Controllers
             ViewBag.GioHang = cart;
             return View(model);
         }
+
         [HttpPost]
         [Route("checkout.html", Name ="Checkout")]
         public IActionResult Index(MuaHangVM muaHang)
@@ -68,6 +74,8 @@ namespace WebShop.Controllers
                 model.Email = khachhang.Email;
                 model.Phone = khachhang.Phone;
                 model.Address = khachhang.Address;
+                             
+               
                 _context.Update(khachhang);
                 _context.SaveChanges();
             }
@@ -83,6 +91,7 @@ namespace WebShop.Controllers
                     donhang.TransactStatusId = 1;//Don hang moi
                     donhang.Deleted = false;
                     donhang.Paid = false;
+                   
                     donhang.TotalMoney = Convert.ToInt32(cart.Sum(x => x.TotalMoney));
                     _context.Add(donhang);
                     _context.SaveChanges();
@@ -98,6 +107,7 @@ namespace WebShop.Controllers
                         orderDetail.CreateDate = DateTime.Now;
                         _context.Add(orderDetail);
                     }
+                    
                     _context.SaveChanges();
                     //clear gio hang
                     HttpContext.Session.Remove("GioHang");
@@ -105,10 +115,13 @@ namespace WebShop.Controllers
                     _notyfService.Success("Đơn hàng đặt thành công");
                     //cap nhat thong tin khach hang
                     return RedirectToAction("Success");
+
+
                 }
             }
             catch(Exception ex)
             {
+                
                 ViewBag.GioHang = cart;
                 return View(model);
             }
@@ -135,6 +148,7 @@ namespace WebShop.Controllers
                 successVM.DonHangID = donhang.OrderId;
                 successVM.Phone = khachhang.Phone;
                 successVM.Address = khachhang.Address;
+                
                 return View(successVM);
             }
             catch 

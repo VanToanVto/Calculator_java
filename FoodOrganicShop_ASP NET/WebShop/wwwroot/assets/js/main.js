@@ -6,6 +6,7 @@
 	$.fn.elExists = function () {
 		return this.length > 0;
 	};
+
     /*--
         Custom script to call Background
         Image & Color from html data attribute
@@ -20,10 +21,12 @@
             $color = $this.data('bg-color');
         $this.css('background-color', $color);
 	});
+
 	/*----------------------------------------*/
 	/*  WOW
 /*----------------------------------------*/
 	new WOW().init();
+
 	/*---------------------------------------
 		Header Sticky
 ---------------------------------*/
@@ -34,6 +37,7 @@
 			$('.header-sticky').removeClass('sticky');
 		}
 	});
+
 	/*----------------------------------------*/
 	/*  HasSub Item
 /*----------------------------------------*/
@@ -53,6 +57,7 @@
 			element.siblings('li').find('ul').slideUp();
 		}
 	});
+
 	/*---------------------------------------
 		Swiper All Slider
 ---------------------------------*/
@@ -82,6 +87,7 @@
 	}, function () {
 		(this).swiper.autoplay.start();
 	});
+	
 	/* ---Main Slider--- */
 	if ($('.main-slider').elExists()) {
 		var swiper = new Swiper('.main-slider', {
@@ -132,6 +138,7 @@
 			},
 		});
 	}
+
 	/* --- Product Slider--- */
 	if($('.product-slider').elExists()){
 		var mySwiper = new Swiper('.product-slider', {
@@ -158,6 +165,7 @@
 			}
 		});
 	}
+
 	/* --- Product List Slider--- */
 	if($('.product-list-slider').elExists()){
 		var mySwiper = new Swiper('.product-list-slider', {
@@ -191,6 +199,7 @@
 			}
 		});
 	}
+
 	/* --- Product List Slider Two--- */
 	if($('.widgets-list-slider').elExists()){
 		var mySwiper = new Swiper('.widgets-list-slider', {
@@ -223,6 +232,7 @@
 			}
 		});
 	}
+
 	/* --- Blog Slider--- */
 	if($('.blog-slider').elExists()){
 		var mySwiper = new Swiper('.blog-slider', {
@@ -246,6 +256,7 @@
 			}
 		});
 	}
+
 	/* --- Single Blog Slider--- */
 	if($('.single-blog-slider').elExists()){
 		var swiper = new Swiper('.single-blog-slider', {
@@ -271,6 +282,7 @@
 	}, function () {
 		(this).swiper.autoplay.start();
 	});
+
 	/* --- Testimonial Sliderr--- */
 	if($('.testimonial-slider').elExists()){
 		var mySwiper = new Swiper('.testimonial-slider', {
@@ -287,6 +299,7 @@
 			},
 		});
 	}
+
 	/* --- Brand Sliderr--- */
 	if($('.brand-slider').elExists()){
 		var mySwiper = new Swiper('.brand-slider', {
@@ -317,6 +330,7 @@
 			}
 		});
 	}
+
 	/* --- Team Member Sliderr--- */
 	if($('.team-member-slider').elExists()){
 		var mySwiper = new Swiper('.team-member-slider', {
@@ -340,6 +354,7 @@
 			}
 		});
 	}
+
 	/* ---Product Detail Horizontal Slider--- */
 	if($('.single-product-slider').elExists()){
 		var singleProduct = new Swiper('.single-product-thumbs', {
@@ -389,10 +404,12 @@
 			}
 		});
 	}
+
 	/* ---Scene--- */
 	$('.scene').each(function () {
         new Parallax($(this)[0]);
     });
+
 	/*----------------------------------------*/
 	/* Toggle Function Active
 	/*----------------------------------------*/
@@ -408,10 +425,12 @@
 	$('#cbox').on('click', function () {
 		$('#cbox-info').slideToggle(900);
 	});
+
 	// showlogin toggle
 	$('#ship-box').on('click', function () {
 		$('#ship-box-info').slideToggle(1000);
 	});
+
 	/*----------------------------------------*/
 	/*  Countdown
 /*----------------------------------------*/
@@ -428,14 +447,17 @@
 			minsLeft = Math.floor((e_hrsLeft - hrsLeft) * 60),
 			e_secsLeft = (e_minsLeft - minsLeft) * 60,
 			secsLeft = Math.floor((e_minsLeft - minsLeft) * 60);
+
 		var yearsLeft = 0;
 		var monthsLeft = 0
 		var weeksLeft = 0;
+
 		if ($format != 'short') {
 			if (daysLeft > 365) {
 				yearsLeft = Math.floor(daysLeft / 365);
 				daysLeft = daysLeft % 365;
 			}
+
 			if (daysLeft > 30) {
 				monthsLeft = Math.floor(daysLeft / 30);
 				daysLeft = daysLeft % 30;
@@ -445,6 +467,7 @@
 				daysLeft = daysLeft % 7;
 			}
 		}
+
 		var yearsLeft = yearsLeft < 10 ? "0" + yearsLeft : yearsLeft,
 			monthsLeft = monthsLeft < 10 ? "0" + monthsLeft : monthsLeft,
 			weeksLeft = weeksLeft < 10 ? "0" + weeksLeft : weeksLeft,
@@ -459,6 +482,7 @@
 			hourText = hrsLeft > 1 ? 'hrs' : 'hr',
 			minsText = minsLeft > 1 ? 'mins' : 'min',
 			secText = secsLeft > 1 ? 'secs' : 'sec';
+
 		var $markup = {
 			wrapper: $this.find('.countdown__item'),
 			year: $this.find('.yearsLeft'),
@@ -476,6 +500,7 @@
 			minTxt: $this.find('.minsText'),
 			secTxt: $this.find('.secsText')
 		}
+
 		var elNumber = $markup.wrapper.length;
 		$this.addClass('item-' + elNumber);
 		$($markup.year).html(yearsLeft);
@@ -493,6 +518,7 @@
 		$($markup.second).html(secsLeft);
 		$($markup.secTxt).html(secText);
 	}
+
 	if ($('.countdown').elExists()) {
 		$('.countdown').each(function () {
 			var $this = $(this);
@@ -503,6 +529,7 @@
 			}, 0);
 		});
 	}
+
 	/*------------------------------------
 	    Magnific Popup
 	    ------------------------------------- */
@@ -525,6 +552,8 @@
 				}
 			});
 		}
+		
+	
 	/*------------------------------------
 	Toolbar Button
 	------------------------------------- */
@@ -539,19 +568,23 @@
 		$(prevTarget).removeClass('open');
 		$($overlay).addClass('overlay-open');
 	});
+
 	/*----------------------------------------*/
 	/*  Click on Documnet
 /*----------------------------------------*/
 	var $body = $('.global-overlay');
+
 	$body.on('click', function (e) {
 		var $target = e.target;
 		var dom = $('.main-wrapper').children();
+
 		if (!$($target).is('.toolbar-btn') && !$($target).parents().is('.open')) {
 			dom.removeClass('open');
 			dom.find('.open').removeClass('open');
 			$overlay.removeClass('overlay-open');
 		}
 	});
+
 	/*----------------------------------------*/
 	/*  Close Button Actions
 /*----------------------------------------*/
@@ -562,6 +595,7 @@
 		$this.parents('.open').removeClass('open');
 		dom.find('.global-overlay').removeClass('overlay-open');
 	});
+
 	/*----------------------------------------*/
 	/*  Offcanvas
 /*----------------------------------------*/
@@ -572,7 +606,9 @@
 		$offcanvasNavSubMenu = $offcanvasNav.find('.sub-menu'),
 		$menuToggle = $('.menu-btn'),
 		$menuClose = $('.button-close');
+
 	$offcanvasNavSubMenu.slideUp();
+
 	$offcanvasNav.on('click', 'li a, li .menu-expand', function (e) {
 		var $this = $(this);
 		if (
@@ -595,11 +631,13 @@
 			$this.toggleClass('menu-open');
 		}
 	});
+
 	$('.button-close').on('click', function (e) {
 		e.preventDefault();
 		$('.mobile-menu .sub-menu').slideUp();
 		$('.mobile-menu .menu-item-has-children').removeClass('menu-open');
 	})
+
 	/*----------------------------------------*/
 	/*  Slider Range
 /*----------------------------------------*/
@@ -618,6 +656,7 @@
 		});
 		amountprice.val('$' + sliderrange.slider('values', 0) + ' - $' + sliderrange.slider('values', 1));
 	});
+
 	/*----------------------------------------*/
 	/*  QTY Button
 /*----------------------------------------*/
@@ -639,12 +678,14 @@
 		}
 		$button.parent().find('input').val(newVal);
 	});
+
 	/*----------------------------------------*/
 	/*  Nice Select
 /*----------------------------------------*/
 	if ($('.nice-select').elExists()) {
 		$('.nice-select').niceSelect();
 	}
+	
 	/*--------------------------------
     Ajax Contact Form
 -------------------------------- */
@@ -669,8 +710,10 @@
 				// Make sure that the formMessages div has the 'success' class.
 				$(formMessages).removeClass('error');
 				$(formMessages).addClass('success');
+
 				// Set the message text.
 				$(formMessages).text(response);
+
 				// Clear the form.
 				$('#contact-form input,#contact-form textarea').val('');
 			})
@@ -678,6 +721,7 @@
 				// Make sure that the formMessages div has the 'error' class.
 				$(formMessages).removeClass('success');
 				$(formMessages).addClass('error');
+
 				// Set the message text.
 				if (data.responseText !== '') {
 					$(formMessages).text(data.responseText);
@@ -686,7 +730,9 @@
 				}
 			});
 		});
+
 	});
+	
 	/*--------------------------------
     Scroll To Top
 -------------------------------- */
@@ -694,6 +740,7 @@
 		var $scrollUp = $('.scroll-to-top'),
 			$lastScrollTop = 0,
 			$window = $(window);
+
 		$window.on('scroll', function () {
 			var topPos = $(this).scrollTop();
 			if (topPos > $lastScrollTop) {
@@ -707,6 +754,7 @@
 			}
 			$lastScrollTop = topPos;
 		});
+
 		$scrollUp.on('click', function (evt) {
 			$('html, body').animate({
 				scrollTop: 0
@@ -714,5 +762,7 @@
 			evt.preventDefault();
 		});
 	}
+
 	scrollToTop();
+
 })(jQuery);

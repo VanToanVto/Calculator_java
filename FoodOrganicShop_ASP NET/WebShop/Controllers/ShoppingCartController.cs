@@ -1,12 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebShop.Extension;
 using WebShop.Models;
 using WebShop.ModelViews;
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace WebShop.Controllers
 {
     public class ShoppingCartController : Controller
@@ -30,17 +34,20 @@ namespace WebShop.Controllers
                 return gh;
             }
         }
+
         [HttpPost]
         [Route("api/cart/add")]
         public IActionResult AddToCart(int productID, int? amount)
         {
             List<CartItem> cart = GioHang;
+
             try
             {
                 //Them san pham vao gio hang
                 CartItem item = cart.SingleOrDefault(p => p.product.ProductId == productID);
                 if (item != null) // da co => cap nhat so luong
                 {
+                    
                     item.amount = item.amount + amount.Value;
                     //luu lai session
                     HttpContext.Session.Set<List<CartItem>>("GioHang", cart);
@@ -55,6 +62,7 @@ namespace WebShop.Controllers
                     };
                     cart.Add(item);//Them vao gio
                 }
+
                 //Luu lai Session
                 HttpContext.Session.Set<List<CartItem>>("GioHang", cart);
                 _notyfService.Success("Thêm sản phẩm thành công");
@@ -90,10 +98,12 @@ namespace WebShop.Controllers
                 return Json(new { success = false });
             }
         }
+
         [HttpPost]
         [Route("api/cart/remove")]
         public ActionResult Remove(int productID)
         {
+            
             try
             {
                 List<CartItem> gioHang = GioHang;

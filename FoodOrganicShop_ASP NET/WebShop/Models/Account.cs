@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+
 #nullable disable
+
 namespace WebShop.Models
 {
     public partial class Account
@@ -14,6 +17,7 @@ namespace WebShop.Models
         public int? RoleId { get; set; }
         public DateTime? LastLogin { get; set; }
         public DateTime? CreateDate { get; set; }
+
         public virtual Role Role { get; set; }
     }
 }

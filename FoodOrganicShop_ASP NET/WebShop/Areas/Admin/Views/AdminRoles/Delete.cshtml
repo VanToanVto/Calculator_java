@@ -1,8 +1,11 @@
 @model WebShop.Models.Role
+
 @{
 	ViewData["Title"] = "Xác nhận xóa quyền truy cập";
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+
+
 <div class="page-header">
 	<div class="header-sub-title">
 		<nav class="breadcrumb breadcrumb-dash">
@@ -12,8 +15,10 @@
 		</nav>
 	</div>
 </div>
+
 <div class="card">
 	<div class="card-body">
+
 		<h1>Xác nhận xóa quyền truy cập</h1>
 		<hr />
 		<div class="col-md-6">
@@ -38,7 +43,9 @@
 							<input type="hidden" asp-for="RoleId" />
 							<input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
 						</form>
+
 					</td>
+
 				</tr>
 			</tbody>
 		</table>
@@ -48,3 +55,4 @@
 	</div>
 	</div>
 </div>
+

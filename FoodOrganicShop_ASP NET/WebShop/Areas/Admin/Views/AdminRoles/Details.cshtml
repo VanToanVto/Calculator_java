@@ -1,4 +1,5 @@
 @model WebShop.Models.Role
+
 @{
 	ViewData["Title"] = "Thông tin quyền truy cập";
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -31,11 +32,13 @@
 						<td class="card-title">Mô tả:</td>
 						<td>@Model.Description</td>
 					</tr>
+
 				</tbody>
 			</table>
 			<div class="m-b-15">
 				<a class="btn btn-primary m-r-10" asp-action="Index"><i class="anticon anticon-rollback m-r-5"></i><span>Trở về</span></a>
 				<a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminRoles" asp-action="Edit" asp-route-id="@Model.RoleId"><i class="anticon anticon-edit m-r-5"></i><span>Chỉnh sửa</span></a>
+
 			</div>
 		</div>
 	</div>

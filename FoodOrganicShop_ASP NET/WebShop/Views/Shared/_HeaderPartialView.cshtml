@@ -14,12 +14,14 @@
 									<li><a class="dropdown-item" href="#">日本語</a></li>
 								</ul>
 							</li>
+
 							<li>
 								<i class="fa fa-mobile" style=" font-size: 20px; display: inline-block; position: relative; transform: translateY(2px); "></i>
 								Liên hệ nhanh
 								<a href="tel:0964127981">096.412.7981</a>
 							</li>
 							<li>
+
 							</li>
 						</ul>
 					</div>
@@ -28,7 +30,7 @@
 					<div class="header-top text-matterhorn">
 						<p class="shipping mb-0">
 							<i class="fa fa-map-marker" aria-hidden="true"></i>
-							Nhà VTO, Số 5, Ngách 197/12, Ngõ 197, Tây Tựu, Bắc Từ Liêm, Hà Nội
+							KM29 Thạch hòa, Thạch Thất, Hà Nội
 						</p>
 					</div>
 				</div>
@@ -52,7 +54,10 @@
 							<form class="header-searchbox">
 								<input id="keyword" name="keyword" class="input-field" type="text" placeholder="Tìm kiếm sản phẩm">
 								<button class="btn btn-outline-whisper btn-primary-hover" type="submit"><i class="pe-7s-search"></i></button>
+								
 							</form>
+						
+
 							@*<div>
 							<i class="prefix-icon anticon anticon-search opacity-04"></i>
 							<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
@@ -60,10 +65,20 @@
 							<div class="table-responsive">
 							<table class="table table-hover e-commerce-table">
 							<tbody id="records_table">
+
 							</tbody>
+
 							</table>
 							</div>*@
+
+
+
+
+
+
 						</div>
+							
+
 						<div class="header-right">
 							<ul>
 								<li class="dropdown d-none d-md-block">
@@ -103,6 +118,7 @@
 								</li>
 							</ul>
 						</div>
+						
 					</div>
 					<div id="records_table" class="results-box">
 						</div>
@@ -164,7 +180,9 @@
 								<li><a class="dropdown-item" href="#">日本語</a></li>
 							</ul>
 						</li>
+
 						<li class="dropdown dropup">
+
 							<button class="btn btn-link dropdown-toggle ht-btn p-0" type="button" id="settingButtonTwo" data-bs-toggle="dropdown" aria-expanded="false">
 								<i class="pe-7s-users"></i>
 							</button>
@@ -208,18 +226,24 @@
 										Shop
 									</span>
 								</a>
+
 							</li>
+
+
 							<li class="menu-item-has-children">
 								<a href="#">
 									<span class="mm-text">
 										Hướng dẫn mua hàng
+
 									</span>
 								</a>
+
 							</li>
 							<li class="menu-item-has-children">
 								<a asp-controller="Blog" asp-action="Index">
 									<span class="mm-text">
 										Blog
+
 									</span>
 								</a>
 							</li>
@@ -254,7 +278,11 @@
 		@await Component.InvokeAsync("HeaderCart")
 	</div>
 	<div class="global-overlay"></div>
+	
 </header>
+
+
+
 @section Scripts{
 	<script>
 	$(document).ready(function () {
@@ -278,5 +306,8 @@
 		});
 	});
 	</script>
+
     <script src="~/js/search.js"></script>
+
+
 	}

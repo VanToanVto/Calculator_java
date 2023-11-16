@@ -1,3 +1,4 @@
+
 		$(document).ready(function () {
 			jQuery("#txtCatID").change(function () {
 				var catID = jQuery(this).children(":selected").attr("value");
@@ -23,6 +24,7 @@
 					}
 				});
 			});
+
 		$("#keyword").keyup(function () {
 				var strkeyword = $('#keyword').val();
 		console.log(strkeyword);
@@ -42,3 +44,4 @@
 				});
 			});
 		});
+

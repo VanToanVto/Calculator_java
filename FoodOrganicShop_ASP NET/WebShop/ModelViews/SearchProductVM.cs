@@ -1,4 +1,5 @@
-﻿namespace WebShop.ModelViews
+﻿using System;
+namespace WebShop.ModelViews
 {
     public class SearchProductVM
     {

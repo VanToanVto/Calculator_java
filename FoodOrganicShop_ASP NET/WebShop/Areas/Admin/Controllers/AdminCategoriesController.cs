@@ -1,13 +1,17 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PagedList.Core;
 using WebShop.Helpper;
 using WebShop.Models;
+
 namespace WebShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -21,6 +25,7 @@ namespace WebShop.Areas.Admin.Controllers
             _context = context;
             _notyfService = notyfService;
         }
+
         // GET: Admin/AdminCategories
         public IActionResult Index(int? page)
         {
@@ -30,9 +35,11 @@ namespace WebShop.Areas.Admin.Controllers
                 .AsNoTracking()
                 .OrderBy(x => x.CatId);
             PagedList<Category> models = new PagedList<Category>(lsCategorys, pageNumber, pageSize);
+
             ViewBag.CurrentPage = pageNumber;
             return View(models);
         }
+
         // GET: Admin/AdminCategories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -40,19 +47,23 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
             var category = await _context.Categories
                 .FirstOrDefaultAsync(m => m.CatId == id);
             if (category == null)
             {
                 return NotFound();
             }
+
             return View(category);
         }
+
         // GET: Admin/AdminCategories/Create
         public IActionResult Create()
         {
             return View();
         }
+
         // POST: Admin/AdminCategories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -78,6 +89,7 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(category);
         }
+
         // GET: Admin/AdminCategories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -85,6 +97,7 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
             var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {
@@ -92,6 +105,7 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(category);
         }
+
         // POST: Admin/AdminCategories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -103,6 +117,7 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
             if (ModelState.IsValid)
             {
                 try
@@ -134,6 +149,7 @@ namespace WebShop.Areas.Admin.Controllers
             }
             return View(category);
         }
+
         // GET: Admin/AdminCategories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -141,14 +157,17 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
             var category = await _context.Categories
                 .FirstOrDefaultAsync(m => m.CatId == id);
             if (category == null)
             {
                 return NotFound();
             }
+
             return View(category);
         }
+
         // POST: Admin/AdminCategories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -160,6 +179,7 @@ namespace WebShop.Areas.Admin.Controllers
             _notyfService.Success("Xóa thành công");
             return RedirectToAction(nameof(Index));
         }
+
         private bool CategoryExists(int id)
         {
             return _context.Categories.Any(e => e.CatId == id);

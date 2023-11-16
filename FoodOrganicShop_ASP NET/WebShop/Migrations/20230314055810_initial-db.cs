@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+
 namespace WebShop.Migrations
 {
     public partial class initialdb : Migration
@@ -18,6 +19,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_Attributes", x => x.AttributeID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
@@ -42,6 +44,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_Categories", x => x.CatID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "Customers",
                 columns: table => new
@@ -67,6 +70,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_Customers", x => x.CustomerID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "Locations",
                 columns: table => new
@@ -83,6 +87,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_Locations", x => x.LocationID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "LoginViewModel",
                 columns: table => new
@@ -94,6 +99,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_LoginViewModel", x => x.UserName);
                 });
+
             migrationBuilder.CreateTable(
                 name: "Pages",
                 columns: table => new
@@ -115,6 +121,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_Pages", x => x.PageID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "QuangCaos",
                 columns: table => new
@@ -133,6 +140,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_QuangCaos", x => x.QuangCaoID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "RegisterViewModel",
                 columns: table => new
@@ -149,6 +157,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_RegisterViewModel", x => x.CustomerId);
                 });
+
             migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
@@ -162,6 +171,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_Roles", x => x.RoleID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "Shippers",
                 columns: table => new
@@ -177,6 +187,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_Shippers", x => x.ShipperID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "TinDangs",
                 columns: table => new
@@ -204,6 +215,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_tblTinTucs", x => x.PostID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "TransactStatus",
                 columns: table => new
@@ -217,6 +229,7 @@ namespace WebShop.Migrations
                 {
                     table.PrimaryKey("PK_TransactStatus", x => x.TransactStatusID);
                 });
+
             migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
@@ -253,6 +266,7 @@ namespace WebShop.Migrations
                         principalColumn: "CatID",
                         onDelete: ReferentialAction.Cascade);
                 });
+
             migrationBuilder.CreateTable(
                 name: "Accounts",
                 columns: table => new
@@ -279,6 +293,7 @@ namespace WebShop.Migrations
                         principalColumn: "RoleID",
                         onDelete: ReferentialAction.Restrict);
                 });
+
             migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
@@ -316,6 +331,7 @@ namespace WebShop.Migrations
                         principalColumn: "TransactStatusID",
                         onDelete: ReferentialAction.Restrict);
                 });
+
             migrationBuilder.CreateTable(
                 name: "AttributesPrices",
                 columns: table => new
@@ -343,6 +359,7 @@ namespace WebShop.Migrations
                         principalColumn: "ProductID",
                         onDelete: ReferentialAction.Restrict);
                 });
+
             migrationBuilder.CreateTable(
                 name: "OrderDetails",
                 columns: table => new
@@ -374,73 +391,98 @@ namespace WebShop.Migrations
                         principalColumn: "ProductID",
                         onDelete: ReferentialAction.Restrict);
                 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_RoleID",
                 table: "Accounts",
                 column: "RoleID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AttributesPrices_AttributeID",
                 table: "AttributesPrices",
                 column: "AttributeID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AttributesPrices_ProductID",
                 table: "AttributesPrices",
                 column: "ProductID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_OrderID",
                 table: "OrderDetails",
                 column: "OrderID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_ProductID",
                 table: "OrderDetails",
                 column: "ProductID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CustomerID",
                 table: "Orders",
                 column: "CustomerID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_TransactStatusID",
                 table: "Orders",
                 column: "TransactStatusID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CatID",
                 table: "Products",
                 column: "CatID");
         }
+
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Accounts");
+
             migrationBuilder.DropTable(
                 name: "AttributesPrices");
+
             migrationBuilder.DropTable(
                 name: "Locations");
+
             migrationBuilder.DropTable(
                 name: "LoginViewModel");
+
             migrationBuilder.DropTable(
                 name: "OrderDetails");
+
             migrationBuilder.DropTable(
                 name: "Pages");
+
             migrationBuilder.DropTable(
                 name: "QuangCaos");
+
             migrationBuilder.DropTable(
                 name: "RegisterViewModel");
+
             migrationBuilder.DropTable(
                 name: "Shippers");
+
             migrationBuilder.DropTable(
                 name: "TinDangs");
+
             migrationBuilder.DropTable(
                 name: "Roles");
+
             migrationBuilder.DropTable(
                 name: "Attributes");
+
             migrationBuilder.DropTable(
                 name: "Orders");
+
             migrationBuilder.DropTable(
                 name: "Products");
+
             migrationBuilder.DropTable(
                 name: "Customers");
+
             migrationBuilder.DropTable(
                 name: "TransactStatus");
+
             migrationBuilder.DropTable(
                 name: "Categories");
         }

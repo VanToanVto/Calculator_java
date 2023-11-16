@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+
 #nullable disable
+
 namespace WebShop.Models
 {
     public partial class Product
@@ -10,6 +12,7 @@ namespace WebShop.Models
             AttributesPrices = new HashSet<AttributesPrice>();
             OrderDetails = new HashSet<OrderDetail>();
         }
+
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ShortDesc { get; set; }
@@ -30,6 +33,7 @@ namespace WebShop.Models
         public string MetaDesc { get; set; }
         public string MetaKey { get; set; }
         public int? UnitsInStock { get; set; }
+
         public virtual Category Cat { get; set; }
         public virtual ICollection<AttributesPrice> AttributesPrices { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
