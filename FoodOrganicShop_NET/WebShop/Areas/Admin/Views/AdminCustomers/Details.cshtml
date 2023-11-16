@@ -1,0 +1,79 @@
+﻿@model WebShop.Models.Customer
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+	<div class="header-sub-title">
+		<nav class="breadcrumb breadcrumb-dash">
+			<a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+			<a asp-area="Admin" asp-controller="AdminCustomers" asp-action="Index" class="breadcrumb-item">Danh sách khách</a>
+			<span class="breadcrumb-item active">Thông tin khách hàng : @Model.FullName</span>
+		</nav>
+	</div>
+</div>
+<div class="card">
+	<div class="card-body">
+		<h1>Thông tin khách hàng</h1>
+		<hr />
+
+		<div class="table-responsive">
+			<table class="product-info-table m-t-20">
+				<tbody>
+					<tr>
+						<td class="card-title">ID:</td>
+						<td class="text-dark font-weight-semibold">@Model.CustomerId</td>
+					</tr>
+					<tr>
+						<td class="card-title">Email</td>
+						<td>@Model.Email/td>
+					</tr>
+					<tr>
+						<td class="card-title">Số điện thoại</td>
+						<td>@Model.Phone</td>
+					</tr>
+					<tr>
+						<td class="card-title">Địa chỉ</td>
+						<td>@Model.Address</td>
+					</tr>
+					<tr>
+						<td class="card-title">Ngày tạo</td>
+						<td>@Model.CreateDate</td>
+					</tr>
+					<tr>
+						<td class="card-title">Trạng thái:</td>
+						<td>
+							@if (Model.Active)
+							{
+								<div class="switch m-r-10">
+									<input type="checkbox" id="switch-1" checked="" disabled />
+									<label for="switch-1"></label>
+								</div>
+							}
+							else
+							{
+								<div class="switch m-r-10">
+									<input type="checkbox" id="switch-1" disabled />
+									<label for="switch-1"></label>
+								</div>
+							}
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="card-title">Mật khẩu</td>
+						<td>@Model.Password</td>
+					</tr>
+					
+
+				</tbody>
+			</table>
+			<div class="m-b-15">
+				<a class="btn btn-primary m-r-10" asp-action="Index"><i class="anticon anticon-rollback m-r-5"></i><span>Trở về</span></a>
+				<a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCustomers" asp-action="Edit" asp-route-id="@Model.CustomerId"><i class="anticon anticon-edit m-r-5"></i><span>Chỉnh sửa</span></a>
+			</div>
+		</div>
+	</div>
+</div>
