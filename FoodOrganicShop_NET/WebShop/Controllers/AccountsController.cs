@@ -13,9 +13,6 @@ using WebShop.Extension;
 using WebShop.Helpper;
 using WebShop.Models;
 using WebShop.ModelViews;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace WebShop.Controllers
 {
     [Authorize]
@@ -35,11 +32,8 @@ namespace WebShop.Controllers
             try
             {
                 var khachhang = _context.Customers.AsNoTracking().SingleOrDefault(x => x.Phone.ToLower() == Phone.ToLower());
-                if (khachhang != null)
-                    return Json(data: "Số điện thoại : " + Phone + "đã được sử dụng");
-
+                if (khachhang != null) return Json(data: "Số điện thoại : " + Phone + "đã được sử dụng");
                 return Json(data: true);
-                
             }
             catch
             {
@@ -53,8 +47,7 @@ namespace WebShop.Controllers
             try
             {
                 var khachhang = _context.Customers.AsNoTracking().SingleOrDefault(x => x.Email.ToLower() == Email.ToLower());
-                if (khachhang != null)
-                    return Json(data: "Email : " + Email + " đã được sử dụng");
+                if (khachhang != null) return Json(data: "Email : " + Email + " đã được sử dụng");
                 return Json(data: true);
             }
             catch
@@ -71,16 +64,11 @@ namespace WebShop.Controllers
                 var khachhang = _context.Customers.AsNoTracking().SingleOrDefault(x => x.CustomerId == Convert.ToInt32(taikhoanID));
                 if (khachhang != null)
                 {
-                var lsDonHang=_context.Orders
-                        .AsNoTracking()
-                        .Include(x=>x.TransactStatus)
-                        .Where(x=>x.CustomerId==khachhang.CustomerId)
-                        .OrderByDescending(x=>x.OrderDate).ToList();
-
+                var lsDonHang=_context.Orders.AsNoTracking().Include(x=>x.TransactStatus)
+                        .Where(x=>x.CustomerId==khachhang.CustomerId).OrderByDescending(x=>x.OrderDate).ToList();
                     ViewBag.DonHang = lsDonHang;
 					return View(khachhang);
                 }
-                    
             }
             return RedirectToAction("Login");
         }
@@ -91,7 +79,6 @@ namespace WebShop.Controllers
         {
             return View();
         }
-
         [HttpPost]
         [AllowAnonymous]
         [Route("DangKy",Name ="DangKy")]
@@ -117,11 +104,8 @@ namespace WebShop.Controllers
                     {
                         _context.Add(khachhang);
                         await _context.SaveChangesAsync();
-                        //Lưu Session MaKh
                         HttpContext.Session.SetString("CustomerId", khachhang.CustomerId.ToString());
                         var taikhoanID = HttpContext.Session.GetString("CustomerId");
-
-                        //Identity
                         var claims = new List<Claim>
                         {
                             new Claim(ClaimTypes.Name,khachhang.FullName),
@@ -138,10 +122,7 @@ namespace WebShop.Controllers
                         return RedirectToAction("DangkyTaiKhoan", "Accounts");
                     }
                 }
-                else
-                {
-                    return View(taikhoan);
-                }
+                else return View(taikhoan);
             }
             catch 
             {
@@ -153,10 +134,7 @@ namespace WebShop.Controllers
         public IActionResult Login(string returnUrl = null)
         {
             var taikhoanID = HttpContext.Session.GetString("CustomerId");
-            if (taikhoanID != null)
-            {
-                return RedirectToAction("Dashboard", "Accounts");   
-            }
+            if (taikhoanID != null) return RedirectToAction("Dashboard", "Accounts");
             return View();
         }
         [HttpPost]
@@ -170,9 +148,7 @@ namespace WebShop.Controllers
                 {
                     bool isEmail = Utilities.IsValidEmail(customer.UserName);
                     if (!isEmail) return View(customer);
-
                     var khachhang = _context.Customers.AsNoTracking().SingleOrDefault(x => x.Email.Trim() == customer.UserName);
-
                     if (khachhang == null)
                     {
                         _notyfService.Error("Tài khoản không tồn tại");
@@ -182,25 +158,15 @@ namespace WebShop.Controllers
                     if(khachhang.Password != pass)
                     {
                         _notyfService.Error("Thông tin đăng nhập chưa chính xác");
-                        
                         return View(customer);
                     }
-                    //kiem tra xem account co bi disable hay khong
-
                     if (khachhang.Active == false)
                     {
-
-
 						_notyfService.Error("Tài khoản bị cấm truy cập");
-
 						return View(customer);
 					}
-
-                    //Luu Session MaKh
                     HttpContext.Session.SetString("CustomerId", khachhang.CustomerId.ToString());
                     var taikhoanID = HttpContext.Session.GetString("CustomerId");
-
-                    //Identity
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, khachhang.FullName),
@@ -210,14 +176,8 @@ namespace WebShop.Controllers
                     ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                     await HttpContext.SignInAsync(claimsPrincipal);
                     _notyfService.Success("Đăng nhập thành công");
-                    if (string.IsNullOrEmpty(returnUrl))
-                    {
-                        return RedirectToAction("Dashboard", "Accounts");
-                    }
-                    else
-                    {
-                        return Redirect(returnUrl);
-                    }
+                    if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Dashboard", "Accounts");
+                    else return Redirect(returnUrl);
                 }
             }
             catch
@@ -234,17 +194,13 @@ namespace WebShop.Controllers
             HttpContext.Session.Remove("CustomerId");
             return RedirectToAction("Index", "Home");
         }
-
         [HttpPost]
         public IActionResult ChangePassword(ChangePasswordViewModel model)
         {
             try
             {
                 var taikhoanID = HttpContext.Session.GetString("CustomerId");
-                if (taikhoanID == null)
-                {
-                    return RedirectToAction("Login", "Accounts");
-                }
+                if (taikhoanID == null) return RedirectToAction("Login", "Accounts");
                 if (ModelState.IsValid)
                 {
                     var taikhoan = _context.Customers.Find(Convert.ToInt32(taikhoanID));

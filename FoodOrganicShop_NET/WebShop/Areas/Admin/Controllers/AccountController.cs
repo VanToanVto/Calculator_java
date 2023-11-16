@@ -10,12 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebShop.Areas.Admin.Models;
-using WebShop.Extension;
-using WebShop.Helpper;
 using WebShop.Models;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace WebShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -29,13 +24,10 @@ namespace WebShop.Areas.Admin.Controllers
             _context = context;
             _notyfService = notyfService;
         }
-        // GET: /<controller>/
         public IActionResult Index()
         {
             return View();
         }
-
-
         [AllowAnonymous]
         [Route("LoginAdmin", Name = "Login")]
         public IActionResult AdminLogin(string returnUrl = null)
@@ -54,16 +46,9 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-
-
-                    Account kh = _context.Accounts
-                    .Include(p => p.Role)
-                    .SingleOrDefault(p => p.Email.ToLower() == model.UserName.ToLower().Trim());
-
-                    if (kh == null)
-                    {
-                        ViewBag.Error = "Thông tin đăng nhập chưa chính xác";
-                    }
+                    Account kh = _context.Accounts.Include(p => p.Role)
+                        .SingleOrDefault(p => p.Email.ToLower() == model.UserName.ToLower().Trim());
+                    if (kh == null) ViewBag.Error = "Thông tin đăng nhập chưa chính xác";
                     string pass = (model.Password.Trim());
                     // + kh.Salt.Trim()
                     if (kh.Password.Trim() != pass)
@@ -71,20 +56,11 @@ namespace WebShop.Areas.Admin.Controllers
                         ViewBag.Error = "Thông tin đăng nhập chưa chính xác";
                         return View(model);
                     }
-                    //đăng nhập thành công
-
-                    //ghi nhận thời gian đăng nhập
                     kh.LastLogin = DateTime.Now;
                     _context.Update(kh);
                     await _context.SaveChangesAsync();
-
-
                     var taikhoanID = HttpContext.Session.GetString("AccountId");
-                    //identity
-                    //luuw seccion Makh
                     HttpContext.Session.SetString("AccountId", kh.AccountId.ToString());
-
-                    //identity
                     var userClaims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, kh.FullName),
@@ -96,8 +72,6 @@ namespace WebShop.Areas.Admin.Controllers
                     var grandmaIdentity = new ClaimsIdentity(userClaims, "User Identity");
                     var userPrincipal = new ClaimsPrincipal(new[] { grandmaIdentity });
                     await HttpContext.SignInAsync(userPrincipal);
-
-
                     return RedirectToAction("Index", "Home", new { Area = "Admin" });
                 }
             }
@@ -121,6 +95,5 @@ namespace WebShop.Areas.Admin.Controllers
                 return RedirectToAction("AdminLogin", "Account", new { Area = "Admin" });
             }
         }
-
     }
 }
