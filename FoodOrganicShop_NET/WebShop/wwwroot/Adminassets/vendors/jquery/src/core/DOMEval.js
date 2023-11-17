@@ -2,19 +2,24 @@ define( [
 	"../var/document"
 ], function( document ) {
 	"use strict";
+
 	var preservedScriptAttributes = {
 		type: true,
 		src: true,
 		nonce: true,
 		noModule: true
 	};
+
 	function DOMEval( code, node, doc ) {
 		doc = doc || document;
+
 		var i, val,
 			script = doc.createElement( "script" );
+
 		script.text = code;
 		if ( node ) {
 			for ( i in preservedScriptAttributes ) {
+
 				// Support: Firefox 64+, Edge 18+
 				// Some browsers don't support the "nonce" property on scripts.
 				// On the other hand, just using `getAttribute` is not enough as
@@ -33,5 +38,6 @@ define( [
 		}
 		doc.head.appendChild( script ).parentNode.removeChild( script );
 	}
+
 	return DOMEval;
 } );

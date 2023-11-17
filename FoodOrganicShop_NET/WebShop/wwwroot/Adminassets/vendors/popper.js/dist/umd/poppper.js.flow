@@ -16,6 +16,7 @@ declare module 'popper.js' {
     | 'left-end'
     | 'left'
     | 'left-start';
+
   declare type Offset = {
     top: number,
     left: number,
@@ -23,8 +24,11 @@ declare module 'popper.js' {
     height: number,
     position: Position,
   };
+
   declare type Boundary = 'scrollParent' | 'viewport' | 'window';
+
   declare type Behavior = 'flip' | 'clockwise' | 'counterclockwise';
+
   declare type Data = {
     instance: Popper,
     placement: Placement,
@@ -44,18 +48,22 @@ declare module 'popper.js' {
       },
     },
   };
+
   declare type ModifierFn = (data: Data, options: Object) => Data;
+
   declare type Padding = {
     top?: number,
     bottom?: number,
     left?: number,
     right?: number,
   }
+
   declare type BaseModifier = {
     order?: number,
     enabled?: boolean,
     fn?: ModifierFn,
   };
+
   declare type Modifiers = {
     shift?: BaseModifier,
     offset?: BaseModifier & {
@@ -89,21 +97,28 @@ declare module 'popper.js' {
       x?: 'bottom' | 'top',
       y?: 'left' | 'right',
     },
+
     [name: string]: (BaseModifier & { [string]: * }) | null,
   };
+
   declare type Options = {
     placement?: Placement,
     positionFixed?: boolean,
     eventsEnabled?: boolean,
     modifiers?: Modifiers,
     removeOnDestroy?: boolean,
+
     onCreate?: (data: Data) => void,
+
     onUpdate?: (data: Data) => void,
   };
+
   declare var placements: Placement;
+
   declare type ReferenceObject = {
     +clientHeight: number,
     +clientWidth: number,
+
     getBoundingClientRect():
       | ClientRect
       | {
@@ -115,6 +130,7 @@ declare module 'popper.js' {
           left: number,
         },
   };
+
   declare type Instance = {
     destroy: () => void,
     scheduleUpdate: () => void,
@@ -122,15 +138,19 @@ declare module 'popper.js' {
     enableEventListeners: () => void,
     disableEventListeners: () => void,
   };
+
   declare class Popper {
     static placements: Placement;
+
     popper: Element;
     reference: Element | ReferenceObject;
+
     constructor(
       reference: Element | ReferenceObject,
       popper: Element,
       options?: Options
     ): Instance;
   }
+
   declare module.exports: Class<Popper>;
 }

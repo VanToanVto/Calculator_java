@@ -6,7 +6,6 @@
 	int PageCurrent = ViewBag.CurrentPage;
 	int PageNext = PageCurrent + 1;
 }
-<!-- Begin Main Content Area -->
 <main class="main-content">
 	<div class="breadcrumb-area breadcrumb-height" data-bg-image="/assets/images/banner/2-1-1920x523.jpg">
 		<div class="container h-100">
@@ -71,15 +70,7 @@
 														<div class="price-box pb-1">
 															<span class="new-price">@item.Price.Value.ToString("#,##0") VNĐ</span>
 														</div>
-														<div class="rating-box pb-2">
-															<ul>
-																<li><i class="pe-7s-star"></i></li>
-																<li><i class="pe-7s-star"></i></li>
-																<li><i class="pe-7s-star"></i></li>
-																<li><i class="pe-7s-star"></i></li>
-																<li><i class="pe-7s-star"></i></li>
-															</ul>
-														</div>
+														
 														<p class="short-desc mb-0">@item.ShortDesc</p>
 													</div>
 												</div>
@@ -100,7 +91,6 @@
 		</div>
 	</div>
 </main>
-<!-- Main Content Area End Here -->
 @section Scripts{
 	<script src="~/js/search.js"></script>
 }

@@ -2,6 +2,7 @@
 	input[type=checkbox] {
 		opacity: 0;
 		position: absolute;
+
 		+label {
 			position: relative;
 		    display: inline-block;
@@ -13,6 +14,7 @@
 			border-radius: 60px;
 			margin-bottom: 0px;
 		    cursor: pointer;
+
 		    &:before {
 		    	content: "";
 				position: absolute;
@@ -24,6 +26,7 @@
 				left: 0;
 				border-radius: 30px;
 		    }
+
 		    &:after {
 		    	content: "";
 				position: absolute;
@@ -38,17 +41,22 @@
 				border-radius: 60px;
 		    }
 		}
+
 		&:checked {
+
 			+label {
 				background: $switch-theme-color;
 				border-color: $switch-theme-color;
+
 				&:before {
 					@include transition(width 0.2s cubic-bezier(0, 0, 0, 0.1));
 				}
+
 				&:after {
 					left: $switch-gutter;
 				}
 			}
+
 			&:active {
 				&:not(:disabled){
 					+label {
@@ -60,8 +68,10 @@
 				}
 			}
 		}
+
 		&:not(:checked) {
 			&:active {
+
 				&:not(:disabled){
 					+label {
 						&:after {
@@ -71,6 +81,7 @@
 				}
 			}
 		}
+
 		&:disabled {
 			+label {
 				opacity: 0.6;

@@ -1,5 +1,7 @@
 import themeColors from '../constant/theme-constant'
+
 class DashboardCRM {
+
     static init() {
         const ratingChart = document.getElementById("rating-chart");
         const ratingChartCtx = ratingChart.getContext('2d');
@@ -56,6 +58,7 @@ class DashboardCRM {
                 }
             }
         });
+
         const salesChart = document.getElementById("sales-chart");
         const salesChartCtx = salesChart.getContext('2d');
         const salesChartConfig = new Chart(salesChartCtx, {
@@ -125,6 +128,7 @@ class DashboardCRM {
                 }
             }
         });
+
         const porgressChart = new Chart(document.getElementById('porgress-chart').getContext("2d"), {
             type: 'doughnut',
             data: {
@@ -135,6 +139,7 @@ class DashboardCRM {
                 borderWidth: 0
               }]
             },
+        
             options: {
               scales: {
                 xAxes: [{
@@ -157,4 +162,6 @@ class DashboardCRM {
         });
     }
 }
+
 $(() => { DashboardCRM.init(); });
+

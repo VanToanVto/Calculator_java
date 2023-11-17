@@ -3,6 +3,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['fr'] = {
         formatMatches: function (matches) { return matches + " résultats sont disponibles, utilisez les flèches haut et bas pour naviguer."; },
         formatNoMatches: function () { return "Aucun résultat trouvé"; },
@@ -12,5 +13,6 @@
         formatLoadMore: function (pageNumber) { return "Chargement de résultats supplémentaires…"; },
         formatSearching: function () { return "Recherche en cours…"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['fr']);
 })(jQuery);

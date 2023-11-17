@@ -1,9 +1,12 @@
 'use strict';
+
 var cls = require('./class');
 var dom = require('./dom');
+
 var toInt = exports.toInt = function (x) {
   return parseInt(x, 10) || 0;
 };
+
 var clone = exports.clone = function (obj) {
   if (!obj) {
     return null;
@@ -19,6 +22,7 @@ var clone = exports.clone = function (obj) {
     return obj;
   }
 };
+
 exports.extend = function (original, source) {
   var result = clone(original);
   for (var key in source) {
@@ -26,12 +30,14 @@ exports.extend = function (original, source) {
   }
   return result;
 };
+
 exports.isEditable = function (el) {
   return dom.matches(el, "input,[contenteditable]") ||
          dom.matches(el, "select,[contenteditable]") ||
          dom.matches(el, "textarea,[contenteditable]") ||
          dom.matches(el, "button,[contenteditable]");
 };
+
 exports.removePsClasses = function (element) {
   var clsList = cls.list(element);
   for (var i = 0; i < clsList.length; i++) {
@@ -41,6 +47,7 @@ exports.removePsClasses = function (element) {
     }
   }
 };
+
 exports.outerWidth = function (element) {
   return toInt(dom.css(element, 'width')) +
          toInt(dom.css(element, 'paddingLeft')) +
@@ -48,6 +55,7 @@ exports.outerWidth = function (element) {
          toInt(dom.css(element, 'borderLeftWidth')) +
          toInt(dom.css(element, 'borderRightWidth'));
 };
+
 exports.startScrolling = function (element, axis) {
   cls.add(element, 'ps-in-scrolling');
   if (typeof axis !== 'undefined') {
@@ -57,6 +65,7 @@ exports.startScrolling = function (element, axis) {
     cls.add(element, 'ps-y');
   }
 };
+
 exports.stopScrolling = function (element, axis) {
   cls.remove(element, 'ps-in-scrolling');
   if (typeof axis !== 'undefined') {
@@ -66,6 +75,7 @@ exports.stopScrolling = function (element, axis) {
     cls.remove(element, 'ps-y');
   }
 };
+
 exports.env = {
   isWebKit: 'WebkitAppearance' in document.documentElement.style,
   supportsTouch: (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch),

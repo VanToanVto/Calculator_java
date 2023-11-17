@@ -1,6 +1,9 @@
 import themeColors from '../constant/theme-constant'
+
 class DashboardDefault {
+
     static init() {
+
         const revenueChartConfig = new Chart(document.getElementById("revenue-chart").getContext('2d'), {
             type: 'line',
             data: {
@@ -61,6 +64,7 @@ class DashboardDefault {
                 }
             }
         });
+
         const customersChartConfig = new Chart(document.getElementById("customers-chart").getContext('2d'), {
             type: 'doughnut',
             data: {
@@ -80,6 +84,7 @@ class DashboardDefault {
                 maintainAspectRatio: false
             }
         });
+
         const avgProfitChartConfig = new Chart(document.getElementById("avg-profit-chart").getContext('2d'), {
             type: 'bar',
             data: {
@@ -154,4 +159,6 @@ class DashboardDefault {
         });
     }
 }
+
 $(() => { DashboardDefault.init(); });
+

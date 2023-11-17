@@ -5,6 +5,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['lv'] = {
         formatNoMatches: function () { return "Sakritību nav"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Lūdzu ievadiet vēl " + n + " simbol" + (n == 11 ? "us" : n%10 == 1 ? "u" : "us"); },
@@ -13,5 +14,6 @@
         formatLoadMore: function (pageNumber) { return "Datu ielāde…"; },
         formatSearching: function () { return "Meklēšana…"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['lv']);
 })(jQuery);

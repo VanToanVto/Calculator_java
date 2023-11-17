@@ -1,5 +1,7 @@
 // stylelint-disable declaration-no-important
+
 // Typography
+
 @mixin text-emphasis-variant($parent, $color) {
   #{$parent} {
     color: $color !important;

@@ -1,9 +1,11 @@
 'use strict';
+
 var _ = require('../../lib/helper');
 var dom = require('../../lib/dom');
 var instances = require('../instances');
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
+
 function bindKeyboardHandler(element, i) {
   var hovered = false;
   i.event.bind(element, 'mouseenter', function () {
@@ -12,6 +14,7 @@ function bindKeyboardHandler(element, i) {
   i.event.bind(element, 'mouseleave', function () {
     hovered = false;
   });
+
   var shouldPrevent = false;
   function shouldPreventDefault(deltaX, deltaY) {
     var scrollTop = element.scrollTop;
@@ -23,6 +26,7 @@ function bindKeyboardHandler(element, i) {
         return !i.settings.wheelPropagation;
       }
     }
+
     var scrollLeft = element.scrollLeft;
     if (deltaY === 0) {
       if (!i.scrollbarXActive) {
@@ -34,15 +38,19 @@ function bindKeyboardHandler(element, i) {
     }
     return true;
   }
+
   i.event.bind(i.ownerDocument, 'keydown', function (e) {
     if ((e.isDefaultPrevented && e.isDefaultPrevented()) || e.defaultPrevented) {
       return;
     }
+
     var focused = dom.matches(i.scrollbarX, ':focus') ||
                   dom.matches(i.scrollbarY, ':focus');
+
     if (!hovered && !focused) {
       return;
     }
+
     var activeElement = document.activeElement ? document.activeElement : i.ownerDocument.activeElement;
     if (activeElement) {
       if (activeElement.tagName === 'IFRAME') {
@@ -57,8 +65,10 @@ function bindKeyboardHandler(element, i) {
         return;
       }
     }
+
     var deltaX = 0;
     var deltaY = 0;
+
     switch (e.which) {
     case 37: // left
       if (e.metaKey) {
@@ -126,15 +136,18 @@ function bindKeyboardHandler(element, i) {
     default:
       return;
     }
+
     updateScroll(element, 'top', element.scrollTop - deltaY);
     updateScroll(element, 'left', element.scrollLeft + deltaX);
     updateGeometry(element);
+
     shouldPrevent = shouldPreventDefault(deltaX, deltaY);
     if (shouldPrevent) {
       e.preventDefault();
     }
   });
 }
+
 module.exports = function (element) {
   var i = instances.get(element);
   bindKeyboardHandler(element, i);

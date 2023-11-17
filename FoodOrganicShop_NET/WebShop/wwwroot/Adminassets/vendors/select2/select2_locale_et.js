@@ -5,6 +5,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['et'] = {
         formatNoMatches: function () { return "Tulemused puuduvad"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Sisesta " + n + " täht" + (n == 1 ? "" : "e") + " rohkem"; },
@@ -13,5 +14,6 @@
         formatLoadMore: function (pageNumber) { return "Laen tulemusi.."; },
         formatSearching: function () { return "Otsin.."; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['et']);
 })(jQuery);

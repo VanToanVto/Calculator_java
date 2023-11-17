@@ -3,6 +3,7 @@
   @include list-unstyled();
   @include border-radius();
 }
+
 .page-link {
   position: relative;
   display: block;
@@ -12,6 +13,7 @@
   color: $pagination-color;
   background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;
+
   &:hover {
     z-index: 2;
     color: $pagination-hover-color;
@@ -19,12 +21,14 @@
     background-color: $pagination-hover-bg;
     border-color: $pagination-hover-border-color;
   }
+
   &:focus {
     z-index: 2;
     outline: $pagination-focus-outline;
     box-shadow: $pagination-focus-box-shadow;
   }
 }
+
 .page-item {
   &:first-child {
     .page-link {
@@ -37,12 +41,14 @@
       @include border-right-radius($border-radius);
     }
   }
+
   &.active .page-link {
     z-index: 1;
     color: $pagination-active-color;
     background-color: $pagination-active-bg;
     border-color: $pagination-active-border-color;
   }
+
   &.disabled .page-link {
     color: $pagination-disabled-color;
     pointer-events: none;
@@ -52,12 +58,16 @@
     border-color: $pagination-disabled-border-color;
   }
 }
+
+
 //
 // Sizing
 //
+
 .pagination-lg {
   @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $line-height-lg, $border-radius-lg);
 }
+
 .pagination-sm {
   @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $line-height-sm, $border-radius-sm);
 }

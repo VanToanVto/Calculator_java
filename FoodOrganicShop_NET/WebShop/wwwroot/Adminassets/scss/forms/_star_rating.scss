@@ -2,23 +2,30 @@
     display: flex;
     justify-content: flex-end;
     flex-direction: row-reverse;
+
     > input {
         display: none;
+
         &:checked {
+
             ~ label {
                 color: $brand-warning;
             }
         }
+
         &:not(:disabled) {
             &:hover {
+
                 ~label {
                     color: $brand-warning;
                 }
             }
         }
     } 
+
     > label {
         color: $gray-lighter; 
+
         &:before { 
             content: "\f005"; 
             margin-right: 8px;

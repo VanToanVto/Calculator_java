@@ -1,7 +1,10 @@
 .timeline {
     padding-left: 0px;
+
     .timeline-item {
+
         &:last-child {
+            
             .timeline-item-head {
                 &:after {
                     display: none;
@@ -9,21 +12,26 @@
             }
         }
     } 
+
     &.timeline-sm {
+
         .timeline-item-head {
             top: 0px;
         }
     }
 }
+
 .timeline, 
 .timeline-item {
     margin: 0;
     list-style: none;
 }
+
 .timeline-item {
     position: relative;
     padding: 0 0 20px;
 }
+
 .timeline-item-head {
     position: absolute;
     text-align: center;
@@ -38,6 +46,7 @@
     left: 5px;
     width: auto;
     z-index: 1;
+
     &:after {
         content: "";
         position: absolute;
@@ -49,6 +58,8 @@
         z-index: -1;
     }
 }
+
+
 .timeline-item-content {
     position: relative;
     top: -6px;

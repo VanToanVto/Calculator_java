@@ -16,10 +16,7 @@ namespace WebShop.Controllers
         {
             if (string.IsNullOrEmpty(Alias)) return RedirectToAction("Index","Home");
             var page = _context.Pages.AsNoTracking().SingleOrDefault(x => x.Alias == Alias);
-            if (page == null)
-            {
-                return RedirectToAction("Index","Home");
-            }
+            if (page == null) return RedirectToAction("Index","Home");
             return View(page);
         }
     }

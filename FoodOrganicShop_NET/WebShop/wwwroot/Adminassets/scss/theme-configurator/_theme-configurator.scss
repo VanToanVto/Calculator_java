@@ -1,14 +1,18 @@
 .theme-configurator {
+
     .radio {
         padding: 0px;
     }
+
     .radio input[type=radio] {
+
         +label {
             &:before {
                 border-radius: 4px;
                 background-color: transparent;
             }
         }
+        
         &:checked+label:after {
             content: "\38";
             font-family: "anticon";
@@ -17,6 +21,7 @@
             left: 3px;
             top: 1px;
         }
+
         &#header-default {
             +label {
                 &:before {
@@ -24,10 +29,12 @@
                     border-color: $border-color;
                 }
             }
+
             &:checked+label:after {
                 color: $gray-dark;
             }    
         }
+
         &#header-primary {
             +label {
                 &:before {
@@ -36,6 +43,7 @@
                 }
             }
         }
+
         &#header-success {
             +label {
                 &:before {
@@ -44,6 +52,7 @@
                 }
             }
         }
+
         &#header-secondary {
             +label {
                 &:before {
@@ -52,6 +61,7 @@
                 }
             }
         }
+
         &#header-danger {
             +label {
                 &:before {
