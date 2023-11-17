@@ -107,10 +107,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ })
 /************************************************************************/
 /******/ ({
-
 /***/ 16:
 /***/ (function(module, exports) {
-
 (function ($) {
   $.extend($.summernote.lang, {
     'es-EU': {
@@ -265,8 +263,6 @@ return /******/ (function(modules) { // webpackBootstrap
     }
   });
 })(jQuery);
-
 /***/ })
-
 /******/ });
 });

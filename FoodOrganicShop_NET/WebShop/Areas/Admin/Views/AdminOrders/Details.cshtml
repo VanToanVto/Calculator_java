@@ -1,11 +1,9 @@
 @model WebShop.Models.Order
-
 @{
 	ViewData["Title"] = "Thông tin đơn hàng #" + Model.OrderId;
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 	List<OrderDetail> orderDetails = ViewBag.ChiTiet;
 }
-
 <div class="page-header">
 	<h2 class="header-title"></h2>
 	<div class="header-sub-title">
@@ -16,8 +14,6 @@
 		</nav>
 	</div>
 </div>
-
-
 <div class="card">
 	<div class="card-body">
 		<div id="invoice" class="p-h-30">
@@ -66,7 +62,6 @@
 						<br />
 						<div class="float-right" style="color:red; font-weight:bold">ĐÃ HỦY</div>
 					}
-
 				</div>
 			</div>
 			<div class="m-t-20">
@@ -82,7 +77,6 @@
 							</tr>
 						</thead>
 						<tbody>
-
 							@if (orderDetails != null && orderDetails.Count() > 0)
 							{
 								int i = 1;
@@ -91,7 +85,6 @@
 								var am = @item.Amount.Value;
 									var mn = @item.Price.Value;
 									var tt = am * mn;
-									
 									string url = $"/Products/{item.Product.Alias}-{item.Product.ProductId}";
 									<tr>
 										<th>@i</th>
@@ -103,16 +96,13 @@
 									i++;
 								}
 							}
-
 						</tbody>
 					</table>
 				</div>
 				<div class="row m-t-30 lh-1-8">
 					<div class="col-sm-12">
 						<div class="float-right text-right">
-													
 							<h3><span class="font-weight-semibold text-dark">Tổng tiền: </span>@orderDetails.Select(x=>x.TotalMoney).First().Value.ToString("#,##0") VND</h3>	
-																		
 						</div>
 					</div>
 				</div>
@@ -120,7 +110,6 @@
 		</div>
 		<div class="m-b-15">
 			<a class="btn btn-primary m-r-10" asp-action="Index"><i class="anticon anticon-rollback m-r-5"></i><span>Trở về</span></a>
-
 		</div>
 	</div>
 </div>

@@ -1,6 +1,5 @@
 @using PagedList.Core.Mvc
 @model PagedList.Core.IPagedList<WebShop.Models.Product>
-
 @{
 	Category category = ViewBag.CurrentCat;
 	ViewData["TiTle"] = category.Title + " " + ViewBag.CurrentPage;
@@ -8,7 +7,6 @@
 	int PageCurrent = ViewBag.CurrentPage;
 	int PageNext = PageCurrent + 1;
 }
-
 <main class="main-content">
 	<div class="breadcrumb-area breadcrumb-height" data-bg-image="/assets/images/banner/2-1-1920x523.jpg">
 		<div class="container h-100">
@@ -27,9 +25,7 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="shop-area section-space-y-axis-100">
-
 		<div class="container">
 			<div class="col-md-8">
 				<div class="row">
@@ -49,11 +45,8 @@
 				</div>
 			</div>
 			<div class="row">
-
 				<div class="col-lg-9 order-lg-2 order-1">
-
 					<div class="tab-content text-charcoal pt-8">
-
 						<div class="tab-pane fade show active" role="tabpanel" aria-labelledby="list-view-tab">
 							<div class="product-list-view with-sidebar row" id="retable">
 								@if (Model != null && Model.Count() > 0)
@@ -97,7 +90,6 @@
 										</div>
 									}
 								}
-
 							</div>
 						</div>
 					</div>
@@ -139,9 +131,7 @@
 					}
 				});
 			});
-
 			$("#keyword").keyup(function () {
-
 				var strkeyword = $('#keyword').val();
 				console.log(strkeyword);
 				$.ajax({
@@ -161,5 +151,4 @@
 			});
 		});
 	</script>
-
 }

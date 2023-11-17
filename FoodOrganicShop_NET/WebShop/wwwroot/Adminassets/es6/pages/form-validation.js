@@ -1,7 +1,5 @@
 class FormValidation {
-
     static init() {
-
         $( "#form-validation" ).validate({
             ignore: ':hidden:not(:checkbox)',
             errorElement: 'div',
@@ -62,6 +60,4 @@ class FormValidation {
         });
     }
 }
-
 $(() => { FormValidation.init(); });
-

@@ -107,10 +107,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ })
 /************************************************************************/
 /******/ ({
-
 /***/ 17:
 /***/ (function(module, exports) {
-
 (function ($) {
   $.extend($.summernote.lang, {
     'fa-IR': {
@@ -266,8 +264,6 @@ return /******/ (function(modules) { // webpackBootstrap
     }
   });
 })(jQuery);
-
 /***/ })
-
 /******/ });
 });

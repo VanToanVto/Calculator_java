@@ -3,7 +3,6 @@
     ViewData["Title"] = "Mua hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<WebShop.ModelViews.CartItem> Carts = ViewBag.GioHang;
-    
 }
 @section Styles{
 <style type="text/css">
@@ -18,13 +17,8 @@
         color:red;
         background:none;
     }
-
 </style>
 }
-
-
-
-
 <main class="main-content">
     <div class="breadcrumb-area breadcrumb-height" data-bg-image="/assets/images/banner/2-1-1920x523.jpg">
         <div class="container h-100">
@@ -49,7 +43,6 @@
                 <input hidden asp-for="CustomerId" />
                 <div class="row">
                     <div class="col-lg-6 col-12">
-
                         <div class="checkbox-form">
                             <h3>THÔNG TIN ĐƠN HÀNG</h3>
                             <div class="row">
@@ -100,7 +93,6 @@
                                                 </tr>
                                             }
                                         }
-                                                                                
                                     </tbody>
                                     <tfoot>
                                         <tr class="order-total">
@@ -147,7 +139,6 @@
                                                 </div>
                                             </div>
                                         </div>*@
-                                        
                                     </div>
                                     <div class="order-button-payment">
                                         <input value="XÁC NHẬN ĐẶT HÀNG" type="submit">
@@ -158,7 +149,6 @@
                     </div>
                 </div>
             </form>
-            
         </div>
     </div>
 </main>

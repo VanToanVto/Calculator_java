@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['da'] = {
         formatNoMatches: function () { return "Ingen resultater fundet"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Angiv venligst " + n + " tegn mere"; },
@@ -14,6 +13,5 @@
         formatLoadMore: function (pageNumber) { return "Indlæser flere resultater…"; },
         formatSearching: function () { return "Søger…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['da']);
 })(jQuery);

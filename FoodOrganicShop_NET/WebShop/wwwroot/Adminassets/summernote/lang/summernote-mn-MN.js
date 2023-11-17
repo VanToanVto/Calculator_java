@@ -107,10 +107,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ })
 /************************************************************************/
 /******/ ({
-
 /***/ 30:
 /***/ (function(module, exports) {
-
 // Starsoft Mongolia LLC Temuujin Ariunbold
 (function ($) {
   $.extend($.summernote.lang, {
@@ -267,8 +265,6 @@ return /******/ (function(modules) { // webpackBootstrap
     }
   });
 })(jQuery);
-
 /***/ })
-
 /******/ });
 });

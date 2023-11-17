@@ -64,10 +64,7 @@ namespace WebShop.Areas.Admin.Controllers
                         donhang.Paid = order.Paid;
                         donhang.Deleted = order.Deleted;
                         donhang.TransactStatusId = order.TransactStatusId;
-                        if (donhang.Paid == true)
-                        {
-                            donhang.PaymentDate = DateTime.Now;
-                        }
+                        if (donhang.Paid == true) donhang.PaymentDate = DateTime.Now;
                         if (donhang.TransactStatusId == 5) donhang.Deleted = true;
                         if (donhang.TransactStatusId == 3) donhang.ShipDate = DateTime.Now;
                     }
@@ -78,10 +75,7 @@ namespace WebShop.Areas.Admin.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!OrderExists(order.OrderId)) return NotFound();
-                    else
-                    {
-                        throw;
-                    }
+                    else throw;
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -132,10 +126,7 @@ namespace WebShop.Areas.Admin.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!OrderExists(order.OrderId)) return NotFound();
-                    else
-                    {
-                        throw;
-                    }
+                    else throw;
                 }
                 return RedirectToAction(nameof(Index));
             }

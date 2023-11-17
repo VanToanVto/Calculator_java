@@ -107,10 +107,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ })
 /************************************************************************/
 /******/ ({
-
 /***/ 27:
 /***/ (function(module, exports) {
-
 (function ($) {
   $.extend($.summernote.lang, {
     'ko-KR': {
@@ -268,8 +266,6 @@ return /******/ (function(modules) { // webpackBootstrap
     }
   });
 })(jQuery);
-
 /***/ })
-
 /******/ });
 });

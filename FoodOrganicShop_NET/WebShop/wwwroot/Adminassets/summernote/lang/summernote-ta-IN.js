@@ -107,10 +107,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ })
 /************************************************************************/
 /******/ ({
-
 /***/ 43:
 /***/ (function(module, exports) {
-
 (function ($) {
   $.extend($.summernote.lang, {
     'ta-IN': {
@@ -266,8 +264,6 @@ return /******/ (function(modules) { // webpackBootstrap
     }
   });
 })(jQuery);
-
 /***/ })
-
 /******/ });
 });

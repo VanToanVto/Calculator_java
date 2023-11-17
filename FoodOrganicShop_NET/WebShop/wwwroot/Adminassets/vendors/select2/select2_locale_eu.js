@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['eu'] = {
         formatNoMatches: function () {
           return "Ez da bat datorrenik aurkitu";
@@ -40,6 +39,5 @@
           return "Bilatzen…";
         }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['eu']);
 })(jQuery);

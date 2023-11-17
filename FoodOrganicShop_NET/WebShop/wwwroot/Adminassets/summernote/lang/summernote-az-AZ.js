@@ -107,10 +107,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ })
 /************************************************************************/
 /******/ ({
-
 /***/ 8:
 /***/ (function(module, exports) {
-
 //Summernote WYSIWYG  editor ucun Azerbaycan dili fayli
 //Tercume etdi: RAMIL ALIYEV
 //Tarix: 20.07.2019
@@ -276,8 +274,6 @@ return /******/ (function(modules) { // webpackBootstrap
     }
   });
 })(jQuery);
-
 /***/ })
-
 /******/ });
 });

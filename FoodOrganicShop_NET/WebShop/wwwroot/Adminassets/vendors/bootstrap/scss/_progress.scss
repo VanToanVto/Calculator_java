@@ -5,7 +5,6 @@
     to { background-position: 0 0; }
   }
 }
-
 .progress {
   display: flex;
   height: $progress-height;
@@ -15,7 +14,6 @@
   @include border-radius($progress-border-radius);
   @include box-shadow($progress-box-shadow);
 }
-
 .progress-bar {
   display: flex;
   flex-direction: column;
@@ -26,16 +24,13 @@
   background-color: $progress-bar-bg;
   @include transition($progress-bar-transition);
 }
-
 .progress-bar-striped {
   @include gradient-striped();
   background-size: $progress-height $progress-height;
 }
-
 @if $enable-transitions {
   .progress-bar-animated {
     animation: progress-bar-stripes $progress-bar-animation-timing;
-
     @media (prefers-reduced-motion: reduce) {
       animation: none;
     }

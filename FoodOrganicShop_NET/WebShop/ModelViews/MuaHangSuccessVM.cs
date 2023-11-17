@@ -10,6 +10,5 @@ namespace WebShop.ModelViews
         public string PhuongXa { get; set; }
         public string QuanHuyen { get; set; }
         public string TinhThanh { get; set; }
-
     }
 }

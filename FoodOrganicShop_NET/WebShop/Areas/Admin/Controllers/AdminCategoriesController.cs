@@ -93,10 +93,7 @@ namespace WebShop.Areas.Admin.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!CategoryExists(category.CatId)) return NotFound();
-                    else
-                    {
-                        throw;
-                    }
+                    else throw;
                 }
                 return RedirectToAction(nameof(Index));
             }

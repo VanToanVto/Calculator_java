@@ -1,12 +1,10 @@
 @model WebShop.Models.Category
-
 @{ ViewData["Title"] = "Tạo mới danh mục sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml"; }
 @section Styles{
     <link href="~/Adminassets/summernote/summernote-bs4.css" rel="stylesheet" />
     <link href="~/Adminassets/summernote/summernote.css" rel="stylesheet" />
 }
-
 <div class="page-header">
     <div class="header-sub-title">
         <nav class="breadcrumb breadcrumb-dash">
@@ -16,11 +14,9 @@
         </nav>
     </div>
 </div>
-
 <form asp-controller="AdminCategories" asp-action="Create" method="post" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="page-header no-gutters has-tab">
-       
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#product-edit-basic">Thông tin danh mục</a>
@@ -46,7 +42,6 @@
                         <label class="font-weight-semibold card-title" for="ShortDesc">Ordering</label>
                         <input type="text" class="form-control" asp-for="Ordering" required>
                     </div>
-
                     <div class="form-group">
                         <label class="font-weight-semibold card-title" for="productBrand">Ảnh</label>
                         <input name="fThumb" type="file" class="form-control-file" asp-for="Thumb" required/>
@@ -99,20 +94,16 @@
                     <span>Lưu</span>
                 </button>
                 <a class="btn btn-primary m-r-10" asp-action="Index"><i class="anticon anticon-rollback m-r-5"></i><span>Trở về</span></a>
-
             </div>
         </div>
     </div>
 </form>
-
 @section Scripts{
     <script src="~/Adminassets/vendors/select2/select2.min.js"></script>
     <script src="~/Adminassets/js/pages/e-commerce-product-edit.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
     <script src="~/Adminassets/summernote/summernote-bs4.js"></script>
-
     <script>
-
         jQuery(document).ready(function () {
             $('.summernote').summernote({
                 fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
@@ -125,12 +116,3 @@
         });
     </script>
 }
-
-
-
-
-
-
-
-
-

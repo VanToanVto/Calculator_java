@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
 #nullable disable
-
 namespace WebShop.Models
 {
     public partial class Page

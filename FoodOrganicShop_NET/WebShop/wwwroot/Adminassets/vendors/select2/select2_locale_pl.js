@@ -8,7 +8,6 @@
  */
 (function($) {
     "use strict";
-
     $.fn.select2.locales['pl'] = {
         formatNoMatches: function() {
             return "Brak wyników";
@@ -29,9 +28,7 @@
             return "Szukanie…";
         }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['pl']);
-
     function character(n, word, pluralSuffix) {
         //Liczba pojedyncza - brak suffiksu
         //jeden znak

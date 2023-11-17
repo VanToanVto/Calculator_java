@@ -18,11 +18,9 @@
      */
     'hello': function(context) {
       var self = this;
-
       // ui has renders to build ui elements.
       //  - you can create a button with `ui.button`
       var ui = $.summernote.ui;
-
       // add hello button
       context.memo('button.hello', function() {
         // create button
@@ -36,12 +34,10 @@
             context.invoke('editor.insertText', 'hello');
           },
         });
-
         // create jQuery object from button instance.
         var $hello = button.render();
         return $hello;
       });
-
       // This events will be attached when editor is initialized.
       this.events = {
         // This will be called after modules are initialized.
@@ -55,7 +51,6 @@
           console.log('summernote keyup', we, e);
         },
       };
-
       // This method will be called when editor is initialized by $('..').summernote();
       // You can create elements for plugin
       this.initialize = function() {
@@ -67,10 +62,8 @@
           top: '50%',
           background: 'red',
         }).hide();
-
         this.$panel.appendTo('body');
       };
-
       // This methods will be called when editor is destroyed by $('..').summernote('destroy');
       // You should remove elements on `initialize`.
       this.destroy = function() {

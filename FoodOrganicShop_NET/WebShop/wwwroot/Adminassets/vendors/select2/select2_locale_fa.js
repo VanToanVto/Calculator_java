@@ -6,7 +6,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['fa'] = {
         formatMatches: function (matches) { return matches + " نتیجه موجود است، کلیدهای جهت بالا و پایین را برای گشتن استفاده کنید."; },
         formatNoMatches: function () { return "نتیجه‌ای یافت نشد."; },
@@ -16,6 +15,5 @@
         formatLoadMore: function (pageNumber) { return "در حال بارگیری موارد بیشتر…"; },
         formatSearching: function () { return "در حال جستجو…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['fa']);
 })(jQuery);

@@ -5,7 +5,6 @@
 	ViewData["Title"] = "Danh sách khách hàng" + CurrentPage;
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
 <div class="page-header">
 	<div class="header-sub-title">
 		<nav class="breadcrumb breadcrumb-dash">
@@ -19,14 +18,10 @@
 		<div class="row m-b-30">
 			<div class="col-lg-8">
 				<div class="d-md-flex">
-					
 					<div class="col-md-8 m-b-10">
-						
 					</div>
-
 				</div>
 			</div>
-
 		</div>
 		<div class="table-responsive">
 			<table class="table table-hover e-commerce-table">
@@ -46,14 +41,12 @@
 						int i = 1;
 						foreach (var item in Model)
 						{
-							
 							<tr>
 								<td>@i</td>
 								<td>@item.FullName</td>
 								<td>@item.Phone</td>
 								<td>@item.Email</td>
 								<td>@item.Address</td>
-								
 								<td>
 									<a class="btn btn-info btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCustomers" asp-action="Details" asp-route-id="@item.CustomerId"><i class="anticon anticon-info-circle m-r-5"></i><span>Chi tiết</span></a>
 									<a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminCustomers" asp-action="Edit" asp-route-id="@item.CustomerId"><i class="anticon anticon-edit m-r-5"></i><span>Chỉnh sửa</span></a>
@@ -62,7 +55,6 @@
 							i++;
 						}
 					}
-
 				</tbody>
 			</table>
 			<div aria-label="Page navigation example">

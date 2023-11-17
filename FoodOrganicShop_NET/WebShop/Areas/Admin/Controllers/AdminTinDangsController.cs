@@ -104,10 +104,7 @@ namespace WebShop.Areas.Admin.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!TinDangExists(tinDang.PostId)) return NotFound();
-                    else
-                    {
-                        throw;
-                    }
+                    else  throw;
                 }
                 return RedirectToAction(nameof(Index));
             }

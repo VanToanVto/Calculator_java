@@ -1,11 +1,9 @@
 ﻿@model WebShop.Models.Product
-
 @{
     ViewData["Title"] = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<Product> lsProducts = ViewBag.SanPham;
 }
-
 <!-- Begin Main Content Area  -->
 <main class="main-content">
     <div class="breadcrumb-area breadcrumb-height" data-bg-image="/assets/images/banner/2-1-1920x523.jpg">
@@ -81,7 +79,6 @@
                                         </ul>
                                     </div>
                                     <div class="review-status ps-4">
-                                      
                                     </div>
                                 </div>
                                 <p class="short-desc mb-6">
@@ -106,8 +103,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                                
-                                
                             </div>
                         </div>
                         <div class="col-12 order-lg-2 order-1 pt-10 pt-lg-0">
@@ -143,7 +138,6 @@
                                 Mô tả sản phẩm
                             </a>
                         </li>
-                       
                     </ul>
                     <div class="tab-content product-tab-content">
                         <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
@@ -274,7 +268,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -341,7 +334,6 @@
                                         </div>
                                     }
                                 }
-
                             </div>
                         </div>
                         <!-- Add Arrows -->
@@ -384,7 +376,6 @@
                     }
                 });
             });
-
             @*$(".removecart").click(function () {
                 var productid = $(this).attr("data-productid");
                 $.ajax({
@@ -409,10 +400,6 @@
             $('#numberCart').load("/AjaxContent/NumberCart");
         }
     });
-
 </script>
-
 	<script src="~/js/search.js"></script>
-
-
 }

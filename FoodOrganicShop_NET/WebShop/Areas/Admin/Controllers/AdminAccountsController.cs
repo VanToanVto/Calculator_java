@@ -107,10 +107,7 @@ namespace WebShop.Areas.Admin.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!AccountExists(account.AccountId)) return NotFound();
-                    else
-                    {
-                        throw;
-                    }
+                    else throw;
                 }
                 return RedirectToAction(nameof(Index));
             }

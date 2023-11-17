@@ -1,8 +1,6 @@
 'use strict';
-
 var ps = require('../main');
 var psInstances = require('../plugin/instances');
-
 function mountJQuery(jQuery) {
   jQuery.fn.perfectScrollbar = function (settingOrCommand) {
     return this.each(function () {
@@ -10,14 +8,12 @@ function mountJQuery(jQuery) {
           typeof settingOrCommand === 'undefined') {
         // If it's an object or none, initialize.
         var settings = settingOrCommand;
-
         if (!psInstances.get(this)) {
           ps.initialize(this, settings);
         }
       } else {
         // Unless, it may be a command.
         var command = settingOrCommand;
-
         if (command === 'update') {
           ps.update(this);
         } else if (command === 'destroy') {
@@ -27,7 +23,6 @@ function mountJQuery(jQuery) {
     });
   };
 }
-
 if (typeof define === 'function' && define.amd) {
   // AMD. Register as an anonymous module.
   define(['jquery'], mountJQuery);
@@ -37,5 +32,4 @@ if (typeof define === 'function' && define.amd) {
     mountJQuery(jq);
   }
 }
-
 module.exports = mountJQuery;

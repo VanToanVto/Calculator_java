@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
 #nullable disable
-
 namespace WebShop.Models
 {
     public partial class Customer
@@ -11,7 +9,6 @@ namespace WebShop.Models
         {
             Orders = new HashSet<Order>();
         }
-
         public int CustomerId { get; set; }
         public string FullName { get; set; }
         public DateTime? Birthday { get; set; }
@@ -27,7 +24,6 @@ namespace WebShop.Models
         public string Salt { get; set; }
         public DateTime? LastLogin { get; set; }
         public bool Active { get; set; }
-
         public virtual Location Location { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }

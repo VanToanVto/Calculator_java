@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['th'] = {
         formatNoMatches: function () { return "ไม่พบข้อมูล"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "โปรดพิมพ์เพิ่มอีก " + n + " ตัวอักษร"; },
@@ -14,6 +13,5 @@
         formatLoadMore: function (pageNumber) { return "กำลังค้นข้อมูลเพิ่ม…"; },
         formatSearching: function () { return "กำลังค้นข้อมูล…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['th']);
 })(jQuery);

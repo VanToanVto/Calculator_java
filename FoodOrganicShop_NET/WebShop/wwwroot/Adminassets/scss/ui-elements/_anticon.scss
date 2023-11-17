@@ -7,9 +7,7 @@
     url("../fonts/anticon.svg#anticon") format("svg");
   font-weight: normal;
   font-style: normal;
-
 }
-
 [data-icon]:before {
   font-family: "anticon" !important;
   content: attr(data-icon);
@@ -23,7 +21,6 @@
 .anticon {
   line-height: 0;
   vertical-align: -.125em;
-
   &:before {
     font-family: "anticon" !important;
     font-style: normal !important;
@@ -34,7 +31,6 @@
     -moz-osx-font-smoothing: grayscale;
   }  
 }
-
 @keyframes loadingCircle{
 	0% {
     @include transform-origin(50% 50%);
@@ -45,7 +41,6 @@
     @include transform(rotate(360deg));
 	}
 }
-
 .anticon-account-book:before {
   content: "\61";
 }
@@ -1149,5 +1144,3 @@
 .anticon-check-o:before {
   content: "\e110";
 }
-
-

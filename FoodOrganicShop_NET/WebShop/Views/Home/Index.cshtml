@@ -4,10 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<Product> allProduct = ViewBag.AllProducts;
 }
-
 <!-- Begin Slider Area -->
 <div class="slider-area">
-    
     <!-- Main Slider -->
     <div class="swiper-container main-slider swiper-arrow with-bg_white">
         <div class="swiper-wrapper">
@@ -94,12 +92,10 @@
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination with-bg d-md-none"></div>
-
         <!-- Add Arrows -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
-
 </div>
 <!-- Slider Area End Here -->
 <!-- Begin Shipping Area -->
@@ -179,17 +175,12 @@
                             @await Html.PartialAsync("_ListProductPartialView", item.lsProducts)
                         </div>
                     }
-
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <!-- Product Area End Here -->
-
-
 <div class="banner-area banner-style-2 section-space-y-axis-100" data-bg-image="/assets/images/product/pngtree.jpg">
     <div class="container">
         <div class="row">
@@ -198,7 +189,6 @@
                     <div class="section-title">
                         <span class="sub-title text-danger">Khuyến mãi đặc biệt</span>
                     </div>
-                    
                     <div class="countdown-wrap with-dark-border">
                         <div class="countdown item-4" id="time" data-countdown="" data-format="short">
 							<script src="~/js/time.js"></script>
@@ -228,16 +218,12 @@
         </div>
     </div>
 </div>
-
-
-
 <!-- Begin Blog Area -->
 @if (Model.TinTucs != null && Model.TinTucs.Count() > 0)
 {
     <div class="blog-area section-space-y-axis-100">
         <div class="container">
             <div class="section-title text-center pb-55">
-                
                 <h2 >Tin tức</h2>
             </div>
             <div class="row">
@@ -271,8 +257,6 @@
                                     </div>
                                 </div>
                             }
-
-
                         </div>
                         <!-- Add Arrows -->
                         <div class="swiper-button-next"></div>
@@ -283,7 +267,6 @@
         </div>
     </div>
 }
-
 @section Scripts{
     <script src="~/js/search.js"></script>
     <script src="~/assets/js/main.js"></script>

@@ -1,5 +1,4 @@
-﻿using System;
-namespace WebShop.Enums
+﻿namespace WebShop.Enums
 {
     public enum CacheKeys
     {

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
 #nullable disable
-
 namespace WebShop.Models
 {
     public partial class OrderDetail
@@ -16,7 +14,6 @@ namespace WebShop.Models
         public int? TotalMoney { get; set; }
         public DateTime? CreateDate { get; set; }
         public int? Price { get; set; }
-
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
     }

@@ -14,11 +14,9 @@
     'specialchars': function(context) {
       var self = this;
       var ui = $.summernote.ui;
-
       var $editor = context.layoutInfo.editor;
       var options = context.options;
       var lang = options.langInfo;
-
       var KEY = {
         UP: 38,
         DOWN: 40,
@@ -28,12 +26,10 @@
       };
       var COLUMN_LENGTH = 15;
       var COLUMN_WIDTH = 35;
-
       var currentColumn = 0;
       var currentRow = 0;
       var totalColumn = 0;
       var totalRow = 0;
-
       // special characters data set
       var specialCharDataSet = [
         '&quot;', '&amp;', '&lt;', '&gt;', '&iexcl;', '&cent;',
@@ -62,7 +58,6 @@
         '&rfloor;', '&loz;', '&spades;', '&clubs;', '&hearts;',
         '&diams;',
       ];
-
       context.memo('button.specialchars', function() {
         return ui.button({
           contents: '<i class="fa fa-font fa-flip-vertical">',
@@ -72,7 +67,6 @@
           },
         }).render();
       });
-
       /**
        * Make Special Characters Table
        *
@@ -85,7 +79,6 @@
         $.each(specialCharDataSet, function(idx, text) {
           var $td = $('<td/>').addClass('note-specialchar-node');
           var $tr = (idx % COLUMN_LENGTH === 0) ? $('<tr/>') : $table.find('tr').last();
-
           var $button = ui.button({
             callback: function($node) {
               $node.html(text);
@@ -98,41 +91,31 @@
               });
             },
           }).render();
-
           $td.append($button);
-
           $tr.append($td);
           if (idx % COLUMN_LENGTH === 0) {
             $table.append($tr);
           }
         });
-
         totalRow = $table.find('tr').length;
         totalColumn = COLUMN_LENGTH;
-
         return $table;
       };
-
       this.initialize = function() {
         var $container = options.dialogsInBody ? $(document.body) : $editor;
-
         var body = '<div class="form-group row-fluid">' + this.makeSpecialCharSetTable()[0].outerHTML + '</div>';
-
         this.$dialog = ui.dialog({
           title: lang.specialChar.select,
           body: body,
         }).render().appendTo($container);
       };
-
       this.show = function() {
         var text = context.invoke('editor.getSelectedText');
         context.invoke('editor.saveRange');
         this.showSpecialCharDialog(text).then(function(selectChar) {
           context.invoke('editor.restoreRange');
-
           // build node
           var $node = $('<span></span>').html(selectChar)[0];
-
           if ($node) {
             // insert video node
             context.invoke('editor.insertNode', $node);
@@ -141,7 +124,6 @@
           context.invoke('editor.restoreRange');
         });
       };
-
       /**
        * show image dialog
        *
@@ -155,7 +137,6 @@
           var $selectedNode = null;
           var ARROW_KEYS = [KEY.UP, KEY.DOWN, KEY.LEFT, KEY.RIGHT];
           var ENTER_KEY = KEY.ENTER;
-
           function addActiveClass($target) {
             if (!$target) {
               return;
@@ -163,12 +144,10 @@
             $target.find('button').addClass('active');
             $selectedNode = $target;
           }
-
           function removeActiveClass($target) {
             $target.find('button').removeClass('active');
             $selectedNode = null;
           }
-
           // find next node
           function findNextNode(row, column) {
             var findNode = null;
@@ -182,12 +161,10 @@
             });
             return $(findNode);
           }
-
           function arrowKeyHandler(keyCode) {
             // left, right, up, down key
             var $nextNode;
             var lastRowColumnLength = $specialCharNode.length % totalColumn;
-
             if (KEY.LEFT === keyCode) {
               if (currentColumn > 1) {
                 currentColumn = currentColumn - 1;
@@ -217,7 +194,6 @@
             } else if (KEY.DOWN === keyCode) {
               currentRow = currentRow + 1;
             }
-
             if (currentRow === totalRow && currentColumn > lastRowColumnLength) {
               currentRow = 1;
             } else if (currentRow > totalRow) {
@@ -225,24 +201,19 @@
             } else if (currentRow < 1) {
               currentRow = totalRow;
             }
-
             $nextNode = findNextNode(currentRow, currentColumn);
-
             if ($nextNode) {
               removeActiveClass($selectedNode);
               addActiveClass($nextNode);
             }
           }
-
           function enterKeyHandler() {
             if (!$selectedNode) {
               return;
             }
-
             deferred.resolve(decodeURIComponent($selectedNode.find('button').attr('data-value')));
             $specialCharDialog.modal('hide');
           }
-
           function keyDownEventHandler(event) {
             event.preventDefault();
             var keyCode = event.keyCode;
@@ -263,10 +234,8 @@
             }
             return false;
           }
-
           // remove class
           removeActiveClass($specialCharNode);
-
           // find selected node
           if (text) {
             for (var i = 0; i < $specialCharNode.length; i++) {
@@ -278,31 +247,23 @@
               }
             }
           }
-
           ui.onDialogShown(self.$dialog, function() {
             $(document).on('keydown', keyDownEventHandler);
-
             self.$dialog.find('button').tooltip();
-
             $specialCharNode.on('click', function(event) {
               event.preventDefault();
               deferred.resolve(decodeURIComponent($(event.currentTarget).find('button').attr('data-value')));
               ui.hideDialog(self.$dialog);
             });
           });
-
           ui.onDialogHidden(self.$dialog, function() {
             $specialCharNode.off('click');
-
             self.$dialog.find('button').tooltip('destroy');
-
             $(document).off('keydown', keyDownEventHandler);
-
             if (deferred.state() === 'pending') {
               deferred.reject();
             }
           });
-
           ui.showDialog(self.$dialog);
         });
       };

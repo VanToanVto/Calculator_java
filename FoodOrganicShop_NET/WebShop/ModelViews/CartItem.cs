@@ -1,6 +1,5 @@
 ﻿using System;
 using WebShop.Models;
-
 namespace WebShop.ModelViews
 {
     public class CartItem

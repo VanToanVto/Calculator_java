@@ -1,5 +1,4 @@
 @model IEnumerable<WebShop.Models.Role>
-
 @{
 	ViewData["Title"] = "Quản lý quyền truy cập";
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -21,12 +20,10 @@
 				<div class="d-md-flex">
 				</div>
 			</div>
-
 			<div class="col-lg-4 text-right">
 				<a class="btn btn-primary" asp-area="Admin" asp-controller="AdminRoles" asp-action="Create"><i class="anticon anticon-plus-circle m-r-5"></i><span>Thêm mới</span></a>
 			</div>
 		</div>
-
 		<div class="table-responsive">
 			<table class="table table-hover e-commerce-table">
 				<thead>
@@ -50,7 +47,6 @@
 									<a class="btn btn-info btn-tone m-r-5" asp-area="Admin" asp-controller="AdminRoles" asp-action="Details" asp-route-id="@item.RoleId"><i class="anticon anticon-info-circle m-r-5"></i><span>Chi tiết</span></a>
 									<a class="btn btn-secondary btn-tone m-r-5" asp-area="Admin" asp-controller="AdminRoles" asp-action="Edit" asp-route-id="@item.RoleId"><i class="anticon anticon-edit m-r-5"></i><span>Chỉnh sửa</span></a>
 									<a class="btn btn-danger btn-tone m-r-5" asp-area="Admin" asp-controller="AdminRoles" asp-action="Delete" asp-route-id="@item.RoleId"><i class="anticon anticon-delete m-r-5"></i><span>Xóa</span></a>
-									
 								</td>
 							</tr>
 						}

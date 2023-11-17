@@ -1,10 +1,8 @@
 ﻿@model WebShop.Models.Customer
-
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
 <div class="page-header">
 	<div class="header-sub-title">
 		<nav class="breadcrumb breadcrumb-dash">
@@ -18,7 +16,6 @@
 	<div class="card-body">
 		<h1>Thông tin khách hàng</h1>
 		<hr />
-
 		<div class="table-responsive">
 			<table class="product-info-table m-t-20">
 				<tbody>
@@ -61,13 +58,10 @@
 							}
 						</td>
 					</tr>
-					
 					<tr>
 						<td class="card-title">Mật khẩu</td>
 						<td>@Model.Password</td>
 					</tr>
-					
-
 				</tbody>
 			</table>
 			<div class="m-b-15">

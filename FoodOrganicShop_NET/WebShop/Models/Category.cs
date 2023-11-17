@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
 #nullable disable
-
 namespace WebShop.Models
 {
     public partial class Category
@@ -12,10 +10,7 @@ namespace WebShop.Models
         {
             Products = new HashSet<Product>();
         }
-
-       
         public int CatId { get; set; }
-
         public string CatName { get; set; }
         public string Description { get; set; }
         public int? ParentId { get; set; }
@@ -29,7 +24,6 @@ namespace WebShop.Models
         public string MetaKey { get; set; }
         public string Cover { get; set; }
         public string SchemaMarkup { get; set; }
-
         public virtual ICollection<Product> Products { get; set; }
     }
 }

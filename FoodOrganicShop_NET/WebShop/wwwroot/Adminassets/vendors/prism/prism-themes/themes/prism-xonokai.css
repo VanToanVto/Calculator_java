@@ -30,7 +30,6 @@ pre[class*="language-"] {
     border: 1px solid #e1e1e8;
     overflow: auto;
 }
-
 pre[class*="language-"] {
     position: relative;
 }
@@ -38,7 +37,6 @@ pre[class*="language-"] code {
     white-space: pre;
     display: block;
 }
-
 :not(pre)>code[class*="language-"] {
     padding: 0.15em 0.2em 0.05em;
     border-radius: .3em;
@@ -102,7 +100,6 @@ pre[class*="language-"] code {
 .token.italic {
     font-style: italic;
 }
-
 code.language-markup {
     color: #f9f9f9;
 }
@@ -122,7 +119,6 @@ code.language-markup .token.script {
 code.language-markup .token.script .token.keyword {
     color: #76d9e6;
 }
-
 /* Line highlight plugin */
 pre[class*="language-"][data-line] {
     position: relative;

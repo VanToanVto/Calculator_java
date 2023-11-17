@@ -3,7 +3,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['pt-BR'] = {
         formatNoMatches: function () { return "Nenhum resultado encontrado"; },
         formatAjaxError: function () { return "Erro na busca"; },
@@ -13,6 +12,5 @@
         formatLoadMore: function (pageNumber) { return "Carregando mais resultados…"; },
         formatSearching: function () { return "Buscando…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['pt-BR']);
 })(jQuery);

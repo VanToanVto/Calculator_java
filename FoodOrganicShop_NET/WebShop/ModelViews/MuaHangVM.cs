@@ -1,13 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
 namespace WebShop.ModelViews
 {
     public class MuaHangVM
     {
-
         public int CustomerId { get; set; }
-
         [Required(ErrorMessage = "Vui lòng nhập Họ và Tên")]
         public string FullName { get; set; }
         public string Email { get; set; }
