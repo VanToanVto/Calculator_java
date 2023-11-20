@@ -8,21 +8,16 @@
     display: inline-block;
     vertical-align: text-bottom;
     font-weight: 500;
-
     a {
         &.breadcrumb-item {
             color: $gray-light;
-
-
             &:hover,
             &:focus {
                 color: $brand-primary;
             }
         }
     }
-
     &.breadcrumb-dash {
-
         .breadcrumb-item {
             + .breadcrumb-item {
                 &:before {
@@ -31,7 +26,6 @@
             }
         }
     }
-
     .breadcrumb-item {
         &.active {
             color: $gray;

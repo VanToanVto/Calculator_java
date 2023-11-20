@@ -1,9 +1,6 @@
 import themeColors from '../constant/theme-constant'
-
 class DashboardECommerce {
-
     static init() {
-        
         const salesChart = document.getElementById("sales-chart");
         const salesChartCtx = salesChart.getContext('2d');
         salesChart.height = 120;
@@ -73,7 +70,6 @@ class DashboardECommerce {
                 }
             }
         });
-
         const revenueChart = document.getElementById("revenue-chart");
         const revenueChartCtx = revenueChart.getContext('2d');
         revenueChart.height = 120;
@@ -139,7 +135,6 @@ class DashboardECommerce {
                 }
             }
         });
-
         const customerChart = document.getElementById("customer-chart");
         const customerChartCtx = customerChart.getContext('2d');
         customerChart.height = 292;
@@ -166,6 +161,4 @@ class DashboardECommerce {
         });
     }
 }
-
 $(() => { DashboardECommerce.init(); });
-

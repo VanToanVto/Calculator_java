@@ -1,5 +1,4 @@
-﻿using System;
-namespace WebShop.ModelViews
+﻿namespace WebShop.ModelViews
 {
     public class MuaHangSuccessVM
     {

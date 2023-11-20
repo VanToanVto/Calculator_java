@@ -32,9 +32,6 @@ define( [
 	"./exports/amd",
 	"./exports/global"
 ], function( jQuery ) {
-
 "use strict";
-
 return jQuery;
-
 } );

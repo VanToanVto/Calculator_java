@@ -1,5 +1,4 @@
-﻿using System;
-namespace WebShop.Models
+﻿namespace WebShop.Models
 {
     public class ErrorViewModel
     {

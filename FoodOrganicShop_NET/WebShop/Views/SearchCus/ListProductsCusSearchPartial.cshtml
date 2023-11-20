@@ -11,28 +11,13 @@
 						<img height="200px" width="200px" class="img-full" src="~/images/products/@item.Thumb" alt="@item.Title">
 					</a>
 					<div class="product-add-action">
-						<ul>
-							<li>
-								<a href="@url">
-									<i class="pe-7s-cart"></i>
-								</a>
-							</li>
-						</ul>
+						<ul><li><a href="@url"><i class="pe-7s-cart"></i></a></li></ul>
 					</div>
 				</div>
 				<div class="product-content align-self-center">
 					<a class="product-name pb-2" href="@url">@item.ProductName</a>
 					<div class="price-box pb-1">
 						<span class="new-price">@item.Price.Value.ToString("#,##0") VNĐ</span>
-					</div>
-					<div class="rating-box pb-2">
-						<ul>
-							<li><i class="pe-7s-star"></i></li>
-							<li><i class="pe-7s-star"></i></li>
-							<li><i class="pe-7s-star"></i></li>
-							<li><i class="pe-7s-star"></i></li>
-							<li><i class="pe-7s-star"></i></li>
-						</ul>
 					</div>
 					<p class="short-desc mb-0">@item.ShortDesc</p>
 				</div>

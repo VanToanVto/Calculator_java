@@ -19,8 +19,7 @@
 		<hr />
 		<div class="row m-b-30">
 			<div class="col-lg-8">
-				<div class="d-md-flex">
-				</div>
+				<div class="d-md-flex"></div>
 			</div>
 			<div class="col-lg-4 text-right">
 				<a class="btn btn-primary" asp-area="Admin" asp-controller="AdminCategories" asp-action="Create"><i class="anticon anticon-plus-circle m-r-5"></i><span>Thêm danh mục</span></a>
@@ -45,9 +44,7 @@
 							string url = $"/{item.Alias}";
 							<tr>
 								<td>@item.CatId</td>
-								<td>
-									<a target="_blank" href="@url">@item.CatName</a>
-								</td>
+								<td><a target="_blank" href="@url">@item.CatName</a></td>
 								<td>@item.Ordering</td>
 								<td>
 									@if (item.Published == true)

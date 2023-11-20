@@ -2,9 +2,7 @@ define( [
 	"../var/document",
 	"../var/support"
 ], function( document, support ) {
-
 "use strict";
-
 // Support: Safari 8 only
 // In Safari 8 documents created via document.implementation.createHTMLDocument
 // collapse sibling forms: the second one becomes a child of the first one.
@@ -15,6 +13,5 @@ support.createHTMLDocument = ( function() {
 	body.innerHTML = "<form></form><form></form>";
 	return body.childNodes.length === 2;
 } )();
-
 return support;
 } );

@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['ru'] = {
         formatNoMatches: function () { return "Совпадений не найдено"; },
         formatInputTooShort: function (input, min) { return "Пожалуйста, введите еще хотя бы" + character(min - input.length); },
@@ -14,9 +13,7 @@
         formatLoadMore: function (pageNumber) { return "Загрузка данных…"; },
         formatSearching: function () { return "Поиск…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['ru']);
-
     function character (n) {
         return " " + n + " символ" + (n%10 < 5 && n%10 > 0 && (n%100 < 5 || n%100 > 20) ? n%10 > 1 ? "a" : "" : "ов");
     }

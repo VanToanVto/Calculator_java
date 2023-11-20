@@ -18,7 +18,6 @@ $ps-theme-default: (
   scrollbar-y-width: $ps-scrollbar-y-width,
   scrollbar-y-hover-width: $ps-scrollbar-y-hover-width,
 );
-
 // Default theme
 .ps-container {
   @include ps-container($ps-theme-default);

@@ -1,12 +1,9 @@
 'use strict';
-
 var instances = require('../instances');
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
-
 function bindMouseWheelHandler(element, i) {
   var shouldPrevent = false;
-
   function shouldPreventDefault(deltaX, deltaY) {
     var scrollTop = element.scrollTop;
     if (deltaX === 0) {
@@ -17,7 +14,6 @@ function bindMouseWheelHandler(element, i) {
         return !i.settings.wheelPropagation;
       }
     }
-
     var scrollLeft = element.scrollLeft;
     if (deltaY === 0) {
       if (!i.scrollbarXActive) {
@@ -29,36 +25,30 @@ function bindMouseWheelHandler(element, i) {
     }
     return true;
   }
-
   function getDeltaFromEvent(e) {
     var deltaX = e.deltaX;
     var deltaY = -1 * e.deltaY;
-
     if (typeof deltaX === "undefined" || typeof deltaY === "undefined") {
       // OS X Safari
       deltaX = -1 * e.wheelDeltaX / 6;
       deltaY = e.wheelDeltaY / 6;
     }
-
     if (e.deltaMode && e.deltaMode === 1) {
       // Firefox in deltaMode 1: Line scrolling
       deltaX *= 10;
       deltaY *= 10;
     }
-
     if (deltaX !== deltaX && deltaY !== deltaY/* NaN checks */) {
       // IE in some mouse drivers
       deltaX = 0;
       deltaY = e.wheelDelta;
     }
-
     if (e.shiftKey) {
       // reverse axis with shift key
       return [-deltaY, -deltaX];
     }
     return [deltaX, deltaY];
   }
-
   function shouldBeConsumedByChild(deltaX, deltaY) {
     var child = element.querySelector('textarea:hover, select[multiple]:hover, .ps-child:hover');
     if (child) {
@@ -66,7 +56,6 @@ function bindMouseWheelHandler(element, i) {
         // if not scrollable
         return false;
       }
-
       var maxScrollTop = child.scrollHeight - child.clientHeight;
       if (maxScrollTop > 0) {
         if (!(child.scrollTop === 0 && deltaY > 0) && !(child.scrollTop === maxScrollTop && deltaY < 0)) {
@@ -82,17 +71,13 @@ function bindMouseWheelHandler(element, i) {
     }
     return false;
   }
-
   function mousewheelHandler(e) {
     var delta = getDeltaFromEvent(e);
-
     var deltaX = delta[0];
     var deltaY = delta[1];
-
     if (shouldBeConsumedByChild(deltaX, deltaY)) {
       return;
     }
-
     shouldPrevent = false;
     if (!i.settings.useBothWheelAxes) {
       // deltaX will only be used for horizontal scrolling and deltaY will
@@ -118,23 +103,19 @@ function bindMouseWheelHandler(element, i) {
       }
       shouldPrevent = true;
     }
-
     updateGeometry(element);
-
     shouldPrevent = (shouldPrevent || shouldPreventDefault(deltaX, deltaY));
     if (shouldPrevent) {
       e.stopPropagation();
       e.preventDefault();
     }
   }
-
   if (typeof window.onwheel !== "undefined") {
     i.event.bind(element, 'wheel', mousewheelHandler);
   } else if (typeof window.onmousewheel !== "undefined") {
     i.event.bind(element, 'mousewheel', mousewheelHandler);
   }
 }
-
 module.exports = function (element) {
   var i = instances.get(element);
   bindMouseWheelHandler(element, i);

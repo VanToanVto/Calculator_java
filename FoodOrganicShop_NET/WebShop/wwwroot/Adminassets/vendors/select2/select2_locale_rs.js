@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['rs'] = {
         formatNoMatches: function () { return "Ništa nije pronađeno"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Ukucajte bar još " + n + " simbol" + (n % 10 == 1 && n % 100 != 11 ? "" : "a"); },
@@ -14,6 +13,5 @@
         formatLoadMore: function (pageNumber) { return "Preuzimanje još rezultata…"; },
         formatSearching: function () { return "Pretraga…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['rs']);
 })(jQuery);

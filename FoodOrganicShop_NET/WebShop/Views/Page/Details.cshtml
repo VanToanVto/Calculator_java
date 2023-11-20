@@ -12,9 +12,7 @@
 					<div class="breadcrumb-item">
 						<h1 class="breadcrumb-heading">@Model.PageName</h1>
 						<ul>
-							<li>
-								<a href="/">Trang chủ <i class="pe-7s-angle-right"></i></a>
-							</li>
+							<li><a href="/">Trang chủ <i class="pe-7s-angle-right"></i></a></li>
 							<li>@Model.PageName</li>
 						</ul>
 					</div>
@@ -36,9 +34,7 @@
 									<li class="date"><i class="fa fa-calendar-o me-2"></i>@Model.CreatedDate</li>
 								</ul>
 							</div>
-							<h5 class="title mb-4">
-								<a href="@url">@Model.PageName</a>
-							</h5>
+							<h5 class="title mb-4"><a href="@url">@Model.PageName</a></h5>
 							@Html.Raw(Model.Contents)
 						</div>
 					</div>

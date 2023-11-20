@@ -7,7 +7,6 @@
       transition: $transition;
     }
   }
-
   @if $enable-prefers-reduced-motion-media-query {
     @media (prefers-reduced-motion: reduce) {
       transition: none;

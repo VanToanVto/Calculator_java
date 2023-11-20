@@ -18,10 +18,8 @@
 		<h1>Danh sách đơn hàng</h1>
 		<hr />
 		<div class="row m-b-30">
-			<div class="col-lg-8">
-			</div>
-			<div class="col-lg-4 text-right">
-			</div>
+			<div class="col-lg-8"></div>
+			<div class="col-lg-4 text-right"></div>
 		</div>
 		<div class="table-responsive">
 			<table class="table table-hover e-commerce-table">
@@ -66,17 +64,15 @@
 </div>
 <div id="modal-header" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
-		<div class="modal-content">
-		</div>
+		<div class="modal-content"></div>
 	</div>
 </div>
 @section Scripts {
 	<script>
 		$('#modal-header').on('show.bs.modal', function (event) {
-			var button = $(event.relatedTarget); // Button that triggered the modal
+			var button = $(event.relatedTarget); 
 			var url = button.attr("href");
 			var modal = $(this);
-			// note that this will replace the content of modal-content ever time the modal is opened
 			modal.find('.modal-content').load(url);
 		});
 	</script>

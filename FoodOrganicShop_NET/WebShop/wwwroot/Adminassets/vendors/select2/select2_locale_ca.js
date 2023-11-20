@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['ca'] = {
         formatNoMatches: function () { return "No s'ha trobat cap coincidència"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Introduïu " + n + " caràcter" + (n == 1 ? "" : "s") + " més"; },
@@ -14,6 +13,5 @@
         formatLoadMore: function (pageNumber) { return "S'estan carregant més resultats…"; },
         formatSearching: function () { return "S'està cercant…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['ca']);
 })(jQuery);

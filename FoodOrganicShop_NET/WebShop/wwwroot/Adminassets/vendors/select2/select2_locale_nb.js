@@ -6,7 +6,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['nb'] = {
         formatMatches: function (matches) { if (matches === 1) { return "Ett resultat er tilgjengelig, trykk enter for å velge det."; } return matches + " resultater er tilgjengelig. Bruk piltastene opp og ned for å navigere."; },
         formatNoMatches: function () { return "Ingen treff"; },
@@ -16,7 +15,5 @@
         formatLoadMore: function (pageNumber) { return "Laster flere resultater …"; },
         formatSearching: function () { return "Søker …"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['no']);
 })(jQuery);
-

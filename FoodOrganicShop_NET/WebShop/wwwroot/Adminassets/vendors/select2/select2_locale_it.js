@@ -3,7 +3,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['it'] = {
         formatNoMatches: function () { return "Nessuna corrispondenza trovata"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Inserisci ancora " + n + " caratter" + (n == 1? "e" : "i"); },
@@ -12,6 +11,5 @@
         formatLoadMore: function (pageNumber) { return "Caricamento in corso…"; },
         formatSearching: function () { return "Ricerca…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['it']);
 })(jQuery);

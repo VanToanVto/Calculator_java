@@ -1,19 +1,15 @@
 .checkbox {
 	min-height: auto;
 	position: relative;
-    
     label{
 		cursor: pointer;
 	}
-
 	input[type=checkbox] {
 		margin: 0;
 		display: none;
 		width: $checkbox-width-height;
-		
 		+label {
 			padding-left: 0px;
-			
 			&:before {
 				content: "\38";
 				width: $checkbox-width-height;
@@ -34,9 +30,7 @@
 				@include transition(all 0.2s ease-in-out); 
 			}
 		}
-		
 		&:checked {
-			
 			+label {
 				&:before {
 					background: $checkbox-theme-color;
@@ -45,21 +39,16 @@
 				}
 			}
 		}
-
 		&:disabled,
 		&.disabled {
-			
 			+label {
 				opacity: 0.6;
 				cursor: not-allowed;
-
 				&:before {
 					cursor: not-allowed;
 				}
 			}
-
 			&:not(:checked) {
-
 				+label {
 					&:before {
 						background-color: $gray-lighter;
@@ -67,23 +56,17 @@
 				}	
 			}
 		}
-
 		&.error {
-
 			+label {
-				
 				&:before {
 					border-color: #ffd0d9;
 				}
 			}
 		}
 	}
-
 	&.to-do {
 		input[type=checkbox] {
-
 			&:checked {
-			
 				+label {
 					text-decoration: line-through;
 				}

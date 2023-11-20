@@ -6,7 +6,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['id'] = {
         formatMatches: function (matches) { if (matches === 1) { return "Satu keputusan ditemui, tekan enter untuk memilih."; } return matches + " keputusan ditemui, gunakan kekunci anak panah ke atas dan ke bawah untuk menavigasi."; },
         formatNoMatches: function () { return "Tidak ada data yang sesuai"; },
@@ -16,6 +15,5 @@
         formatLoadMore: function (pageNumber) { return "Mengambil data…"; },
         formatSearching: function () { return "Mencari…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['id']);
 })(jQuery);

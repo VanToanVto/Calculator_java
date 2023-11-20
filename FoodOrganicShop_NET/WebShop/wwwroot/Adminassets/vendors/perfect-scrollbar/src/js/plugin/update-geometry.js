@@ -1,11 +1,9 @@
 'use strict';
-
 var _ = require('../lib/helper');
 var cls = require('../lib/class');
 var dom = require('../lib/dom');
 var instances = require('./instances');
 var updateScroll = require('./update-scroll');
-
 function getThumbSize(i, thumbSize) {
   if (i.settings.minScrollbarLength) {
     thumbSize = Math.max(thumbSize, i.settings.minScrollbarLength);
@@ -15,7 +13,6 @@ function getThumbSize(i, thumbSize) {
   }
   return thumbSize;
 }
-
 function updateCss(element, i) {
   var xRailOffset = {width: i.railXWidth};
   if (i.isRtl) {
@@ -29,7 +26,6 @@ function updateCss(element, i) {
     xRailOffset.top = i.scrollbarXTop + element.scrollTop;
   }
   dom.css(i.scrollbarXRail, xRailOffset);
-
   var yRailOffset = {top: element.scrollTop, height: i.railYHeight};
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
@@ -45,19 +41,15 @@ function updateCss(element, i) {
     }
   }
   dom.css(i.scrollbarYRail, yRailOffset);
-
   dom.css(i.scrollbarX, {left: i.scrollbarXLeft, width: i.scrollbarXWidth - i.railBorderXWidth});
   dom.css(i.scrollbarY, {top: i.scrollbarYTop, height: i.scrollbarYHeight - i.railBorderYWidth});
 }
-
 module.exports = function (element) {
   var i = instances.get(element);
-
   i.containerWidth = element.clientWidth;
   i.containerHeight = element.clientHeight;
   i.contentWidth = element.scrollWidth;
   i.contentHeight = element.scrollHeight;
-
   var existingRails;
   if (!element.contains(i.scrollbarXRail)) {
     existingRails = dom.queryChildren(element, '.ps-scrollbar-x-rail');
@@ -77,7 +69,6 @@ module.exports = function (element) {
     }
     dom.appendTo(i.scrollbarYRail, element);
   }
-
   if (!i.settings.suppressScrollX && i.containerWidth + i.settings.scrollXMarginOffset < i.contentWidth) {
     i.scrollbarXActive = true;
     i.railXWidth = i.containerWidth - i.railXMarginWidth;
@@ -87,7 +78,6 @@ module.exports = function (element) {
   } else {
     i.scrollbarXActive = false;
   }
-
   if (!i.settings.suppressScrollY && i.containerHeight + i.settings.scrollYMarginOffset < i.contentHeight) {
     i.scrollbarYActive = true;
     i.railYHeight = i.containerHeight - i.railYMarginHeight;
@@ -97,16 +87,13 @@ module.exports = function (element) {
   } else {
     i.scrollbarYActive = false;
   }
-
   if (i.scrollbarXLeft >= i.railXWidth - i.scrollbarXWidth) {
     i.scrollbarXLeft = i.railXWidth - i.scrollbarXWidth;
   }
   if (i.scrollbarYTop >= i.railYHeight - i.scrollbarYHeight) {
     i.scrollbarYTop = i.railYHeight - i.scrollbarYHeight;
   }
-
   updateCss(element, i);
-
   if (i.scrollbarXActive) {
     cls.add(element, 'ps-active-x');
   } else {

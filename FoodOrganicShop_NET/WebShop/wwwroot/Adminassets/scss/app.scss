@@ -2,13 +2,11 @@
   Template: Enlink - Admin Dashboard Template
   Author: Theme_Nate
 ----------------------------------------------------------------------------*/
-
 /*---------------------------------
 ------- Mixins & Variables --------
 ---------------------------------*/
 @import 'mixins'; //                           mixins
 @import 'variables'; //                        variables
-
 /*---------------------------------
 -------- Depdencies Styles --------
 ---------------------------------*/
@@ -21,16 +19,13 @@
 @import 'plugins/quill';//                     quill
 @import 'plugins/chartist';//                  chartist
 @import 'plugins/chartjs';//                   chartjs
-
 // Dependencies for Demo
 @import 'plugins/prism';//                     prism
-
 /*---------------------------------
 -------------- common -------------
 ---------------------------------*/
 @import 'common/general'; //                   general
 @import 'common/utilities'; //                 utilities
-
 /*---------------------------------
 -------------- Template -------------
 ---------------------------------*/
@@ -39,7 +34,6 @@
 @import 'template/header'; //                  header
 @import 'template/footer'; //                  footer
 @import 'template/page-container'; //          page-container
-
 /*---------------------------------
 ------------ Ui Element -----------
 ---------------------------------*/
@@ -55,7 +49,6 @@
 @import 'ui-elements/badge'; //                badge
 @import 'ui-elements/pagination'; //           pagination
 @import 'ui-elements/timeline'; //             timeline
-
 /*---------------------------------
 ------------ Components -----------
 ---------------------------------*/
@@ -69,12 +62,10 @@
 @import 'components/toasts';//                 toasts
 @import 'components/progress-bar';//           progress-bar
 @import 'components/menu';//                   menu
-
 /*---------------------------------
 ------------- Tables --------------
 ---------------------------------*/
 @import 'tables/tables';//                     tables
-
 /*---------------------------------
 -------------- Forms --------------
 ---------------------------------*/
@@ -85,7 +76,6 @@
 @import 'forms/switch';//                      switch
 @import 'forms/star_rating';//                 star_rating
 @import 'forms/validation';//                  validation
-
 /*---------------------------------
 -------------- Apps ---------------
 ---------------------------------*/
@@ -93,15 +83,11 @@
 @import 'apps/file-manager';//                 file-manager
 @import 'apps/chat';//                         chat
 @import 'apps/e-commerce';//                   e-commerce
-
 /*---------------------------------
 ----------- Dashboard -------------
 ---------------------------------*/
 @import 'dashboard/projects.scss';//           projects
-
-
 /*---------------------------------
 -------- Theme Configurator -------
 ---------------------------------*/
 @import 'theme-configurator/theme-configurator'
-

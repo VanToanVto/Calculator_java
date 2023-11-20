@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['tr'] = {
         formatMatches: function (matches) { if (matches === 1) { return "Sadece bir sonuç bulundu, seçmek için enter tuşuna basabilirsiniz."; } return matches + " sonuç bulundu, yukarı ve aşağı tuşları ile seçebilirsiniz."; },
         formatNoMatches: function () { return "Sonuç bulunamadı"; },
@@ -15,6 +14,5 @@
         formatLoadMore: function (pageNumber) { return "Daha fazla…"; },
         formatSearching: function () { return "Aranıyor…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['tr']);
 })(jQuery);

@@ -1,5 +1,4 @@
 class Icon {
-
     static init() {
         function copy(value)  {
             const promise = new Promise((resolve) => {
@@ -20,10 +19,8 @@ class Icon {
                     }
                 }
             });
-    
             return (promise);
         }
-
         function showToast() {
             var toastHTML = `<div class="toast fade hide" data-delay="1500">
                 <div class="toast-body">
@@ -31,14 +28,12 @@ class Icon {
                     <span class="ml-1">Copied</span>
                 </div>
             </div>`
-        
             $('#notification-toast').append(toastHTML)
             $('#notification-toast .toast').toast('show');
             setTimeout(function(){ 
                 $('#notification-toast .toast:first-child').remove();
             }, 1500);
         }
-
         $('.icons-list li').on('click', (e) => {
             const $this = $(e.currentTarget);
             const copiedString = $this.children('.icon-wrap').html()
@@ -47,8 +42,5 @@ class Icon {
             });
         })
     }
-    
 }
-
 $(() => { Icon.init(); });
-
