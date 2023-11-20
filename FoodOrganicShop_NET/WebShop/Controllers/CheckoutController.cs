@@ -96,7 +96,7 @@ namespace WebShop.Controllers
                     return RedirectToAction("Success");
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 ViewBag.GioHang = cart;
                 return View(model);

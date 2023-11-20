@@ -102,8 +102,7 @@ namespace WebShop.Areas.Admin.Controllers
                     await _context.SaveChangesAsync();
                     _notyfService.Success("Cập nhật thành công");
                 }
-                catch (DbUpdateConcurrencyException)
-                {
+                catch {
                     if (!PageExists(page.PageId)) return NotFound();
                     else throw;
                 }

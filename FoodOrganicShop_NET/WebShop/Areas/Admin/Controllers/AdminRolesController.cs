@@ -56,7 +56,7 @@ namespace WebShop.Areas.Admin.Controllers
                             _notyfService.Success("Tạo mới quyền truy cập thành công");
                         }
                     }
-                    catch (DbUpdateConcurrencyException) { 
+                    catch { 
                         throw;
                     }
                     return RedirectToAction(nameof(Index));
@@ -103,8 +103,7 @@ namespace WebShop.Areas.Admin.Controllers
 							}
 						}
 					}
-                    catch (DbUpdateConcurrencyException)
-                    {
+                    catch {
                         throw;
                     }
                     return RedirectToAction(nameof(Index));

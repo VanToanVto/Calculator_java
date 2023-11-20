@@ -72,8 +72,7 @@ namespace WebShop.Areas.Admin.Controllers
                     await _context.SaveChangesAsync();
                     _notyfService.Success("Cập nhật trạng thái đơn hàng thành công");
                 }
-                catch (DbUpdateConcurrencyException)
-                {
+                catch {
                     if (!OrderExists(order.OrderId)) return NotFound();
                     else throw;
                 }
@@ -123,8 +122,7 @@ namespace WebShop.Areas.Admin.Controllers
                     _context.Update(order);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
+                catch {
                     if (!OrderExists(order.OrderId)) return NotFound();
                     else throw;
                 }

@@ -104,7 +104,7 @@ namespace WebShop.Areas.Admin.Controllers
                     _context.Update(account);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch 
                 {
                     if (!AccountExists(account.AccountId)) return NotFound();
                     else throw;

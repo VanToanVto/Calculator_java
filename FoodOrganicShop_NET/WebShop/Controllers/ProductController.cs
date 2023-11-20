@@ -27,10 +27,7 @@ namespace WebShop.Controllers
                     lsProducts = _context.Products.AsNoTracking().Where(x => x.CatId == CatID).Include(x => x.Cat)
                     .OrderBy(x => x.ProductId).ToList();
                 }
-                else
-                {
-                    lsProducts = _context.Products.AsNoTracking().Include(x => x.Cat).OrderBy(x => x.ProductId).ToList();
-                }
+                else lsProducts = _context.Products.AsNoTracking().Include(x => x.Cat).OrderBy(x => x.ProductId).ToList();
                 PagedList<Product> models = new PagedList<Product>(lsProducts.AsQueryable(), pageNumber, pageSize);
                 ViewData["DanhMuc"] = new SelectList(_context.Categories, "CatId", "CatName");
                 ViewBag.CurrentCateID = CatID;

@@ -101,7 +101,7 @@ namespace WebShop.Areas.Admin.Controllers
                     await _context.SaveChangesAsync();
                     _notyfService.Success("Chỉnh sửa thành công");
                 }
-                catch (DbUpdateConcurrencyException)
+                catch
                 {
                     if (!TinDangExists(tinDang.PostId)) return NotFound();
                     else  throw;

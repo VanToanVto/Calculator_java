@@ -67,8 +67,7 @@ namespace WebShop.Areas.Admin.Controllers
                     _context.Update(customer);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
+                catch {
                     if (!CustomerExists(customer.CustomerId)) return NotFound();
                     else throw;
                 }
