@@ -2,6 +2,7 @@
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
+
 // scss-docs-start btn-variant-mixin
 @mixin button-variant(
   $background,
@@ -21,11 +22,13 @@
   @include gradient-bg($background);
   border-color: $border;
   @include box-shadow($btn-box-shadow);
+
   &:hover {
     color: $hover-color;
     @include gradient-bg($hover-background);
     border-color: $hover-border;
   }
+
   .btn-check:focus + &,
   &:focus {
     color: $hover-color;
@@ -38,6 +41,7 @@
       box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
     }
   }
+
   .btn-check:checked + &,
   .btn-check:active + &,
   &:active,
@@ -48,6 +52,7 @@
     // Remove CSS gradients if they're enabled
     background-image: if($enable-gradients, none, null);
     border-color: $active-border;
+
     &:focus {
       @if $enable-shadows {
         @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
@@ -57,6 +62,7 @@
       }
     }
   }
+
   &:disabled,
   &.disabled {
     color: $disabled-color;
@@ -67,6 +73,7 @@
   }
 }
 // scss-docs-end btn-variant-mixin
+
 // scss-docs-start btn-outline-variant-mixin
 @mixin button-outline-variant(
   $color,
@@ -77,15 +84,18 @@
 ) {
   color: $color;
   border-color: $color;
+
   &:hover {
     color: $color-hover;
     background-color: $active-background;
     border-color: $active-border;
   }
+
   .btn-check:focus + &,
   &:focus {
     box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
   }
+
   .btn-check:checked + &,
   .btn-check:active + &,
   &:active,
@@ -94,6 +104,7 @@
     color: $active-color;
     background-color: $active-background;
     border-color: $active-border;
+
     &:focus {
       @if $enable-shadows {
         @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, .5));
@@ -103,6 +114,7 @@
       }
     }
   }
+
   &:disabled,
   &.disabled {
     color: $color;
@@ -110,6 +122,7 @@
   }
 }
 // scss-docs-end btn-outline-variant-mixin
+
 // scss-docs-start btn-size-mixin
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   padding: $padding-y $padding-x;

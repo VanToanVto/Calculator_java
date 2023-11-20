@@ -57,6 +57,7 @@
 		}
 	}
 }
+
 /* ---Wave Button--- */
 @keyframes wave-button{
     0%{
@@ -72,6 +73,7 @@
       transform: scale(1)
     }
   }
+  
 .wave-btn{
     margin: auto;
     display:block;
@@ -99,7 +101,9 @@
     background: $primary;
     width: 250px;
     height: 250px;
+  
 }
+  
 .wave-btn span:nth-child(1){
     background: $primary;
     animation: wave-button 2s infinite .1s linear backwards;
