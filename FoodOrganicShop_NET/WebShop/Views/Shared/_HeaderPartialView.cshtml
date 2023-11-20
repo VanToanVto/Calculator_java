@@ -105,7 +105,7 @@
 						</div>
 					</div>
 					<div id="records_table" class="results-box">
-						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -118,24 +118,12 @@
 						<div class="main-menu">
 							<nav class="main-nav">
 								<ul>
-									<li class="drop-holder">
-										<a href="/">Trang chủ</a>
-									</li>
-									<li>
-										<a asp-controller="Home" asp-action="About">Về chúng tôi</a>
-									</li>
-									<li>
-										<a asp-controller="Product" asp-action="Index">Shop</a>
-									</li>
-									<li>
-										<a href="/page/huong-dan-mua-hang">Hướng dẫn mua hàng</a>
-									</li>
-									<li>
-										<a asp-controller="Blog" asp-action="Index">Blog</a>
-									</li>
-									<li>
-										<a asp-controller="Home" asp-action="Contact">Liên hệ</a>
-									</li>
+									<li class="drop-holder"><a href="/">Trang chủ</a></li>
+									<li><a asp-controller="Home" asp-action="About">Về chúng tôi</a></li>
+									<li><a asp-controller="Product" asp-action="Index">Shop</a></li>
+									<li><a href="/page/huong-dan-mua-hang">Hướng dẫn mua hàng</a></li>
+									<li><a asp-controller="Blog" asp-action="Index">Blog</a></li>
+									<li><a asp-controller="Home" asp-action="Contact">Liên hệ</a></li>
 								</ul>
 							</nav>
 						</div>
@@ -180,11 +168,6 @@
 								}
 							</ul>
 						</li>
-						<li>
-							<a href="#">
-								<i class="pe-7s-like"></i>
-							</a>
-						</li>
 					</ul>
 				</div>
 				<div class="offcanvas-menu_area">
@@ -192,40 +175,30 @@
 						<ul class="mobile-menu">
 							<li class="menu-item-has-children">
 								<a href="/">
-									<span class="mm-text">
-										Trang chủ
-									</span>
+									<span class="mm-text">Trang chủ</span>
 								</a>
 							</li>
 							<li>
 								<a asp-controller="Home" asp-action="About">
-									<span class="mm-text">About Us</span>
+									<span class="mm-text">Về chúng tôi</span>
 								</a>
 							</li>
 							<li class="menu-item-has-children">
 								<a asp-controller="Product" asp-action="Index">
-									<span class="mm-text">
-										Shop
-									</span>
+									<span class="mm-text">Shop</span>
 								</a>
 							</li>
 							<li class="menu-item-has-children">
-								<a href="#">
-									<span class="mm-text">
-										Hướng dẫn mua hàng
-									</span>
-								</a>
+								<a href="/page/huong-dan-mua-hang"><span class="mm-text">Hướng dẫn mua hàng</span></a>
 							</li>
 							<li class="menu-item-has-children">
 								<a asp-controller="Blog" asp-action="Index">
-									<span class="mm-text">
-										Blog
-									</span>
+									<span class="mm-text">Tin tức</span>
 								</a>
 							</li>
 							<li>
 								<a asp-controller="Home" asp-action="Contact">
-									<span class="mm-text">Contact</span>
+									<span class="mm-text">Liên hệ</span>
 								</a>
 							</li>
 						</ul>
@@ -250,33 +223,31 @@
 			</div>
 		</div>
 	</div>
-	<div class="offcanvas-minicart_wrapper" id="miniCart">
-		@await Component.InvokeAsync("HeaderCart")
-	</div>
+	<div class="offcanvas-minicart_wrapper" id="miniCart">@await Component.InvokeAsync("HeaderCart")</div>
 	<div class="global-overlay"></div>
 </header>
 @section Scripts{
 	<script>
-	$(document).ready(function () {
-		$("#keyword").keyup(function () {
-			var strkeyword = $('#keyword').val();
-			console.log(strkeyword);
-			$.ajax({
-				url: '/SearchCus/FindCusProduct/',
-				datatype: "json",
-				type: "POST",
-				data: { keyword: strkeyword },
-				async: true,
-				success: function (results) {
-					$("#records_table").html("");
-					$("#records_table").html(results);
-				},
-				error: function (xhr) {
-					alert('error');
-				}
+		$(document).ready(function () {
+			$("#keyword").keyup(function () {
+				var strkeyword = $('#keyword').val();
+				console.log(strkeyword);
+				$.ajax({
+					url: '/SearchCus/FindCusProduct/',
+					datatype: "json",
+					type: "POST",
+					data: { keyword: strkeyword },
+					async: true,
+					success: function (results) {
+						$("#records_table").html("");
+						$("#records_table").html(results);
+					},
+					error: function (xhr) {
+						alert('error');
+					}
+				});
 			});
 		});
-	});
 	</script>
-    <script src="~/js/search.js"></script>
+	<script src="~/js/search.js"></script>
 	}
