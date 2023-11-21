@@ -3,6 +3,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['is'] = {
         formatNoMatches: function () { return "Ekkert fannst"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Vinsamlegast skrifið " + n + " staf" + (n > 1 ? "i" : "") + " í viðbót"; },
@@ -11,5 +12,6 @@
         formatLoadMore: function (pageNumber) { return "Sæki fleiri niðurstöður…"; },
         formatSearching: function () { return "Leita…"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['is']);
 })(jQuery);

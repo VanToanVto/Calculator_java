@@ -1,7 +1,11 @@
 import themeColors from '../constant/theme-constant'
+
 class DashboardProject {
+
     static init() {
+        
         $('.datepicker-calendar').datepicker();
+        
         const completionChart = document.getElementById("completion-chart");
         let gradient = completionChart.getContext('2d').createLinearGradient(0, 30, 10, 320);
         gradient.addColorStop(0, themeColors.blueLight);
@@ -76,4 +80,6 @@ class DashboardProject {
         });
     }
 }
+
 $(() => { DashboardProject.init(); });
+

@@ -1,5 +1,7 @@
 'use strict';
+
 var ps = require('../main');
+
 if (typeof define === 'function' && define.amd) {
   // AMD
   define(ps);

@@ -1,15 +1,19 @@
 .radio {
 	min-height: auto;
 	position: relative;
+    
     label{
 		cursor: pointer;
 	}
+
 	input[type=radio] {
 		margin: 0;
 		display: none;
 		width: $radio-width-height;
+		
 		+label {
 			padding-left: 0;
+			
 			&:before {
 				content: "";
 				width: $radio-width-height;
@@ -27,6 +31,7 @@
 				cursor: pointer;
 				@include transition(all 0.2s ease-in-out); 
             }
+            
             &:after {
                 content: "";
                 background-color: transparent;
@@ -38,33 +43,42 @@
                 top: $radio-dot-vertical-gutter;
             }
 		}
+		
 		&:checked {
+			
 			+label {
 				&:before {
 					color: $radio-theme-color;
 					border-color: $radio-theme-color;
                 }
+                
                 &:after {
 					background-color: $radio-theme-color;
 				}
 			}
 		}
+
 		&:disabled,
 		&.disabled {
+			
 			+label {
 				opacity: 0.6;
 				cursor: not-allowed;
+
 				&:before {
 					background-color: $gray-lighter;
 					cursor: not-allowed;
 				}
 			}
+
 			&:checked {
+
 				+label {
 					&:before {
 						background-color: $gray-lighter;
 						border-color: $gray-lighter;;
 					}
+
 					&:after {
 						background-color: rgba(83,83,95,.9);
 					}

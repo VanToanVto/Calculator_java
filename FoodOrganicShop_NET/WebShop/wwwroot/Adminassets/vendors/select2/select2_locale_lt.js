@@ -6,6 +6,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['lt'] = {
         formatNoMatches: function () { return "Atitikmenų nerasta"; },
         formatInputTooShort: function (input, min) { return "Įrašykite dar" + character(min - input.length); },
@@ -16,7 +17,9 @@
         formatLoadMore: function (pageNumber) { return "Kraunama daugiau rezultatų…"; },
         formatSearching: function () { return "Ieškoma…"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['lt']);
+
     function character (n) {
         return " " + n + " simbol" + ((n%100 > 9 && n%100 < 21) || n%10 == 0 ? "ių" : n%10 > 1 ? "ius" : "į");
     }

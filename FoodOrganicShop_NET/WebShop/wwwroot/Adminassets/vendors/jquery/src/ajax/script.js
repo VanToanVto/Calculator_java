@@ -3,13 +3,16 @@ define( [
 	"../var/document",
 	"../ajax"
 ], function( jQuery, document ) {
+
 "use strict";
+
 // Prevent auto-execution of scripts when no explicit dataType was provided (See gh-2432)
 jQuery.ajaxPrefilter( function( s ) {
 	if ( s.crossDomain ) {
 		s.contents.script = false;
 	}
 } );
+
 // Install script dataType
 jQuery.ajaxSetup( {
 	accepts: {
@@ -26,6 +29,7 @@ jQuery.ajaxSetup( {
 		}
 	}
 } );
+
 // Handle cache's special case and crossDomain
 jQuery.ajaxPrefilter( "script", function( s ) {
 	if ( s.cache === undefined ) {
@@ -35,8 +39,10 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 		s.type = "GET";
 	}
 } );
+
 // Bind script tag hack transport
 jQuery.ajaxTransport( "script", function( s ) {
+
 	// This transport only deals with cross domain or forced-by-attrs requests
 	if ( s.crossDomain || s.scriptAttrs ) {
 		var script, callback;
@@ -52,6 +58,7 @@ jQuery.ajaxTransport( "script", function( s ) {
 							complete( evt.type === "error" ? 404 : 200, evt.type );
 						}
 					} );
+
 				// Use native DOM manipulation to avoid our domManip AJAX trickery
 				document.head.appendChild( script[ 0 ] );
 			},
@@ -63,4 +70,5 @@ jQuery.ajaxTransport( "script", function( s ) {
 		};
 	}
 } );
+
 } );

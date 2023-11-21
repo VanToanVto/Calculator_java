@@ -3,6 +3,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['de'] = {
         formatNoMatches: function () { return "Keine Übereinstimmungen gefunden"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Bitte " + n + " Zeichen mehr eingeben"; },
@@ -12,5 +13,6 @@
         formatSearching: function () { return "Suche…"; },
         formatMatches: function (matches) { return matches + " Ergebnis " + (matches > 1 ? "se" : "") + " verfügbar, zum Navigieren die Hoch-/Runter-Pfeiltasten verwenden."; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['de']);
 })(jQuery);
