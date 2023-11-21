@@ -41,7 +41,7 @@ namespace WebShop.Controllers
                 }
                 else
                 {
-                    Product hh = _context.  Products.SingleOrDefault(p => p.ProductId == productID);
+                    Product hh = _context.Products.SingleOrDefault(p => p.ProductId == productID);
                     item = new CartItem
                     {
                         amount = amount.HasValue ? amount.Value : 1,
