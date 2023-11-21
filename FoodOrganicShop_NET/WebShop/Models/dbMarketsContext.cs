@@ -46,16 +46,10 @@ namespace WebShop.Models
                 entity.Property(e => e.FullName).HasMaxLength(150);
                 entity.Property(e => e.LastLogin).HasColumnType("datetime");
                 entity.Property(e => e.Password).HasMaxLength(50);
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(12)
-                    .IsUnicode(false);
+                entity.Property(e => e.Phone).HasMaxLength(12).IsUnicode(false);
                 entity.Property(e => e.RoleId).HasColumnName("RoleID");
-                entity.Property(e => e.Salt)
-                    .HasMaxLength(10)
-                    .IsFixedLength(true);
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.Accounts)
-                    .HasForeignKey(d => d.RoleId)
+                entity.Property(e => e.Salt).HasMaxLength(10).IsFixedLength(true);
+                entity.HasOne(d => d.Role).WithMany(p => p.Accounts).HasForeignKey(d => d.RoleId)
                     .HasConstraintName("FK_Accounts_Roles");
             });
             modelBuilder.Entity<Attribute>(entity =>
@@ -68,13 +62,9 @@ namespace WebShop.Models
                 entity.Property(e => e.AttributesPriceId).HasColumnName("AttributesPriceID");
                 entity.Property(e => e.AttributeId).HasColumnName("AttributeID");
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
-                entity.HasOne(d => d.Attribute)
-                    .WithMany(p => p.AttributesPrices)
-                    .HasForeignKey(d => d.AttributeId)
+                entity.HasOne(d => d.Attribute).WithMany(p => p.AttributesPrices).HasForeignKey(d => d.AttributeId)
                     .HasConstraintName("FK_AttributesPrices_Attributes");
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.AttributesPrices)
-                    .HasForeignKey(d => d.ProductId)
+                entity.HasOne(d => d.Product).WithMany(p => p.AttributesPrices).HasForeignKey(d => d.ProductId)
                     .HasConstraintName("FK_AttributesPrices_Products");
             });
             modelBuilder.Entity<Category>(entity =>
@@ -97,29 +87,19 @@ namespace WebShop.Models
                 entity.Property(e => e.Avatar).HasMaxLength(255);
                 entity.Property(e => e.Birthday).HasColumnType("datetime");
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
-                entity.Property(e => e.Email)
-                    .HasMaxLength(150)
-                    .IsFixedLength(true);
+                entity.Property(e => e.Email).HasMaxLength(150).IsFixedLength(true);
                 entity.Property(e => e.FullName).HasMaxLength(255);
                 entity.Property(e => e.LastLogin).HasColumnType("datetime");
                 entity.Property(e => e.LocationId).HasColumnName("LocationID");
                 entity.Property(e => e.Password).HasMaxLength(50);
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(12)
-                    .IsUnicode(false);
-                entity.Property(e => e.Salt)
-                    .HasMaxLength(8)
-                    .IsFixedLength(true);
-                entity.HasOne(d => d.Location)
-                    .WithMany(p => p.Customers)
-                    .HasForeignKey(d => d.LocationId)
+                entity.Property(e => e.Phone).HasMaxLength(12).IsUnicode(false);
+                entity.Property(e => e.Salt).HasMaxLength(8).IsFixedLength(true);
+                entity.HasOne(d => d.Location).WithMany(p => p.Customers).HasForeignKey(d => d.LocationId)
                     .HasConstraintName("FK_Customers_Locations");
             });
             modelBuilder.Entity<Location>(entity =>
             {
-                entity.Property(e => e.LocationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("LocationID");
+                entity.Property(e => e.LocationId).ValueGeneratedNever().HasColumnName("LocationID");
                 entity.Property(e => e.Name).HasMaxLength(50);
                 entity.Property(e => e.NameWithType).HasMaxLength(100);
                 entity.Property(e => e.Slug).HasMaxLength(100);
@@ -135,15 +115,10 @@ namespace WebShop.Models
                 entity.Property(e => e.PaymentId).HasColumnName("PaymentID");
                 entity.Property(e => e.ShipDate).HasColumnType("datetime");
                 entity.Property(e => e.TransactStatusId).HasColumnName("TransactStatusID");
-                entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.CustomerId)
+                entity.HasOne(d => d.Customer).WithMany(p => p.Orders).HasForeignKey(d => d.CustomerId)
                     .HasConstraintName("FK_Orders_Customers");
-                entity.HasOne(d => d.TransactStatus)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.TransactStatusId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Orders_TransactStatus");
+                entity.HasOne(d => d.TransactStatus).WithMany(p => p.Orders).HasForeignKey(d => d.TransactStatusId)
+                    .OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Orders_TransactStatus");
             });
             modelBuilder.Entity<OrderDetail>(entity =>
             {
@@ -151,13 +126,9 @@ namespace WebShop.Models
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
-                entity.HasOne(d => d.Order)
-                    .WithMany(p => p.OrderDetails)
-                    .HasForeignKey(d => d.OrderId)
+                entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails).HasForeignKey(d => d.OrderId)
                     .HasConstraintName("FK_OrderDetails_Orders");
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.OrderDetails)
-                    .HasForeignKey(d => d.ProductId)
+                entity.HasOne(d => d.Product).WithMany(p => p.OrderDetails).HasForeignKey(d => d.ProductId)
                     .HasConstraintName("FK_OrderDetails_Products");
             });
             modelBuilder.Entity<Page>(entity =>
@@ -180,25 +151,19 @@ namespace WebShop.Models
                 entity.Property(e => e.DateModified).HasColumnType("datetime");
                 entity.Property(e => e.MetaDesc).HasMaxLength(255);
                 entity.Property(e => e.MetaKey).HasMaxLength(255);
-                entity.Property(e => e.ProductName)
-                    .IsRequired()
-                    .HasMaxLength(255);
+                entity.Property(e => e.ProductName).IsRequired().HasMaxLength(255);
                 entity.Property(e => e.ShortDesc).HasMaxLength(255);
                 entity.Property(e => e.Thumb).HasMaxLength(255);
                 entity.Property(e => e.Title).HasMaxLength(255);
                 entity.Property(e => e.Video).HasMaxLength(255);
-                entity.HasOne(d => d.Cat)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.CatId)
+                entity.HasOne(d => d.Cat).WithMany(p => p.Products).HasForeignKey(d => d.CatId)
                     .HasConstraintName("FK_Products_Categories");
             });
             modelBuilder.Entity<QuangCao>(entity =>
             {
                 entity.Property(e => e.QuangCaoId).HasColumnName("QuangCaoID");
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
-                entity.Property(e => e.ImageBg)
-                    .HasMaxLength(250)
-                    .HasColumnName("ImageBG");
+                entity.Property(e => e.ImageBg).HasMaxLength(250).HasColumnName("ImageBG");
                 entity.Property(e => e.ImageProduct).HasMaxLength(250);
                 entity.Property(e => e.SubTitle).HasMaxLength(150);
                 entity.Property(e => e.Title).HasMaxLength(150);
@@ -214,16 +179,13 @@ namespace WebShop.Models
             {
                 entity.Property(e => e.ShipperId).HasColumnName("ShipperID");
                 entity.Property(e => e.Company).HasMaxLength(150);
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(10)
-                    .IsFixedLength(true);
+                entity.Property(e => e.Phone).HasMaxLength(10).IsFixedLength(true);
                 entity.Property(e => e.ShipDate).HasColumnType("datetime");
                 entity.Property(e => e.ShipperName).HasMaxLength(150);
             });
             modelBuilder.Entity<TinDang>(entity =>
             {
-                entity.HasKey(e => e.PostId)
-                    .HasName("PK_tblTinTucs");
+                entity.HasKey(e => e.PostId).HasName("PK_tblTinTucs");
                 entity.Property(e => e.PostId).HasColumnName("PostID");
                 entity.Property(e => e.AccountId).HasColumnName("AccountID");
                 entity.Property(e => e.Alias).HasMaxLength(255);
@@ -234,9 +196,7 @@ namespace WebShop.Models
                 entity.Property(e => e.IsNewfeed).HasColumnName("isNewfeed");
                 entity.Property(e => e.MetaDesc).HasMaxLength(255);
                 entity.Property(e => e.MetaKey).HasMaxLength(255);
-                entity.Property(e => e.Scontents)
-                    .HasMaxLength(255)
-                    .HasColumnName("SContents");
+                entity.Property(e => e.Scontents).HasMaxLength(255).HasColumnName("SContents");
                 entity.Property(e => e.Thumb).HasMaxLength(255);
                 entity.Property(e => e.Title).HasMaxLength(255);
             });
