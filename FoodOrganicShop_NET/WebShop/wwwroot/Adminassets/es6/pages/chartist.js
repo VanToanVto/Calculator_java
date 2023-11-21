@@ -1,7 +1,5 @@
 class ChartChartist {
-
     static init() {
-
         new Chartist.Line('#simple-line-chart', {
 			labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
 			series: [
@@ -14,23 +12,19 @@ class ChartChartist {
 			    right: 40
 			}
         });
-        
 		const times = (n)=> {
 			return Array.apply(null, new Array(n));
 		};
-			
 		const lineScatterdata = times(52).map(Math.random).reduce((data, rnd, index)=> {
 			data.labels.push(index + 1);
 			data.series.forEach((series)=> {
 				series.push(Math.random() * 100)
 			});
-			
 			return data;
 		}, {
 			labels: [],
 			series: times(4).map(()=> { return new Array() })
 		});
-			
 		const lineScatterOptions = {
 			showLine: false,
 			axisX: {
@@ -39,7 +33,6 @@ class ChartChartist {
 				}
 			}
 		};
-			
 		const lineScatterResponsiveOptions = [
 			['screen and (min-width: 640px)', {
 				axisX: {
@@ -49,9 +42,7 @@ class ChartChartist {
 				}
 			}]
 		];
-			
 		new Chartist.Line('#line-scatter-chart', lineScatterdata, lineScatterOptions, lineScatterResponsiveOptions);
-
         new Chartist.Line('#line-chart-area', {
 			labels: [1, 2, 3, 4, 5, 6, 7, 8],
 			series: [
@@ -61,14 +52,12 @@ class ChartChartist {
 				low: 0,
 				showArea: true
 		});
-
         const biPolarBarData = {
 			labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
 			series: [
 				[1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
 			]
 		};
-		
 		const biPolarBarOptions = {
 			high: 10,
 			low: -10,
@@ -78,9 +67,7 @@ class ChartChartist {
 				}
 			}
 		};
-		
         new Chartist.Bar('#bi-polar-bar', biPolarBarData, biPolarBarOptions);
-        
         new Chartist.Bar('#stacked-bar', {
 			labels: ['Q1', 'Q2', 'Q3', 'Q4'],
 			series: [
@@ -102,7 +89,6 @@ class ChartChartist {
 				});
 			}
         });
-        
         new Chartist.Bar('#horizontal-bar', {
 			labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
 			series: [
@@ -116,7 +102,6 @@ class ChartChartist {
 				offset: 70
 			}
 		});
-
         new Chartist.Pie('#gauge-chart', {
 			series: [20, 10, 30, 40]
 		}, {
@@ -126,7 +111,6 @@ class ChartChartist {
 			total: 200,
 			showLabel: false
         });
-        
         new Chartist.Pie('#donut-chart', {
 			series: [20, 10, 30, 40]
 			}, {
@@ -138,6 +122,4 @@ class ChartChartist {
 		});
     }
 }
-
 $(() => { ChartChartist.init(); });
-

@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['el'] = {
         formatNoMatches: function () { return "Δεν βρέθηκαν αποτελέσματα"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Παρακαλούμε εισάγετε " + n + " περισσότερο" + (n > 1 ? "υς" : "") + " χαρακτήρ" + (n > 1 ? "ες" : "α"); },
@@ -14,6 +13,5 @@
         formatLoadMore: function (pageNumber) { return "Φόρτωση περισσότερων…"; },
         formatSearching: function () { return "Αναζήτηση…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['el']);
 })(jQuery);

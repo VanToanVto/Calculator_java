@@ -1,7 +1,5 @@
 import themeColors from '../constant/theme-constant'
-
 class ChartChartJs {
-
     static init() {
         //Line Chart
 		const lineChart = document.getElementById("line-chart");
@@ -68,7 +66,6 @@ class ChartChartJs {
                 },
 			}
         });
-        
         //Stacked Area Chart
 		const stackedAreaChart = document.getElementById("stacked-area-chart");
 		const stackedAreaCtx = stackedAreaChart.getContext('2d');
@@ -140,7 +137,6 @@ class ChartChartJs {
                 }
 			}
         });
-        
         //Bar Chart
 		const barChart = document.getElementById("bar-chart");
 		const barCtx = barChart.getContext('2d');
@@ -162,7 +158,6 @@ class ChartChartJs {
 				data: [ 86, 27, 90, 43, 65 ,76, 87, 85]
 				}]
 			},
-			
 			options: {
 				scaleShowVerticalLines: false,
                 responsive: true,
@@ -211,7 +206,6 @@ class ChartChartJs {
                 }
 			}
         });
-        
         //Radar Chart
 		const radarChart = document.getElementById("radar-chart");
 		const radarCtx = radarChart.getContext('2d');
@@ -250,7 +244,6 @@ class ChartChartJs {
                 } 
 			}
         });
-        
         //Donut Chart
 		const donutChart = document.getElementById("donut-chart");
 		const donutCtx = donutChart.getContext('2d');
@@ -275,7 +268,6 @@ class ChartChartJs {
 				cutoutPercentage: 45
 			}
         });
-        
         //Polar Chart
 		const polarChart = document.getElementById("polar-chart");
 		const polarCtx = polarChart.getContext('2d');
@@ -304,6 +296,4 @@ class ChartChartJs {
 		});
     }
 }
-
 $(() => { ChartChartJs.init(); });
-

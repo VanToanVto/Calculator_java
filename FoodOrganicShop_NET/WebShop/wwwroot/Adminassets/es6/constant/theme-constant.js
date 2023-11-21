@@ -1,6 +1,4 @@
-
 const ThemeConstant = {
-   
     magenta: '#eb2f96',
     magentaLight: 'rgba(235, 47, 150, 0.05)',
     red: '#de4436',
@@ -32,5 +30,4 @@ const ThemeConstant = {
     dark: '#2a2a2a',
     transparent: 'rgba(255, 255, 255, 0)'
 }
-
 export default ThemeConstant;

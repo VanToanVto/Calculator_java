@@ -1,11 +1,9 @@
 class ComponentSlider {
-
     static init() {
         const horizonPrimary = document.getElementById('horizon-primary');
         const verticalPrimary = document.getElementById('vertical-default');
         const rangeSlider = document.getElementById('range-slider');
         const stepSlider = document.getElementById('step-slider');
-
         noUiSlider.create(horizonPrimary, {
             start: 60,
             connect: "lower",
@@ -15,7 +13,6 @@ class ComponentSlider {
                 'max': 100
             }
         });
-
         noUiSlider.create(verticalPrimary, {
             start: 60,
             connect: "lower",
@@ -26,7 +23,6 @@ class ComponentSlider {
                 'max': 100
             }
         });
-
         noUiSlider.create(stepSlider, {
             start: 20,
             connect: "lower",
@@ -40,7 +36,6 @@ class ComponentSlider {
                 density: 10
             }
         });
-
         noUiSlider.create(rangeSlider, {
             connect: true,
             behaviour: 'tap',
@@ -50,12 +45,10 @@ class ComponentSlider {
                 'max': [ 1000 ]
             }
         });
-
         const nodes = [
             document.getElementById('range-min'), // 0
             document.getElementById('range-max')  // 1
         ];
-
         // Display the slider value and how far the handle moved
         // from the left edge of the slider.
         rangeSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
@@ -63,6 +56,4 @@ class ComponentSlider {
         });
     }
 }
-
 $(() => { ComponentSlider.init(); });
-

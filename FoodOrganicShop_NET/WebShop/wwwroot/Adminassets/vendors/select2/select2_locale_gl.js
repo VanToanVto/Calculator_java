@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['gl'] = {
         formatNoMatches: function () {
             return "Non se atoparon resultados";
@@ -40,6 +39,5 @@
             return "Buscando…";
         }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['gl']);
 })(jQuery);

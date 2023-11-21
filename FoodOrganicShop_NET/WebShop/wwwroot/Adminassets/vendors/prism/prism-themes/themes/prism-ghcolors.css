@@ -2,7 +2,6 @@
  * GHColors theme by Avi Aryan (http://aviaryan.in)
  * Inspired by Github syntax coloring
  */
-
 code[class*="language-"],
 pre[class*="language-"] {
     color: #393A34;
@@ -14,27 +13,22 @@ pre[class*="language-"] {
     word-break: normal;
     font-size: 0.95em;
     line-height: 1.2em;
-
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
-
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
 }
-
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
     background: #b3d4fc;
 }
-
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
     background: #b3d4fc;
 }
-
 /* Code blocks */
 pre[class*="language-"] {
     padding: 1em;
@@ -43,11 +37,9 @@ pre[class*="language-"] {
     border: 1px solid #dddddd;
     background-color: white;
 }
-
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
 }
-
 /* Inline code */
 :not(pre) > code[class*="language-"] {
     padding: .2em;
@@ -55,18 +47,15 @@ pre[class*="language-"] {
     background: #f8f8f8;
     border: 1px solid #dddddd;
 }
-
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
     color: #999988; font-style: italic;
 }
-
 .token.namespace {
     opacity: .7;
 }
-
 .token.string,
 .token.attr-value {
     color: #e3116c;
@@ -75,7 +64,6 @@ pre[class*="language-"] {
 .token.operator {
     color: #393A34; /* no highlight */
 }
-
 .token.entity,
 .token.url,
 .token.symbol,
@@ -88,32 +76,27 @@ pre[class*="language-"] {
 .token.inserted {
     color: #36acaa;
 }
-
 .token.atrule,
 .token.keyword,
 .token.attr-name,
 .language-autohotkey .token.selector {
     color: #00a4db;
 }
-
 .token.function,
 .token.deleted,
 .language-autohotkey .token.tag {
     color: #9a050f;
 }
-
 .token.tag,
 .token.selector,
 .language-autohotkey .token.keyword {
     color: #00009f;
 }
-
 .token.important,
 .token.function,
 .token.bold {
     font-weight: bold;
 }
-
 .token.italic {
     font-style: italic;
 }

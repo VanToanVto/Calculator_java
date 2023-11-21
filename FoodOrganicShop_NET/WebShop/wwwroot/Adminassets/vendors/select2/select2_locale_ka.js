@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['ka'] = {
         formatNoMatches: function () { return "ვერ მოიძებნა"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "გთხოვთ შეიყვანოთ კიდევ " + n + " სიმბოლო"; },
@@ -14,6 +13,5 @@
         formatLoadMore: function (pageNumber) { return "შედეგის ჩატვირთვა…"; },
         formatSearching: function () { return "ძებნა…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['ka']);
 })(jQuery);

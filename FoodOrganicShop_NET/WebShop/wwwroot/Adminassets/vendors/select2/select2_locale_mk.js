@@ -5,7 +5,6 @@
  */
 (function ($) {
     "use strict";
-
     $.fn.select2.locales['mk'] = {
         formatNoMatches: function () { return "Нема пронајдено совпаѓања"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Ве молиме внесете уште " + n + " карактер" + (n == 1 ? "" : "и"); },
@@ -14,6 +13,5 @@
         formatLoadMore: function (pageNumber) { return "Вчитување резултати…"; },
         formatSearching: function () { return "Пребарување…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['mk']);
 })(jQuery);

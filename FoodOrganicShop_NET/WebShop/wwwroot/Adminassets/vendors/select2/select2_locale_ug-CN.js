@@ -11,6 +11,5 @@
         formatLoadMore: function (pageNumber) { return "ئۇچۇرلار ئوقۇلىۋاتىدۇ…"; },
         formatSearching: function () { return "ئىزدەۋاتىدۇ…"; }
     };
-
     $.extend($.fn.select2.defaults, $.fn.select2.locales['ug-CN']);
 })(jQuery);

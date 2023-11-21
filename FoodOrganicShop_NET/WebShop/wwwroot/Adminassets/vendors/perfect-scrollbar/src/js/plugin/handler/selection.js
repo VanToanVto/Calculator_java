@@ -1,10 +1,8 @@
 'use strict';
-
 var _ = require('../../lib/helper');
 var instances = require('../instances');
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
-
 function bindSelectionHandler(element, i) {
   function getRangeNode() {
     var selection = window.getSelection ? window.getSelection() :
@@ -15,7 +13,6 @@ function bindSelectionHandler(element, i) {
       return selection.getRangeAt(0).commonAncestorContainer;
     }
   }
-
   var scrollingLoop = null;
   var scrollDiff = {top: 0, left: 0};
   function startScrolling() {
@@ -25,7 +22,6 @@ function bindSelectionHandler(element, i) {
           clearInterval(scrollingLoop);
           return;
         }
-
         updateScroll(element, 'top', element.scrollTop + scrollDiff.top);
         updateScroll(element, 'left', element.scrollLeft + scrollDiff.left);
         updateGeometry(element);
@@ -39,7 +35,6 @@ function bindSelectionHandler(element, i) {
     }
     _.stopScrolling(element);
   }
-
   var isSelected = false;
   i.event.bind(i.ownerDocument, 'selectionchange', function () {
     if (element.contains(getRangeNode())) {
@@ -61,7 +56,6 @@ function bindSelectionHandler(element, i) {
       stopScrolling();
     }
   });
-
   i.event.bind(window, 'mousemove', function (e) {
     if (isSelected) {
       var mousePosition = {x: e.pageX, y: e.pageY};
@@ -71,7 +65,6 @@ function bindSelectionHandler(element, i) {
         top: element.offsetTop,
         bottom: element.offsetTop + element.offsetHeight
       };
-
       if (mousePosition.x < containerGeometry.left + 3) {
         scrollDiff.left = -5;
         _.startScrolling(element, 'x');
@@ -81,7 +74,6 @@ function bindSelectionHandler(element, i) {
       } else {
         scrollDiff.left = 0;
       }
-
       if (mousePosition.y < containerGeometry.top + 3) {
         if (containerGeometry.top + 3 - mousePosition.y < 5) {
           scrollDiff.top = -5;
@@ -99,7 +91,6 @@ function bindSelectionHandler(element, i) {
       } else {
         scrollDiff.top = 0;
       }
-
       if (scrollDiff.top === 0 && scrollDiff.left === 0) {
         stopScrolling();
       } else {
@@ -108,7 +99,6 @@ function bindSelectionHandler(element, i) {
     }
   });
 }
-
 module.exports = function (element) {
   var i = instances.get(element);
   bindSelectionHandler(element, i);
