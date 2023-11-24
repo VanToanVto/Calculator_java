@@ -7,12 +7,14 @@
 		factory( jQuery );
 	}
 }(function( $ ) {
+
 /*
  * Translated default messages for the jQuery validation plugin.
  * Locale: PT (Portuguese; português)
  * Region: BR (Brazil)
  */
 $.extend( $.validator.messages, {
+
 	// Core
 	required: "Este campo &eacute; requerido.",
 	remote: "Por favor, corrija este campo.",
@@ -31,6 +33,7 @@ $.extend( $.validator.messages, {
 	max: $.validator.format( "Por favor, forne&ccedil;a um valor menor ou igual a {0}." ),
 	min: $.validator.format( "Por favor, forne&ccedil;a um valor maior ou igual a {0}." ),
 	step: $.validator.format( "Por favor, forne&ccedil;a um valor m&uacute;ltiplo de {0}." ),
+
 	// Metodos Adicionais
 	maxWords: $.validator.format( "Por favor, forne&ccedil;a com {0} palavras ou menos." ),
 	minWords: $.validator.format( "Por favor, forne&ccedil;a pelo menos {0} palavras." ),

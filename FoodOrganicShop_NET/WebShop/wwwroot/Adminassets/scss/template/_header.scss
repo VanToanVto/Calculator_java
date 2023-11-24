@@ -7,31 +7,41 @@
     width: 100%;
     z-index: $zindex-fixed;
     display: flex;
+
     .logo {
         width: $side-nav-width;
         border-right: 1px solid $border-color;
         @include transition(all 0.2s ease); 
+
         @include screen-laptop-only {
             width: $side-nav-width-laptop;
         }
+
         @include screen-tablet {
             display: none;
         }
+        
         > a {
             display: block;
             text-align: center;
         }
+
         .logo-fold {
             display: none;
         }
+
         &.logo-white {
             display: none;
         }
     }
+
     .nav-wrap {
         flex: 1;
         display: flex;
         justify-content: space-between;
+
+
+
         .nav-left,
         .nav-right {
             list-style-type: none;
@@ -39,7 +49,9 @@
             margin-bottom: 0px;
             align-items: center;
             display: flex;
+
             li {
+
                 > a,
                 nz-dropdown > a {
                     padding: 5px 15px;
@@ -48,15 +60,18 @@
                     display: block;
                     @include transition(background-color 0.3s); 
                     border-radius: $border-radius;
+
                     &:hover,
                     &:focus,
                     &:active {
                         color: $brand-primary;
                         background-color: rgba($brand-primary, 0.1);
+
                         .ant-badge {
                             color: $brand-primary; 
                         }    
                     }
+
                     .ant-badge {
                         color: $body-color;
                         font-size: 18px;
@@ -64,30 +79,38 @@
                 }
             }
         }
+
         .nav-left {
             margin-left: 10px;
         }
+
         .nav-right {
             margin-right: 10px;
         }
+
         .desktop-toggle {
             @include screen-tablet {
                 display: none;
             }
+
             > a {
                 > i {
+
                     &:before {
                         content: "\e076";
                     }
                 }
             }
         }
+
         .mobile-toggle {
             @include screen-tablet-above {
                 display: none;
             }
+
             > a {
                 > i {
+
                     &:before {
                         content: "\e077";
                     }
@@ -95,6 +118,7 @@
             }
         }
     }
+
     .ant-dropdown-link,
     .ant-dropdown-trigger  {
         .anticon:not(.anticon-ellipsis) {
@@ -102,35 +126,47 @@
             transform: none;
         }
     }
+
     &.header-folded {
+
         .logo {
             width: $side-nav-folded;
         }
     }
 }
+
 .pop-notification {
     width: 350px;
+
     &.dropdown-menu {
         padding: 0px;
     }
 }
+
 .pop-profile {
     width: 270px;
 }
+
+
+
 .is-folded {
     @include screen-tablet-above {
         .header {
+
             .logo {
                 width: $side-nav-folded;
+
                 img {
                     display: none;
                 }
+
                 .logo-fold {
                     display: block;
                 }
             }
         }    
     }
+
     .nav-left {
         > li {
             &.desktop-toggle {
@@ -143,7 +179,9 @@
         }	
     }
 }
+
 .is-expand { 
+
 	.header {
 		@include screen-mobile {
 			.nav-left {
@@ -160,37 +198,48 @@
 		}	
 	}
 }
+
 .is-primary,
 .is-secondary,
 .is-success,
 .is-danger,
 .is-custom {
+
     .header {
         border-bottom: 0px;
+
         .logo {
             border-color: transparent;
+
             &.logo-dark {
                 display: none;
             }
+
             &.logo-white {
                 display: block;
             }
         }
+
         .nav-left,
         .nav-right {
+
             li {
+
                 > a,
                 nz-dropdown > a {
                     color: rgba($white, 0.8);
+
                     &:hover,
                     &:focus,
                     &:active {
                         color: $white;
                         background-color: rgba($white, 0.15);
+
                         .ant-badge {
                             color: $white; 
                         }    
                     }
+
                     .ant-badge {
                         color: rgba($white, 0.8);
                     }
@@ -199,8 +248,10 @@
         }        
     }
 }
+
 @each $theme in $theme-color-loop {
     .#{nth($theme, 1)} {
+
         .header {
             background-color: #{nth($theme, 2)};
         }

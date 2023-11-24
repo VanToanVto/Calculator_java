@@ -1,17 +1,22 @@
 'use strict';
+
 var DOM = {};
+
 DOM.e = function (tagName, className) {
   var element = document.createElement(tagName);
   element.className = className;
   return element;
 };
+
 DOM.appendTo = function (child, parent) {
   parent.appendChild(child);
   return child;
 };
+
 function cssGet(element, styleName) {
   return window.getComputedStyle(element)[styleName];
 }
+
 function cssSet(element, styleName, styleValue) {
   if (typeof styleValue === 'number') {
     styleValue = styleValue.toString() + 'px';
@@ -19,6 +24,7 @@ function cssSet(element, styleName, styleValue) {
   element.style[styleName] = styleValue;
   return element;
 }
+
 function cssMultiSet(element, obj) {
   for (var key in obj) {
     var val = obj[key];
@@ -29,6 +35,7 @@ function cssMultiSet(element, obj) {
   }
   return element;
 }
+
 DOM.css = function (element, styleNameOrObject, styleValue) {
   if (typeof styleNameOrObject === 'object') {
     // multiple set with object
@@ -41,6 +48,7 @@ DOM.css = function (element, styleNameOrObject, styleValue) {
     }
   }
 };
+
 DOM.matches = function (element, query) {
   if (typeof element.matches !== 'undefined') {
     return element.matches(query);
@@ -56,6 +64,7 @@ DOM.matches = function (element, query) {
     }
   }
 };
+
 DOM.remove = function (element) {
   if (typeof element.remove !== 'undefined') {
     element.remove();
@@ -65,9 +74,11 @@ DOM.remove = function (element) {
     }
   }
 };
+
 DOM.queryChildren = function (element, selector) {
   return Array.prototype.filter.call(element.childNodes, function (child) {
     return DOM.matches(child, selector);
   });
 };
+
 module.exports = DOM;

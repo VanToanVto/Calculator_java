@@ -5,6 +5,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['ar'] = {
         formatNoMatches: function () { return "لم يتم العثور على مطابقات"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; if (n == 1){ return "الرجاء إدخال حرف واحد على الأكثر"; } return n == 2 ? "الرجاء إدخال حرفين على الأكثر" : "الرجاء إدخال " + n + " على الأكثر"; },
@@ -13,5 +14,6 @@
         formatLoadMore: function (pageNumber) { return "تحميل المزيد من النتائج…"; },
         formatSearching: function () { return "البحث…"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['ar']);
 })(jQuery);

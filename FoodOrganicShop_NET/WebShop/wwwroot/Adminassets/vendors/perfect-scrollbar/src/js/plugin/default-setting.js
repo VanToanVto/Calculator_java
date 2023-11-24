@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = {
   handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch'],
   maxScrollbarLength: null,

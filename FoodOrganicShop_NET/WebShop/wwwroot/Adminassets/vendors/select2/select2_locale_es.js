@@ -3,6 +3,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['es'] = {
     	formatMatches: function (matches) { if (matches === 1) { return "Un resultado disponible, presione enter para seleccionarlo."; } return matches + " resultados disponibles, use las teclas de dirección para navegar."; },
         formatNoMatches: function () { return "No se encontraron resultados"; },
@@ -13,5 +14,6 @@
         formatSearching: function () { return "Buscando…"; },
         formatAjaxError: function() { return "La carga falló"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['es']);
 })(jQuery);

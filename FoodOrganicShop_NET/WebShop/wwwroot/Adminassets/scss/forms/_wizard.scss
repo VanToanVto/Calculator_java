@@ -1,6 +1,7 @@
 /*----------------------------------------
   35. Wizard
 ----------------------------------------*/
+
 .wizard {
 	display: -webkit-box;
     display: flex;
@@ -9,6 +10,7 @@
     -webkit-box-align: baseline;
     align-items: baseline;
     margin-bottom: 1rem;
+
 	.nav-item {
 		position: relative;
 		display: -webkit-box;
@@ -21,6 +23,7 @@
 		padding: 0 12px;
 		-webkit-box-align: center;
 		align-items: center;
+
 		> .nav-link {
 			display: -webkit-inline-box;
 			display: inline-flex;
@@ -29,6 +32,7 @@
 			width: 20px;
 			height: 20px;
 			z-index: 1;
+
 			&:after {
 				content:"";
 				position: absolute;
@@ -38,6 +42,7 @@
 				border-radius: 50px;
 				@include transition(all 0.4s ease-in-out); 
 			}
+
 			&:before {
 				content: '';
 				position: absolute;
@@ -49,29 +54,35 @@
 				cursor: default;
 				@include transition(all 0.4s ease-in-out); 
 			}
+
 			&.active {
 				&:after {
 					background: $default-white; 
 					border: 3px solid $default-success;
 				}
+
 				&:before {
 					background: $default-success;
 				}
 			}
+
 			&.completed {
 				&:after {
 					background: $default-success;
 				}	
+
 				&:before {
 					background: $default-success;
 				}
 			}
 		}
+
 		.nav-title {
 			margin-top: 10px;
 			font-size: 18px;
 			font-weight: 300;
 		}
+
 		&:first-child {
 			a {
 				&:before {
@@ -80,6 +91,7 @@
 			}
 		}
 	}
+
 	&.wizard-primary {
 		.nav-item {
 			> .nav-link {
@@ -87,14 +99,17 @@
 					&:after {
 						border: 3px solid $default-primary;
 					}
+	
 					&:before {
 						background: $default-primary;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $default-primary;
 					}
+					
 					&:before {
 						background: $default-primary;
 					}
@@ -102,6 +117,7 @@
 			}	
 		}
 	}
+
 	&.wizard-info {
 		.nav-item {
 			> .nav-link {
@@ -109,14 +125,17 @@
 					&:after {
 						border: 3px solid $default-info;
 					}
+	
 					&:before {
 						background: $default-info;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $default-info;
 					}	
+
 					&:before {
 						background: $default-info;
 					}
@@ -124,6 +143,7 @@
 			}	
 		}
 	}
+
 	&.wizard-warning {
 		.nav-item {
 			> .nav-link {
@@ -131,14 +151,17 @@
 					&:after {
 						border: 3px solid $default-warning;
 					}
+	
 					&:before {
 						background: $default-warning;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $default-warning;
 					}	
+
 					&:before {
 						background: $default-warning;
 					}
@@ -146,6 +169,7 @@
 			}	
 		}
 	}
+
 	&.wizard-danger {
 		.nav-item {
 			> .nav-link {
@@ -153,14 +177,17 @@
 					&:after {
 						border: 3px solid $default-danger;
 					}
+	
 					&:before {
 						background: $default-danger;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $default-danger;
 					}	
+
 					&:before {
 						background: $default-danger;
 					}
@@ -168,6 +195,7 @@
 			}	
 		}
 	}
+
 	&.wizard-gradient-primary {
 		.nav-item {
 			> .nav-link {
@@ -176,14 +204,17 @@
 						background: $default-white; 
 						border: 3px solid $gradient-primary-base-right;
 					}
+	
 					&:before {
 						background: $gradient-primary;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $gradient-primary;
 					}	
+
 					&:before {
 						background: $gradient-primary;
 					}
@@ -191,6 +222,7 @@
 			}	
 		}
 	}
+
 	&.wizard-gradient-primary {
 		.nav-item {
 			> .nav-link {
@@ -199,14 +231,17 @@
 						background: $default-white; 
 						border: 3px solid $gradient-primary-base-right;
 					}
+	
 					&:before {
 						background: $gradient-primary;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $gradient-primary;
 					}	
+
 					&:before {
 						background: $gradient-primary;
 					}
@@ -214,6 +249,7 @@
 			}	
 		}
 	}
+
 	&.wizard-gradient-success {
 		.nav-item {
 			> .nav-link {
@@ -222,14 +258,17 @@
 						background: $default-white; 
 						border: 3px solid $gradient-success-base-right;
 					}
+	
 					&:before {
 						background: $gradient-success;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $gradient-success;
 					}	
+
 					&:before {
 						background: $gradient-success;
 					}
@@ -237,6 +276,7 @@
 			}	
 		}
 	}
+
 	&.wizard-gradient-info {
 		.nav-item {
 			> .nav-link {
@@ -245,14 +285,17 @@
 						background: $default-white; 
 						border: 3px solid $gradient-info-base-right;
 					}
+	
 					&:before {
 						background: $gradient-info;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $gradient-info;
 					}	
+
 					&:before {
 						background: $gradient-info;
 					}
@@ -260,6 +303,7 @@
 			}	
 		}
 	}
+
 	&.wizard-gradient-warning {
 		.nav-item {
 			> .nav-link {
@@ -268,14 +312,17 @@
 						background: $default-white; 
 						border: 3px solid $gradient-warning-base-right;
 					}
+	
 					&:before {
 						background: $gradient-warning;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $gradient-warning;
 					}	
+
 					&:before {
 						background: $gradient-warning;
 					}
@@ -283,6 +330,7 @@
 			}	
 		}
 	}
+
 	&.wizard-gradient-danger {
 		.nav-item {
 			> .nav-link {
@@ -291,14 +339,17 @@
 						background: $default-white; 
 						border: 3px solid $gradient-danger-base-right;
 					}
+	
 					&:before {
 						background: $gradient-danger;
 					}
 				}
+	
 				&.completed {
 					&:after {
 						background: $gradient-danger;
 					}	
+
 					&:before {
 						background: $gradient-danger;
 					}

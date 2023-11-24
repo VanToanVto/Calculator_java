@@ -4,25 +4,33 @@
 	box-shadow: none;
 	border: 1px solid $border-color;
 	border-radius: $border-radius;
+
 	&.datepicker-dropdown {
 		z-index: $zindex-popover !important;
 	}
+	
 	table {
+
 		tr {
+
 			th,
 			td {
 				border-radius: 50px;
 				width: $datepicker-day-size;
 				height: $datepicker-day-size;
 			}
+
 			th {
 				font-weight: $font-weight-semibold;
 			}
+
 			td {
 				@include transition(all 0.2s ease-in-out); 
+
 				span {
 					border-radius: $border-radius;
 				}
+
 				&.old,
 				&.new {
 					color: rgba($body-color, 0.25);
@@ -61,11 +69,14 @@
     background: $brand-primary;
     border-color: transparent;
 }
+
 .datepicker table tr td span:hover,
 .datepicker table tr td span.focused {
 	background: $brand-primary;
 	color: $white;
 }
+
+
 .datepicker table tr td.day:hover, 
 .datepicker table tr td.focused {	
 	background: rgba($brand-primary,0.1);
@@ -73,6 +84,7 @@
 	font-weight: $font-weight-semibold;
     cursor: pointer;
 }
+
 .datepicker .datepicker-switch:hover, 
 .datepicker .prev:hover, 
 .datepicker .next:hover, 
@@ -81,24 +93,29 @@
 	background-color: transparent;
     cursor: pointer;
 }
+
 .datepicker-inline {
 	width: $datepicker-inline-width;
 }
+
 .daterangepicker {
 	border-radius: 0px;
 	padding: 30px;
 	box-shadow: none;
 	border: 1px solid $border-color;
+
 	.input-mini {
 		border-radius: 0px;
 	    margin-bottom: 20px;
 	    height: 40px;
 	    padding: 0 6px 0 35px;
+
 	    &.active {
 	    	border-radius: 0px;
 	    	border-color: lighten($brand-primary, 20%);		
 	    }
 	}
+
 	.daterangepicker_input {
 		i {
 			position: absolute;
@@ -106,42 +123,52 @@
     		top: 13px;
 		}
 	}
+
 	td,
 	th {
 		border-radius: $border-radius;
 		width: 40px;
 		height: 35px;
+		
 		&.available{
 			&:hover{
 				background: $gray-dark;
 			}	
 		}
 	}
+
 	td {
 		&.in-range {
 			background-color: transparent;
 			color: $brand-primary;
 		}
+
 		&.active {
 			background-color: $brand-primary;
 		    border-color: transparent;
 		    color: $white;
+
 			&:hover {
 				background-color: $brand-primary;
 			    border-color: transparent;
 			    color: $white;
 			}
 		}
+
 		&.start-date {
 			border-radius: 0px;
+
 			&.end-date {
 				border-radius: 0px;
 			}
 		}
+
 		&.end-date {
 			border-radius: 0px;
 		}
+
 	}
+
 	select {
 		&.hourselect,
 		&.minuteselect,
@@ -151,15 +178,18 @@
 			min-height: 30px;
 		}
 	}
+
 	.calendar-time {
 		i {
 			top: 8px;
   		    left: 35px;
 		}
 	}
+
 	@include screen-mobile-above {
 		.calendar {
 			margin-right: 20px !important;		
 		}
 	} 
 }
+

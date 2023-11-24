@@ -3,6 +3,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['pt-PT'] = {
         formatNoMatches: function () { return "Nenhum resultado encontrado"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Introduza " + n + " car" + (n == 1 ? "ácter" : "acteres"); },
@@ -11,5 +12,6 @@
         formatLoadMore: function (pageNumber) { return "A carregar mais resultados…"; },
         formatSearching: function () { return "A pesquisar…"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['pt-PT']);
 })(jQuery);

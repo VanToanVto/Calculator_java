@@ -11,5 +11,6 @@
         formatLoadMore: function (pageNumber) { return "載入中…"; },
         formatSearching: function () { return "搜尋中…"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['zh-TW']);
 })(jQuery);

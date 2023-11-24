@@ -10,18 +10,22 @@
 //    slide in its in-transition state. Only one of these occurs at a time.
 // 5. .carousel-item-next.carousel-item-left and .carousel-item-prev.carousel-item-right
 //    is the upcoming slide in transition.
+
 .carousel {
   position: relative;
 }
+
 .carousel.pointer-event {
   touch-action: pan-y;
 }
+
 .carousel-inner {
   position: relative;
   width: 100%;
   overflow: hidden;
   @include clearfix();
 }
+
 .carousel-item {
   position: relative;
   display: none;
@@ -31,34 +35,42 @@
   backface-visibility: hidden;
   @include transition($carousel-transition);
 }
+
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
   display: block;
 }
+
 .carousel-item-next:not(.carousel-item-left),
 .active.carousel-item-right {
   transform: translateX(100%);
 }
+
 .carousel-item-prev:not(.carousel-item-right),
 .active.carousel-item-left {
   transform: translateX(-100%);
 }
+
+
 //
 // Alternate transitions
 //
+
 .carousel-fade {
   .carousel-item {
     opacity: 0;
     transition-property: opacity;
     transform: none;
   }
+
   .carousel-item.active,
   .carousel-item-next.carousel-item-left,
   .carousel-item-prev.carousel-item-right {
     z-index: 1;
     opacity: 1;
   }
+
   .active.carousel-item-left,
   .active.carousel-item-right {
     z-index: 0;
@@ -66,9 +78,12 @@
     @include transition(0s $carousel-transition-duration opacity);
   }
 }
+
+
 //
 // Left/right controls for nav
 //
+
 .carousel-control-prev,
 .carousel-control-next {
   position: absolute;
@@ -84,6 +99,7 @@
   text-align: center;
   opacity: $carousel-control-opacity;
   @include transition($carousel-control-transition);
+
   // Hover/focus state
   @include hover-focus {
     color: $carousel-control-color;
@@ -104,6 +120,7 @@
     background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
 }
+
 // Icons for within
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -118,10 +135,13 @@
 .carousel-control-next-icon {
   background-image: $carousel-control-next-icon-bg;
 }
+
+
 // Optional indicator pips
 //
 // Add an ordered list with the following class and add a list item for each
 // slide your carousel holds.
+
 .carousel-indicators {
   position: absolute;
   right: 0;
@@ -135,6 +155,7 @@
   margin-right: $carousel-control-width;
   margin-left: $carousel-control-width;
   list-style: none;
+
   li {
     box-sizing: content-box;
     flex: 0 1 auto;
@@ -152,13 +173,17 @@
     opacity: .5;
     @include transition($carousel-indicator-transition);
   }
+
   .active {
     opacity: 1;
   }
 }
+
+
 // Optional captions
 //
 //
+
 .carousel-caption {
   position: absolute;
   right: (100% - $carousel-caption-width) / 2;

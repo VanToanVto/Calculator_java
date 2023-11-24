@@ -5,6 +5,7 @@
 */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['he'] = {
         formatNoMatches: function () { return "לא נמצאו התאמות"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "נא להזין עוד " + n + " תווים נוספים"; },
@@ -13,5 +14,6 @@
         formatLoadMore: function (pageNumber) { return "טוען תוצאות נוספות…"; },
         formatSearching: function () { return "מחפש…"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['he']);
 })(jQuery);

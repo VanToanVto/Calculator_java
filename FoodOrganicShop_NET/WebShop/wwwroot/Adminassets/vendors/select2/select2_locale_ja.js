@@ -3,6 +3,7 @@
  */
 (function ($) {
     "use strict";
+
     $.fn.select2.locales['ja'] = {
         formatNoMatches: function () { return "該当なし"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "後" + n + "文字入れてください"; },
@@ -11,5 +12,6 @@
         formatLoadMore: function (pageNumber) { return "読込中･･･"; },
         formatSearching: function () { return "検索中･･･"; }
     };
+
     $.extend($.fn.select2.defaults, $.fn.select2.locales['ja']);
 })(jQuery);

@@ -1,7 +1,9 @@
 .nav-tabs {
 	border-bottom: 1px solid $tabs-border;
+	
 	>li {
 		margin-bottom: -2px;
+		
 		>a {
 			margin-right: 0px;
 			line-height: 2.5;
@@ -12,20 +14,24 @@
 			display: block;
     		padding: $tabs-toggler-padding-y $tabs-toggler-padding-x;
     		@include transition(all 0.3s ease-in-out); 
+			
 			&:hover {
 				border-color: transparent;
 				color: $gray;
 			}
+			
 			&:hover,
 			&:focus {
 				background-color: transparent;
 				opacity: 1;
 			}
+
 			&.active {
 				border: 0px;
 				background-color: transparent;
 				border-bottom: 2px solid $tabs-theme-color;
 				font-weight: $font-weight-semibold;
+				
 				&:hover,
 				&:focus {
 					border: 0px;
@@ -33,6 +39,7 @@
 					border-bottom: 2px solid $tabs-theme-color;
 					opacity: 1;
 				}
+
 				&.nav-link {
 					border-bottom: 2px solid $tabs-theme-color;
 					color: $gray-dark;
@@ -40,34 +47,44 @@
 				}
 			}
 		}
+		
 	}	
+
 	.nav-link {
 		border-top: 0px;
 		border-right: 0px;
 		border-left: 0px;
 		border-top-left-radius: 0px;
     	border-top-right-radius: 0px;
+
 		&:hover,
 		&:focus,
 		&:active {
 			border-color: transparent;
 		}
 	}
+
 	&.flex-column {
 		border-right: 1px solid $tabs-border;
 		border-bottom: 0px;
+
 		.nav-item {
 			margin-bottom: 0px;
 			margin-right: -1px;
 		}
+
 		.nav-link {
 			border-bottom: 0px;
 			text-align: right;
 		}
+
 		>li {
+
 			>a {
 				padding: 10px $tabs-toggler-padding-x;
+
 				&.active {
+
 					&.nav-link {
 						border-bottom: 0px;
 						border-right: 2px solid $tabs-theme-color;
@@ -77,22 +94,28 @@
 		}
 	}
 }
+
 .center-tabs {
+
 	.nav-tabs {
 		text-align: center;
 		-webkit-box-pack: center!important;
 	    -webkit-justify-content: center!important;
 	    -ms-flex-pack: center!important;
 	    justify-content: center!important;
+		
 		>li {
 			float: none;
 			display: inline-block;
 		}
 	}
 }
+
 .justified-tabs {
+
 	.nav-tabs {
 		width: 100%;
+		
 		>li {
 			display: table-cell;
 			width: 1%;
@@ -101,11 +124,15 @@
 		}
 	}
 }
+
 .nav-pills {
+	
 	>li {
+		
 		+li {
 			margin-left: 5px;
 		}
+		
 		>a {
 			border-radius: 3px;
 			opacity: 0.75;
@@ -115,12 +142,16 @@
 			color: $gray-dark;
 			border: 1px solid transparent;
 			padding: 5px 15px;
+			
 			&:hover,
 			&:focus {
 				background-color: transparent;
 				opacity: 1;
 			}
 		}
+		
+		
+		
 		>a {
 			&.active {
 				color: $white;
@@ -128,6 +159,7 @@
 				background-color: $tabs-theme-color;
 				border: 1px solid $tabs-theme-color;
 				opacity: 1;
+				
 				&:hover,
 				&:focus {
 					color: $white;
@@ -136,6 +168,7 @@
 					border: 1px solid $tabs-theme-color;
 					opacity: 1;
 				}
+
 				&.nav-link {
 					color: $white;
 					background-color: $tabs-theme-color;
@@ -143,21 +176,27 @@
 				}
 			}
 		}
+		
 	}
 }
+
 .nav-vertical {
+	
 	.nav-pills {
 		float: left;
 		width: 160px;
 		padding: 0px 15px;
 		display: block;
+
 		>li {
 			margin-bottom: 15px;
+
 			+ li {
 				margin-left: 0px;
 			}
 		}
 	}
+	
 	.tab-content {
 		float: left;
 		width: 70%;
